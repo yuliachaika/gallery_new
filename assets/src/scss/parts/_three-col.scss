@@ -104,15 +104,18 @@
       transition: all .4s ease-in;
       position: relative;
       font-size: 0;
-      overflow: hidden; /////
+      overflow: hidden; 
       &--over {
-        overflow: visible; ////
+        overflow: visible; 
       }
       &:hover {
         cursor: pointer;
         & .three-col__img-title {
           color: $black;
-          background-color: $white; 
+          background-color: $white;
+          &-wrap {
+            transform: translateY(0);
+          } 
         }
       } 
     }
@@ -134,11 +137,8 @@
         right: 0;
         bottom: rem-calc(0); 
         background-color: $dark-gray;
-        transform: translateY(24px); ////
+        transform: translateY(24px); 
         transition: all .4s ease-out;
-        &:hover {
-          transform: translateY(0); ////
-        }
       }
     }
   }
@@ -187,7 +187,7 @@
       @include column();
       margin-bottom: rem-calc(16); 
       @include breakpoint(small only) { 
-        margin-bottom: rem-calc(5);//
+        margin-bottom: rem-calc(5);
       }
       &--active {
         order: 3; 
