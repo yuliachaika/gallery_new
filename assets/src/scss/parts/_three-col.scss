@@ -78,6 +78,14 @@
       top: 0;
       left: 0;
     }
+    &--link {
+      display: block;
+      padding-top: 0;
+      color: $white;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
     &--pd {
       padding-bottom: rem-calc(150); 
     }
@@ -96,6 +104,10 @@
       transition: all .4s ease-in;
       position: relative;
       font-size: 0;
+      overflow: hidden; /////
+      &--over {
+        overflow: visible; ////
+      }
       &:hover {
         cursor: pointer;
         & .three-col__img-title {
@@ -112,6 +124,7 @@
       font-size: rem-calc(22);
       font-weight: 400;
       background-color: $dark-gray;
+      text-align: center;
       transition:
       color .4s ease-in,
       background-color .6s ease-out;
@@ -121,6 +134,11 @@
         right: 0;
         bottom: rem-calc(0); 
         background-color: $dark-gray;
+        transform: translateY(24px); ////
+        transition: all .4s ease-out;
+        &:hover {
+          transform: translateY(0); ////
+        }
       }
     }
   }

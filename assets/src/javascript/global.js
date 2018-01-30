@@ -2,28 +2,11 @@
 ;
 
 (function($){
+
+    $('.three-col__img-title-wrap').append('<div class="ya-share2" data-services="vkontakte,facebook,twitter,viber,whatsapp,telegram"></div>');
+    
     
     $( function() {
-
-      // //change modal content
-      // $(function() {
-      //   var modalOne = $("#modal-info-show").html();
-      //   var modalTwo = $("#modal-info-hide").html();
-        
-      //   $('.modal-footer__submit').on('click', function(e) {
-      //     $(".modal-info__content")
-      //       .html(modalTwo)
-      //       .addClass('modal-info__content-hide');
-      //     console.log('pressed');
-      //   });
-
-      //   $('.modal-footer__submit-hide').on('click', function(e) {
-      //     console.log("modalOne");
-      //     $(".modal-info__content")
-      //     .html(modalOne)
-      //     .removeClassClass('modal-info__content-hide');
-      //   });
-      // });
 
       // hide "buy" block on open
       $("#modal-buy__btn").on('click', function(){
@@ -46,17 +29,11 @@
         }   
       });
 
-      // //show conditions
-      // $('.modal-footer__link').on('click', function(e) {
-      //   e.preventDefault();
-      //   $('.modal-hide').toggleClass('is-active');
-      // });
-
       //stickyfill 
       var elements = $('.three-col__title, .three-col-nav');
       Stickyfill.add(elements);
 
-      //--scroll to top 
+      //scroll to top 
       $("#back-top").hide();
       
         $(window).scroll(function (){
@@ -74,7 +51,7 @@
           return false;
         });
 
-        //--scroll to top ie
+        //scroll to top ie
         if(navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/)) {
           $("body").scroll(function (){
             if ($(this).scrollTop() > 100){

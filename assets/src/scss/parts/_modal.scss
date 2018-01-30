@@ -1,5 +1,6 @@
 
 .modal {
+  overflow: hidden; ////
   @include row();
   background: transparent;
   &-hide {
@@ -219,6 +220,7 @@
       font-size: rem-calc(32);
       font-weight: 400;
       background-color: $dark-gray;
+      text-align: center;
       transition:
       color .4s ease-in,
       background-color .6s ease-out;
