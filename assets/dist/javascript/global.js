@@ -10475,7 +10475,7 @@ const QObject = {
             $('#modal__fabric').html('fabric: ' + QObject.itemFabric);
             $('#modal__price').html('cena: ' + QObject.itemPrice + '&#8364;');
             // $('.modal-img__wrap').html(QObject.itemUrl);
-            $('.modal-img--big').attr('href',QObject.itemBigUrl); //
+            $('.modal-img-big').attr('href',QObject.itemBigUrl); //
             $('.modal-img').attr('src',QObject.itemUrl);
             $('.modal-img__title').text(QObject.itemId);
             return false;
