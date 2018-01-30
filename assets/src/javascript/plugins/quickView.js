@@ -6,6 +6,7 @@ const QObject = {
   itemFabric: "polyester",
   itemPrice: 30,
   itemUrl: "assets/dist/img/999903.jpg",
+  itemBigUrl: "assets/dist/img/b/999903.jpg", //
   //itemUrl1: "<img src='assets/dist/img/999903.jpg',alt='999903' class='modal-img'>",
   init: function(target){
     
@@ -18,7 +19,9 @@ const QObject = {
   _init: function(target){
     console.log('init class QObject');
     this.itemId = target.dataset.productId;
-    this.itemUrl = 'assets/dist/img/b/' + target.dataset.fileName;
+    // this.itemUrl = 'assets/dist/img/b/' + target.dataset.fileName;
+    this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
+    this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
     return this;
   }
 };
@@ -107,6 +110,7 @@ const QObject = {
             $('#modal__fabric').html('fabric: ' + QObject.itemFabric);
             $('#modal__price').html('cena: ' + QObject.itemPrice + '&#8364;');
             // $('.modal-img__wrap').html(QObject.itemUrl);
+            $('.modal-img--big').attr('href',QObject.itemBigUrl); //
             $('.modal-img').attr('src',QObject.itemUrl);
             $('.modal-img__title').text(QObject.itemId);
             return false;
