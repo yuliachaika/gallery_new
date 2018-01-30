@@ -1,0 +1,50 @@
+.header {
+	width: 100%;
+	height: rem-calc(50);
+	@include breakpoint(medium up) {
+    height: rem-calc(130);
+  } 
+  position: relative;
+  overflow: hidden;
+  &__fix {
+   width: 100%; 
+   height: rem-calc(110); 
+   position: fixed;
+ }
+ &__row {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: rem-calc(60);
+  z-index: 25;
+  background: url(../img/bg-01.jpg);
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  @include breakpoint(small only) {
+   background: linear-gradient(to bottom, $dark-gray, transparent);
+ }
+ @include breakpoint(medium up) {
+   height: rem-calc(130);
+ } 
+}
+}
+
+
+/*Ie 10/11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+{
+  .header__row{
+   width: calc(100% - 17px);  
+ }
+
+}
+
+
+
+
+
+

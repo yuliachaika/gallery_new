@@ -1,0 +1,32 @@
+{
+  "name": "gallery",
+  "version": "1.0.0",
+  "description": "gallery",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yuliia Chaika",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^1.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.0.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-pngquant": "^5.0.1",
+    "pump": "^1.0.2"
+  },
+  "dependencies": {
+    "gulp-install": "^1.1.0",
+    "magnific-popup": "^1.1.0",
+    "stickyfilljs": "^2.0.3",
+    "wiredep": "^4.0.0"
+  }
+}

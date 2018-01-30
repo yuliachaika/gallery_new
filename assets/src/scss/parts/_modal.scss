@@ -1,0 +1,263 @@
+
+.modal {
+  @include row();
+  background: transparent;
+  &-hide {
+    display: none;
+    margin-top: $img-margin; 
+    &.is-active {
+      display: block;
+    }
+  }
+  &-info {
+    width: 35%;
+    @include col();
+    flex-wrap: nowrap; 
+    justify-content: flex-start;
+    @include breakpoint(small only) {
+      width: 100%;
+    }
+    &-hide {
+      display: none;
+    }
+    &-show {
+      display: none;
+    }
+    &__header {
+      &-hide { 
+        padding: rem-calc(20) 0;
+        padding-left: $column-gutter;
+        padding-bottom: rem-calc(40); 
+        @include breakpoint(large up) {
+        padding-left: $img-margin;       
+        } 
+        @include row();
+        justify-content: center;
+        align-items: center; 
+      }
+    }
+    &__content {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      flex: 3 1 auto;
+      padding: $column-gutter $column-gutter $column-gutter 0; 
+      background: linear-gradient(to right, $white, transparent);
+      @include breakpoint(large up) {
+        padding: $img-margin $img-margin $img-margin 0;       
+      }
+      &-hide { 
+        @include col();
+        justify-content: flex-start;  
+      }  
+    }
+    &__carre {
+       margin-bottom: rem-calc(10);
+       padding-left: $column-gutter; 
+       @include breakpoint(large up) {
+        padding-left: $img-margin;      
+      }   
+    }
+    &__price {
+      margin-bottom: rem-calc(10); 
+    }
+    &__num {
+      color: $gray;
+      font-family: $primary-font;
+      font-size: rem-calc(14);
+      line-height: 1.2; 
+      font-weight: 400;
+      &-hide {
+        font-size: rem-calc(16);
+        color: $dark-gray;
+        text-align: center;
+      }
+    }
+    &__text {
+      color: $black;
+      font-family: $primary-font;
+      font-size: rem-calc(10);
+      font-weight: 400;
+      padding-left: $column-gutter; 
+      @include breakpoint(large up) {
+        padding-left: $img-margin;      
+      } 
+      &--color {
+        color: $gray;
+      }
+    }
+  }
+  &-form {
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    @include breakpoint(large up) {
+      padding-bottom: $img-margin;     
+    } 
+    &-hide {
+      padding: rem-calc(50) 0 rem-calc(50) $column-gutter;
+      @include row();
+      justify-content: center;
+      align-items: center;
+      @include breakpoint(small only) {
+      padding: rem-calc(20) 0 rem-calc(20) $column-gutter;       
+    } 
+    }
+    &__item {
+      width: 100%;
+      background: transparent;
+      border: none; 
+      padding: rem-calc(20); 
+      padding-left: $column-gutter; 
+      @include breakpoint(large up) {
+        padding-left: $img-margin;      
+      } 
+      color: $light-gray;
+      font-family: $primary-font;
+      font-size: rem-calc(14);
+      line-height: 1.2; 
+      font-weight: 400;
+      &::-webkit-input-placeholder, 
+      &::-moz-placeholder,
+      &:-moz-placeholder, 
+      &:-ms-input-placeholder {
+        color: $light-gray !important;
+        font-weight: 400;
+      }
+      &::placeholder {
+        color: $light-gray;
+        font-weight: 400;
+      }
+    }
+    &__area {
+      border-top: 1px solid rgba(255, 255, 255, 0.8);
+      resize: none;
+      overflow: auto;
+    }
+  }
+  &-footer {
+    padding-top: rem-calc(10); 
+    padding-left: $column-gutter;
+    @include breakpoint(large up) {
+      padding-left: $img-margin;  
+    } 
+    @include row();
+    justify-content: space-between;
+    &-hide {
+      padding: rem-calc(20) 0; 
+      padding-left: $column-gutter;
+      padding-top: rem-calc(40); 
+      @include breakpoint(large up) {
+        padding-left: $img-margin;       
+      } 
+      @include row();
+      justify-content: center;
+      align-items: center;
+      
+    }
+    &__link {
+      display: block;
+      color: $blue;
+      width: rem-calc(40);
+      height: rem-calc(40);
+      border: 3px solid $blue;
+      border-radius: 50%;
+      text-align: center;
+      font-family: $primary-font;
+      font-size: rem-calc(22);
+      font-weight: 800;
+      line-height: rem-calc(22);
+      letter-spacing: rem-calc(1.2);
+      &:hover,
+      &:active {
+        color: $light-gray;
+        border-color: $light-gray;
+      }
+    }
+    &__submit {
+      @include btn();
+      width: rem-calc(130);
+      background-color: $light-gray;
+      border: 1px solid transparent;
+      &:hover {
+        background-color: rgba(176, 178, 180, 0.7); 
+      }
+      &-hide {
+        @include btn();
+        width: rem-calc(150);
+        background-color: $blue;
+        border: 1px solid transparent;
+        &:hover {
+          background-color: rgba(30, 165, 213, 0.7) ;
+        }
+      }
+    }
+  }
+  &-img {
+    width: 100%;
+    overflow: hidden;
+    &__wrap {
+      width: 65%;
+      display: flex;
+      font-size: 0;
+      @include breakpoint(small only) {
+        width: 100%;
+        display: inline-block; 
+      }
+      &:hover {
+        cursor: pointer;
+        & .modal-img__title {
+          color: $black;
+          background-color: $white; 
+        }
+      }  
+    }
+    &__title {
+      padding: rem-calc(10) rem-calc(15);
+      width: 100%; 
+      color: $white;
+      font-family: $primary-font;
+      font-size: rem-calc(32);
+      font-weight: 400;
+      background-color: $dark-gray;
+      transition:
+      color .4s ease-in,
+      background-color .6s ease-out;
+      &-wrap {
+        @extend .three-col__img-title-wrap;
+      }
+    }
+  }
+  &-buy {
+    width: 100%; 
+    margin: 0;
+    border: none;
+    background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0));
+    @include link(28);
+    text-align: center;
+    color: $white;
+    &__text {
+      display: block;
+      margin: 0 auto;
+    } 
+    &__wrap {
+      width: 100%;
+      height: rem-calc(126); 
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      margin-bottom: $column-gutter;
+      @include breakpoint(small only) {
+        height: rem-calc(60); 
+        margin-bottom: 0; 
+      } 
+      @include breakpoint(medium only) {
+        height: rem-calc(80); 
+      } 
+      @include breakpoint(large up) {
+        margin-bottom: $img-margin; 
+      } 
+    }
+  } 
+}
+
+

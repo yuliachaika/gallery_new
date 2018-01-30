@@ -1,0 +1,51 @@
+@mixin column() {
+	margin: 0 rem-calc(10);
+  width: 90%;
+  @include breakpoint(small only) {
+    max-width: rem-calc(400);
+  } 
+  @include breakpoint(medium) {
+    width: 28%;
+  }
+  @include breakpoint(large) {
+  	margin: 0 $column-gutter;
+    width: 28%;
+  }
+}
+
+@mixin column-mod() {
+  width: 100%;
+  @include breakpoint(small only) {
+    max-width: rem-calc(620);
+  } 
+  @include breakpoint(medium up) {
+    width: 30%;
+  }
+}
+
+@mixin row() {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+@mixin col() {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+@mixin btn() {
+  color: $white;
+  height: rem-calc(40);
+  line-height: rem-calc(32);
+  border-radius: 30px;
+  font-family: $primary-font;
+  font-size: rem-calc(14);
+  font-weight: 400;
+  text-align: center;
+}
+
+
+
+

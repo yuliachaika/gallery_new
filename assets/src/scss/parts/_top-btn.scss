@@ -1,0 +1,25 @@
+.back-top {
+	position:fixed;
+	bottom: rem-calc(5);
+	right: rem-calc(5);
+	@include breakpoint(medium up) {
+    bottom: rem-calc(20);
+		right: rem-calc(20); 
+  }
+	z-index: 50;
+	&__btn {
+		display: inline-block;
+    background-color: rgba(125, 185, 232, 0.2);
+    overflow: hidden;
+    width: rem-calc(45);
+    height: rem-calc(45);
+    border: none;
+    color: $white;
+	  font-size: rem-calc(42);
+	  line-height: rem-calc(42);
+	  text-align: center; 
+    &:hover {
+    	background-color: rgba(125, 185, 232, 0.5);
+    }
+	}
+}

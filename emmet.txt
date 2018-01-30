@@ -1,0 +1,1 @@
+(div.three-col__img-wrap>(img.three-col__img[src=assets/dist/img/s/$$$.jpg alt=img data-product-id=$$$$$$$$$$ data-file-name=$$$.jpg]+div.three-col__img-title-wrap>(h2.three-col__img-title{$$$$$$$$$$})))*15

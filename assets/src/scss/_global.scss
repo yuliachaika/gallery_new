@@ -1,0 +1,99 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	@include breakpoint(medium down) {
+		font-size: 80%;
+	}
+}
+
+body {
+	margin: 0; 
+}
+
+a, button, input, textarea  {
+	cursor: pointer;
+	transition:
+	border-color .4s ease-in,
+	color .4s ease-in,
+	background-color .4s ease-in;
+	&:focus {
+		outline: none; 
+	}
+}
+a {
+	text-decoration: none;
+}
+
+h1, h2, h3, p {
+	margin: 0; 
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	overflow: hidden; 
+}
+
+.container {
+	max-width: rem-calc(1170);
+	padding: 0 rem-calc(15);
+	margin: 0 auto;
+	@include row();
+	justify-content: center;
+}
+
+.content {
+	display: block;
+	width: 100%; 
+	min-height: 100vh;
+	background: url(../img/bg-01.jpg) center no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	&-bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: url(../img/bg-01.jpg);
+		background-position-x: center;
+		background-position-y: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
+		cursor: pointer;
+	}
+}
+
+/*Edge*/
+@supports ( -ms-accelerator:true ) 
+{
+    html{
+        overflow: hidden;
+        height: 100%;    
+    }
+    body{
+        overflow: auto;
+        height: 100%;
+    }
+}
+/*Ie 10/11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+{
+    html{
+        overflow: hidden;
+        height: 100%;    
+    }
+    body{
+        overflow: auto;
+        height: 100%;
+    }
+}
+
+/***** added ******/
+.hidden{
+	display: none !important;
+}

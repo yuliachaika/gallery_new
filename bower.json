@@ -1,0 +1,23 @@
+{
+  "name": "gallery",
+  "description": "gallery",
+  "main": "gulpfile.js",
+  "author": "Yuliia Chaika",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "slick-carousel": "^1.8.1"
+  },
+  "authors": [
+    "Yulia <yulia.chaika@icloud.com>"
+  ],
+  "license": "MIT",
+  "homepage": ""
+}

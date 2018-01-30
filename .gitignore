@@ -1,0 +1,8 @@
+
+\.DS_Store
+
+node_modules/
+
+assets/components/
+
+author copy\.html
