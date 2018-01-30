@@ -1,6 +1,6 @@
 
 .modal {
-  overflow: hidden; ////
+  overflow: hidden; 
   @include row();
   background: transparent;
   &-hide {
@@ -208,7 +208,10 @@
         cursor: pointer;
         & .modal-img__title {
           color: $black;
-          background-color: $white; 
+          background-color: $white;
+          &-wrap {
+            transform: translateY(0);
+          } 
         }
       }  
     }
