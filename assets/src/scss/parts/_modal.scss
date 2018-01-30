@@ -89,7 +89,6 @@
   }
   &-form {
     border-top: 1px solid rgba(255, 255, 255, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
     @include breakpoint(large up) {
       padding-bottom: $img-margin;     
     } 
@@ -135,17 +134,18 @@
     }
   }
   &-footer {
-    padding-top: rem-calc(10); 
+    padding-top: rem-calc(30); 
     padding-left: $column-gutter;
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
     @include breakpoint(large up) {
       padding-left: $img-margin;  
     } 
     @include row();
     justify-content: space-between;
     &-hide {
-      // padding: rem-calc(20) 0; 
       padding-left: $column-gutter;
-      padding-top: rem-calc(40); 
+      padding-top: rem-calc(30); 
+      border-top: 1px solid rgba(255, 255, 255, 0.8);
       @include breakpoint(large up) {
         padding-left: $img-margin;       
       } 
