@@ -10623,6 +10623,21 @@ const QObject = {
     
     $( function() {
 
+      //filter
+      $("#filter").keyup(function(){
+ 
+        var filter = $(this).val();
+        $(".three-col__img-wrap img").each(function(){
+ 
+            if ($(this).attr('data-product-id').search(new RegExp(filter, "i")) < 0) {
+                $(this).parent().fadeOut();
+
+            } else {
+                $(this).parent().show();
+            }
+        });
+      });
+
       // hide "buy" block on open
       $("#modal-buy__btn").on('click', function(){
         $('#modal-info__content').removeClass('hidden');
