@@ -10624,16 +10624,25 @@ const QObject = {
     $( function() {
 
       //filter
-      $("#filter").keyup(function(){
+      $("#filter").keypress(function(event){
+
+        // if not enter that return 
+        if (event.keyCode !== 13) {return;}
+
+        event.preventDefault();
  
         var filter = $(this).val();
-        $(".three-col__img-wrap img").each(function(){
- 
-            if ($(this).attr('data-product-id').search(new RegExp(filter, "i")) < 0) {
-                $(this).parent().fadeOut();
 
-            } else {
-                $(this).parent().show();
+        $(".three-col__img-wrap img").each(function(){
+            const dataProductId = $(this).attr('data-product-id');
+            // undefined cos there are some element that doesn't
+            // have any data attribute
+            if (dataProductId !== undefined){
+              if(dataProductId.search(new RegExp(filter, "i")) < 0){
+                  $(this).parent().fadeOut();
+              } else {
+                  $(this).parent().show();
+              }
             }
         });
       });
