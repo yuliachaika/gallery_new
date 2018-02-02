@@ -13,6 +13,7 @@ const gulp          = require('gulp'),
       pngquant      = require('imagemin-pngquant'),
       cache         = require('gulp-cache'),
       wiredep       = require('wiredep')({ 
+        //directory: './assets/components'
         directory: './assets/components'
       });
 
