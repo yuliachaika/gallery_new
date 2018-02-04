@@ -4,21 +4,49 @@
 (function($){
 
     $('.three-col__img-title-wrap').append('<div class="ya-share2" data-services="vkontakte,facebook,twitter,viber,whatsapp,telegram"></div>');
+
     
+
+    //switch between home page and tabs 
+    // $(window).on('load', function () {
+    //   //
+    // //   function onresize() {
+    // //     var elemHeight = $('.three-col__img-wrap').outerHeight(true);
+    // //     console.log(elemHeight);
+    // //     $('.three-col__text-wrap').height(elemHeight);
+    // //   };
+
+    // // onresize();
+    // });
     
     $( function() {
+      /////
+      var searchParams = new URLSearchParams(window.location.search);
+      var targetHref = searchParams.get('t');
+      $('.three-col-nav__link[href*='+ targetHref +']').addClass('three-col__link--active');
+      $('#'+ targetHref).addClass('three-col__tab--active');
+      /////
 
       //filter
-      $("#filter").keyup(function(){
+      $("#filter").keypress(function(event){
+
+        // if not enter that return 
+        if (event.keyCode !== 13) {return;}
+
+        event.preventDefault();
  
         var filter = $(this).val();
-        $(".three-col__img-wrap img").each(function(){
- 
-            if ($(this).attr('data-product-id').search(new RegExp(filter, "i")) < 0) {
-                $(this).parent().fadeOut();
 
-            } else {
-                $(this).parent().show();
+        $(".three-col__img-wrap img").each(function(){
+            const dataProductId = $(this).attr('data-product-id');
+            // undefined cos there are some element that doesn't
+            // have any data attribute
+            if (dataProductId !== undefined){
+              if(dataProductId.search(new RegExp(filter, "i")) < 0){
+                  $(this).parent().fadeOut();
+              } else {
+                  $(this).parent().show();
+              }
             }
         });
       });
@@ -34,6 +62,7 @@
         if ( e.target == $(this)[0] ) {
           var url = "index.html";
           $(location).attr('href',url);
+          $("body").fadeOut(1000, redirectPage);
         }
       });
 
