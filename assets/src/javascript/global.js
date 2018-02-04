@@ -4,9 +4,46 @@
 (function($){
 
     $('.three-col__img-title-wrap').append('<div class="ya-share2" data-services="vkontakte,facebook,twitter,viber,whatsapp,telegram"></div>');
+
     
+
+    
+    // $(window).on('load', function () {
+    //   //
+    // //   function onresize() {
+    // //     var elemHeight = $('.three-col__img-wrap').outerHeight(true);
+    // //     console.log(elemHeight);
+    // //     $('.three-col__text-wrap').height(elemHeight);
+    // //   };
+
+    // // onresize();
+    // });
     
     $( function() {
+
+
+      // //magnific-popup for big img
+      // $('.modal-img-big').magnificPopup({
+      //   type: 'image',
+      //   closeOnContentClick: true,
+      //   closeBtnInside: false,
+      //   mainClass: 'mfp-with-zoom', 
+      //   image: {
+      //     verticalFit: true
+      //   },
+      //   zoom: {
+      //     enabled: true,
+      //     duration: 300 
+      //   }
+      // });
+
+
+      //switch between home page and tabs 
+      var searchParams = new URLSearchParams(window.location.search);
+      var targetHref = searchParams.get('t');
+      $('.three-col-nav__link[href*='+ targetHref +']').addClass('three-col__link--active');
+      $('#'+ targetHref).addClass('three-col__tab--active');
+      /////
 
       //filter
       $("#filter").keypress(function(event){
@@ -43,6 +80,7 @@
         if ( e.target == $(this)[0] ) {
           var url = "index.html";
           $(location).attr('href',url);
+          $("body").fadeOut(1000, redirectPage);
         }
       });
 

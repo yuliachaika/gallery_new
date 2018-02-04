@@ -52,9 +52,9 @@
     align-items: center;
     @include link(28);
     text-align: center;
-    transition: all .4s ease-out;
+    transition: color .4s ease-out; //
     position: relative;
-    &:focus {
+    &:focus, &:active {
       color: $white;
     }
     &--active {
@@ -91,10 +91,16 @@
     }
   }
   &__img {
-    &--hid {
+    &-text {
+      margin-bottom: $img-margin; 
+      position: relative;
+      font-size: 0;
+      overflow: visible;
+    }
+    &-hid {
       visibility: hidden;
     }
-    &--none {
+    &-none {
       @include breakpoint(small only) {
         display: none;
       }
@@ -105,9 +111,6 @@
       position: relative;
       font-size: 0;
       overflow: hidden; 
-      &--over {
-        overflow: visible; 
-      }
       &:hover {
         cursor: pointer;
         & .three-col__img-title {
@@ -183,6 +186,12 @@
     } 
     overflow: hidden;
     z-index: 20;
+    &__link {
+      transition: none;
+      &:hover {
+        transition: color .4s ease-out;
+      }
+    }
     &__item {
       @include column();
       margin-bottom: rem-calc(16); 
@@ -198,4 +207,9 @@
     }
   }
 }
+
+
+
+
+
 
