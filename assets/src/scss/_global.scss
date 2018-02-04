@@ -3,7 +3,7 @@
 }
 
 html {
-	@include breakpoint(medium down) {
+		@include breakpoint(medium down) {
 		font-size: 80%;
 	}
 }

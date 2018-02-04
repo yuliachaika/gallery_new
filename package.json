@@ -25,9 +25,18 @@
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.2.5",
+    "animate": "^1.0.0",
     "gulp-install": "^1.1.0",
     "magnific-popup": "^1.1.0",
     "stickyfilljs": "^2.0.3",
     "wiredep": "^4.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuliachaika/gallery_new.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yuliachaika/gallery_new/issues"
+  },
+  "homepage": "https://github.com/yuliachaika/gallery_new#readme"
 }
