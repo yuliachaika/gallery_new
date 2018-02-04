@@ -7,7 +7,7 @@
 
     
 
-    //switch between home page and tabs 
+    
     // $(window).on('load', function () {
     //   //
     // //   function onresize() {
@@ -22,23 +22,23 @@
     $( function() {
 
 
-      //magnific-popup for big img
-      $('.modal-img-big').magnificPopup({
-        type: 'image',
-        closeOnContentClick: true,
-        closeBtnInside: false,
-        mainClass: 'mfp-with-zoom', 
-        image: {
-          verticalFit: true
-        },
-        zoom: {
-          enabled: true,
-          duration: 300 
-        }
-      });
+      // //magnific-popup for big img
+      // $('.modal-img-big').magnificPopup({
+      //   type: 'image',
+      //   closeOnContentClick: true,
+      //   closeBtnInside: false,
+      //   mainClass: 'mfp-with-zoom', 
+      //   image: {
+      //     verticalFit: true
+      //   },
+      //   zoom: {
+      //     enabled: true,
+      //     duration: 300 
+      //   }
+      // });
 
 
-      /////
+      //switch between home page and tabs 
       var searchParams = new URLSearchParams(window.location.search);
       var targetHref = searchParams.get('t');
       $('.three-col-nav__link[href*='+ targetHref +']').addClass('three-col__link--active');
