@@ -64,7 +64,7 @@
       }
     }
     &--bg {
-      background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0)); //111
+      background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0)); 
     }
   }
   &__text {
@@ -88,6 +88,12 @@
     }
     &--pd {
       padding-bottom: rem-calc(150); 
+    }
+    &--bg {
+      background: linear-gradient(to bottom, $dark-gray, rgba(125, 185, 232, 0));
+    }
+    &--tall {
+      align-items: center;
     }
   }
   &__img {
