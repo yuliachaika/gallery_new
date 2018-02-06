@@ -197,9 +197,10 @@
         max-width: rem-calc(160);
         overflow: hidden;
         right: 0;
-        left: 0;//
+        left: 25%;//
         bottom: $column-gutter;//
         margin: 0 auto;
+        margin-left: $column-gutter;
         // bottom: rem-calc(0); /////
         // background-color: $dark-gray;
         // transform: translateY(24px); ///поменять и в модал!!!!!!
