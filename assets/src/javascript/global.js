@@ -62,6 +62,8 @@
       $('.three-col-nav__link[href*='+ targetHref +']').addClass('three-col__link--active');
       $('#'+ targetHref).addClass('three-col__tab--active');
 
+      scrollbarWidth();
+
       //filter
       $("#filter").keypress(function(event){
 
