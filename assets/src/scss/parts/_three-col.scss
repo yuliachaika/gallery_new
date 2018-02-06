@@ -137,43 +137,72 @@
         display: none;
       }
     }
+    &-share {
+      position: absolute;
+      top: $column-gutter;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transition: opacity .4s ease-out; 
+    }
     &-wrap {
       margin-bottom: $img-margin;
       padding-left: rem-calc(10);
-      transition: all .4s ease-in;
+      transition: all .3s ease-in;
       position: relative;
       font-size: 0;
       overflow: hidden; 
       &:hover {
         cursor: pointer;
+        & .three-col__img-share {
+          opacity: 1;
+        }
         & .three-col__img-title {
           color: $black;
-          background-color: $white;
-          &-wrap {
-            transform: translateY(0);
-          } 
+          // background: linear-gradient(to right, $white, rgba(125, 185, 232, 0)); /////
+          // background-color: $white;
         }
       } 
     }
     &-title {
-      padding: rem-calc(10) rem-calc(15);
+      // padding: rem-calc(10) rem-calc(15) rem-calc(10) rem-calc(30);
+      padding: rem-calc(10) 0;
       width: 100%; 
+      position: relative;
       color: $white;
       font-family: $primary-font;
       font-size: rem-calc(22);
       font-weight: 400;
-      background-color: $dark-gray;
+      background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0));
+      // background-color: $dark-gray;
       text-align: center;
       transition:
-      color .4s ease-in,
-      background-color .6s ease-out;
+      color .4s ease-out;
+      // background-color .6s ease-out;
+      &::before {
+        content: "";
+        position: absolute;
+        width: rem-calc(30);
+        height: rem-calc(30);
+        background: url(../img/general/logo.svg) center no-repeat;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
       &-wrap {
         position: absolute;
+        max-width: rem-calc(160);
         overflow: hidden;
         right: 0;
-        bottom: rem-calc(0); 
-        background-color: $dark-gray;
-        transform: translateY(24px); 
+        left: 0;//
+        bottom: $column-gutter;//
+        margin: 0 auto;
+        // bottom: rem-calc(0); /////
+        // background-color: $dark-gray;
+        // transform: translateY(24px); ///поменять и в модал!!!!!!
         transition: all .4s ease-out;
       }
     }
