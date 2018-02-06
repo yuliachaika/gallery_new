@@ -7,11 +7,8 @@
 
   function scrollbarWidth() {
     var documentWidth = parseInt(document.documentElement.clientWidth);
-  //   console.log(documentWidth);
     var windowsWidth = parseInt(window.innerWidth);
-  //   console.log(windowsWidth);
     var scrollbarWidth = windowsWidth - documentWidth;
-    // return scrollbarWidth;
     console.log(scrollbarWidth);
     if (scrollbarWidth > 0) {
       $('.quick-view-overlay').css({marginRight: scrollbarWidth});
@@ -31,7 +28,6 @@
     function resizeFont(elem, width, size) {
       var textElemWidth = elem.outerWidth();
       var scale = textElemWidth / width;
-      // console.log(scale);
       var fontSize;
       if (scale < 1) {
         fontSize = size * scale + 'px';
