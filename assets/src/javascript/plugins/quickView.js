@@ -1,6 +1,7 @@
 'use strict';
 
 const QObject = {
+  itemName : "carré",  
   itemId : 981111,
   itemSize: "&#34;52 x 52&#34;, 140 x 140 mm",
   itemFabric: "polyester",
@@ -19,6 +20,7 @@ const QObject = {
   _init: function(target){
     console.log('init class QObject');
     this.itemId = target.dataset.productId;
+    // this.itemName = target.dataset.productName;//
     // this.itemUrl = 'assets/dist/img/b/' + target.dataset.fileName;
     this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
     this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
@@ -105,14 +107,16 @@ const QObject = {
         },
         initData: function(QObject){
             // init current object
-            $('#modal__num, .modal-img__title').html(QObject.itemId);
+            // $('#modal__num, .modal-img__title').html(QObject.itemId);
+            $('#modal__num, .modal-img__title').html(QObject.itemName + ' ' + QObject.itemId);
             $('#modal__size').html('size: ' + QObject.itemSize);
             $('#modal__fabric').html('fabric: ' + QObject.itemFabric);
-            $('#modal__price').html('cena: ' + QObject.itemPrice + '&#8364;');
+            $('#modal__price').html('price: ' + QObject.itemPrice + '&#8364;'); //
             // $('.modal-img__wrap').html(QObject.itemUrl);
             $('.modal-img-big').attr('href',QObject.itemBigUrl); //
             $('.modal-img').attr('src',QObject.itemUrl);
-            $('.modal-img__title').text(QObject.itemId);
+            // $('.modal-img__title').text(QObject.itemId);
+            $('.modal-img__title').text(QObject.itemName + ' ' + QObject.itemId);
             return false;
         },
         toggleCondition: function(remove){

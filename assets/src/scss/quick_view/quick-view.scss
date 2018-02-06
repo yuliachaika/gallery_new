@@ -62,9 +62,10 @@ $media-queries: true;
     } 
   }
   &-overlay {
-    background: url(../img/bg-01.jpg) center no-repeat;
+    // margin-right: 17px;
+    background: url(../img/general/bg-01.jpg) center no-repeat;
     background-size: cover;
-    // background-color: rgba(0, 0, 0, .5); ///
+    // background-color: rgba(0, 0, 0, .6); 
     position: fixed;
     top: 0;
     left: 0;
@@ -74,5 +75,20 @@ $media-queries: true;
   } 
 }
 
+// /*Ie 10/11 */
+// @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+// {
+//   .quick-view-overlay {
+//     margin: 0;  
+//  }
+
+// }
+// /*Edge*/
+// @supports ( -ms-accelerator:true ) 
+// {
+//   .quick-view-overlay {
+//     margin: 17px;  
+//  }
+// }
 
 

@@ -3,7 +3,6 @@
 const gulp          = require('gulp'),
       sass          = require('gulp-sass'),
       sourcemaps    = require('gulp-sourcemaps'),
-      // rigger        = require('gulp-rigger'),
       browserSync   = require('browser-sync'),
       autoprefixer  = require('gulp-autoprefixer'),
       uglify        = require('gulp-uglify'),
@@ -13,7 +12,6 @@ const gulp          = require('gulp'),
       pngquant      = require('imagemin-pngquant'),
       cache         = require('gulp-cache'),
       wiredep       = require('wiredep')({ 
-        //directory: './assets/components'
         directory: './assets/components'
       });
 
@@ -23,13 +21,6 @@ const compatability = [
     'last 3 versions',
     'iOS 7'
 ];
-//build html 
-// gulp.task('html', function () {
-//     gulp.src('./assets/src/*.html') //Выберем файлы по нужному пути
-//         .pipe(rigger()) //Прогоним через rigger
-//         .pipe(gulp.dest('./assets/dist')) //Выплюнем их в папку 
-//         .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
-// });
 
 //Compile scss to css
 gulp.task('sass', function () {
@@ -60,10 +51,11 @@ gulp.task('javascript', function (cb) {
                 'assets/components/jquery/dist/jquery.js',
                 'assets/src/javascript/plugins/*.js',
                 'node_modules/stickyfilljs/dist/stickyfill.min.js',
+                'node_modules/url-search-params-polyfill/index.js',
                 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
                 'assets/src/javascript/global.js'])
             .pipe(concat('global.js')),
-            // uglify(), 
+            // .uglify(), 
             gulp.dest('assets/dist/javascript')
         ],
         cb
@@ -72,7 +64,7 @@ gulp.task('javascript', function (cb) {
 
 //img
 gulp.task('img', function() {
-    return gulp.src('./assets/src/img/**/*') // change from * to **/*
+    return gulp.src('./assets/src/img/**/*') 
         .pipe(cache(imagemin({ 
             interlaced: true,
             progressive: true,
@@ -81,16 +73,6 @@ gulp.task('img', function() {
         })))
         .pipe(gulp.dest('./assets/dist/img')); 
 });
-
-// var config = {
-//     server: {
-//         baseDir: "./dist"
-//     }
-// };
-
-// gulp.task('browser-sync', function () {
-//     browserSync(config);
-// });
 
 
 gulp.task('browser-sync', function () {
@@ -102,7 +84,6 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('default', ['sass', 'img', 'javascript', 'fonts', 'browser-sync'], function () {
-    // gulp.watch('./assets/src/**/*.html', ['html']);
     gulp.watch('./assets/src/scss/**/*.scss', ['sass']);
     gulp.watch('./assets/src/img/*', ['img']);
     gulp.watch('./assets/src/javascript/**/*.js', ['javascript']);
