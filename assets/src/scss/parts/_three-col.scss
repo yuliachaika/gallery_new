@@ -26,7 +26,7 @@
   &__title {
     width: 100%; 
     position: sticky;
-    top: rem-calc(60);
+    top: $header-min;
     @include breakpoint(medium up) {
       top: rem-calc(130);
     } 
@@ -68,7 +68,7 @@
     }
   }
   &__text {
-    padding: rem-calc(10);
+    padding: rem-calc(5) rem-calc(5) 0 rem-calc(10); //
     @include text(18, $white);
     text-align: justify;
     &-wrap {
@@ -98,6 +98,7 @@
   }
   &__img {
     &-text {
+      padding-left: rem-calc(10);
       margin-bottom: $img-margin; 
       position: relative;
       font-size: 0;
@@ -110,9 +111,13 @@
       @include breakpoint(small only) {
         display: none;
       }
+      @include breakpoint(large) {
+        display: none;
+      }
     }
     &-wrap {
-      margin-bottom: $img-margin; 
+      margin-bottom: $img-margin;
+      padding-left: rem-calc(10);
       transition: all .4s ease-in;
       position: relative;
       font-size: 0;
@@ -186,7 +191,7 @@
     @include row();
     justify-content: center;
     position: sticky;
-    top: rem-calc(60);
+    top: $header-min;
     @include breakpoint(medium up) {
       top: rem-calc(130);
     } 

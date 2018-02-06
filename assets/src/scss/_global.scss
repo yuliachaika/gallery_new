@@ -20,6 +20,7 @@ a, button, input, textarea  {
 	transition:
 	border-color .4s ease-in,
 	color .4s ease-in,
+	text-shadow .4s ease-in,
 	background-color .4s ease-in;
 	&:focus {
 		outline: none; 
@@ -51,7 +52,7 @@ img {
 	display: block;
 	width: 100%; 
 	min-height: 100vh;
-	background: url(../img/bg-01.jpg) center no-repeat;
+	background: url(../img/general/bg-01.jpg) center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	position: relative;
@@ -61,7 +62,7 @@ img {
 		height: 100%;
 		top: 0;
 		left: 0;
-		background: url(../img/bg-01.jpg);
+		background: url(../img/general/bg-01.jpg);
 		background-position-x: center;
 		background-position-y: center;
 		background-repeat: no-repeat;
