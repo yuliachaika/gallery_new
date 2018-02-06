@@ -56,6 +56,11 @@ img {
 	background-size: cover;
 	background-attachment: fixed;
 	position: relative;
+	@include breakpoint(small only) {
+		background-repeat: y-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+	}
 	&-bg {
 		position: absolute;
 		width: 100%;
@@ -69,6 +74,12 @@ img {
 		background-size: cover;
 		background-attachment: fixed;
 		cursor: pointer;
+		@include breakpoint(small only) {
+			background: none;
+			// background-repeat: y-repeat;
+			// background-size: cover;
+			// background-attachment: scroll;
+		}
 	}
 }
 
