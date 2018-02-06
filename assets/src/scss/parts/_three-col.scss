@@ -98,6 +98,10 @@
     }
     &--pd {
       padding-bottom: rem-calc(150); 
+      background: linear-gradient(to bottom, $dark-gray, rgba(125, 185, 232, 0));
+      @include breakpoint(small only) {
+        padding-bottom: 0;
+      }
     }
     &--bg {
       background: linear-gradient(to bottom, $dark-gray, rgba(125, 185, 232, 0));
@@ -107,9 +111,11 @@
     }
     &--mobile {
       height: auto;
+      padding-bottom: 0;
     }
     &--visible {
       height: auto;
+      padding-bottom: 0;
     }
   }
   &__img {
