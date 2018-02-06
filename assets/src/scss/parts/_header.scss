@@ -28,7 +28,7 @@
     background-attachment: fixed;
     @include breakpoint(small only) {
       background: rgba(68,68,70,1);
-      background: linear-gradient(to bottom, $dark-gray 0%, rgba(68,68,70,0.7) 65%, rgba(168,168,168,0) 100%);
+      background: linear-gradient(to bottom, $dark-gray 0%, rgba(68,68,70,0.7) 65%, transparent 100%);
      }
     @include breakpoint(medium up) {
       height: rem-calc(130);
