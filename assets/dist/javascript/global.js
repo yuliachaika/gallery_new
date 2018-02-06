@@ -10973,7 +10973,7 @@ const QObject = {
     
     $( function() {
       // scrollbarWidth();
-      onresize();
+      // onresize();
       //switch between home page and tabs 
       var searchParams = new URLSearchParams(window.location.search);
       var targetHref = searchParams.get('t');
@@ -11071,7 +11071,6 @@ const QObject = {
         e.preventDefault();
         var element = $(this);
         var href = $($(this).attr('href'));
-
         element
         .addClass('three-col__link--active')
         .parent()
@@ -11084,6 +11083,7 @@ const QObject = {
         .not(href)
         .removeClass('three-col__tab--active'); 
         href.addClass('three-col__tab--active');
+        onresize();
       });
     });   
 
