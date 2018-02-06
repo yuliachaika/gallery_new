@@ -10480,7 +10480,8 @@ const QObject = {
             // $('.modal-img__wrap').html(QObject.itemUrl);
             $('.modal-img-big').attr('href',QObject.itemBigUrl); //
             $('.modal-img').attr('src',QObject.itemUrl);
-            $('.modal-img__title').text(QObject.itemId);
+            // $('.modal-img__title').text(QObject.itemId);
+            $('.modal-img__title').text(QObject.itemName + ' ' + QObject.itemId);
             return false;
         },
         toggleCondition: function(remove){

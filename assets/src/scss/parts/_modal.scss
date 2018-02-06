@@ -232,7 +232,7 @@
       // padding: rem-calc(10) rem-calc(15);
       padding: rem-calc(10) 0;
       margin: auto;
-      max-width: rem-calc(160);
+      max-width: rem-calc(220);
       // width: 100%; 
       color: $white;
       font-family: $primary-font;
@@ -250,7 +250,7 @@
         width: rem-calc(30);
         height: rem-calc(30);
         background: url(../img/general/logo.svg) center no-repeat;
-        top: 0;
+        top: rem-calc(6);
         bottom: 0;
         left: $column-gutter;
         margin: auto;
