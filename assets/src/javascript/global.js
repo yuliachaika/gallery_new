@@ -46,6 +46,7 @@
 
     $(window).on('resize', function () {
       onresize();
+      scrollbarWidth();
     });
 
     $(window).on('beforeunload', function(){
@@ -53,7 +54,8 @@
     });
     
     $( function() {
-      scrollbarWidth();
+      // scrollbarWidth();
+      onresize();
       //switch between home page and tabs 
       var searchParams = new URLSearchParams(window.location.search);
       var targetHref = searchParams.get('t');

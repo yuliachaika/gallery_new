@@ -10964,6 +10964,7 @@ const QObject = {
 
     $(window).on('resize', function () {
       onresize();
+      scrollbarWidth();
     });
 
     $(window).on('beforeunload', function(){
@@ -10971,7 +10972,8 @@ const QObject = {
     });
     
     $( function() {
-      scrollbarWidth();
+      // scrollbarWidth();
+      onresize();
       //switch between home page and tabs 
       var searchParams = new URLSearchParams(window.location.search);
       var targetHref = searchParams.get('t');
