@@ -4,7 +4,7 @@
   @include breakpoint(medium up) {
     margin-bottom: rem-calc(300); 
   }
-  background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0));
+  background: linear-gradient(to right, $dark-gray, transparent);
   z-index: 1;
   &__row {
     width: 100%; 
@@ -52,24 +52,26 @@
     align-items: center;
     @include link(28);
     text-align: center;
-    transition: color .4s ease-out; //
+    transition: color .4s ease-out; 
     position: relative;
     &:focus, &:active {
       color: $white;
     }
     &--active {
       color: $white;
-      &:focus {
+      text-shadow: 0px 0px rem-calc(8) rgba(255, 255, 255, 0.5);
+      &:focus, &:hover {
         color: $white;
+        text-shadow: 0px 0px rem-calc(6) rgba(255, 255, 255, 0.4);
       }
     }
     &--bg {
-      background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0)); 
+      background: linear-gradient(to right, $dark-gray, transparent); 
     }
   }
   &__text {
     width: 100%;
-    padding: rem-calc(5) rem-calc(5) 0 rem-calc(10); //
+    padding: rem-calc(5) rem-calc(5) 0 rem-calc(10); 
     @include text(18, $white);
     text-align: justify;
     @include breakpoint(small only) {
@@ -98,13 +100,13 @@
     }
     &--pd {
       padding-bottom: rem-calc(150); 
-      background: linear-gradient(to bottom, $dark-gray, rgba(125, 185, 232, 0));
+      background: linear-gradient(to bottom, $dark-gray, transparent);
       @include breakpoint(small only) {
         padding-bottom: 0;
       }
     }
     &--bg {
-      background: linear-gradient(to bottom, $dark-gray, rgba(125, 185, 232, 0));
+      background: linear-gradient(to bottom, $dark-gray, transparent);
     }
     &--tall {
       align-items: center;
@@ -161,13 +163,10 @@
         }
         & .three-col__img-title {
           color: $black;
-          // background: linear-gradient(to right, $white, rgba(125, 185, 232, 0)); /////
-          // background-color: $white;
         }
       } 
     }
     &-title {
-      // padding: rem-calc(10) rem-calc(15) rem-calc(10) rem-calc(30);
       padding: rem-calc(10) 0;
       width: 100%; 
       position: relative;
@@ -175,12 +174,10 @@
       font-family: $primary-font;
       font-size: rem-calc(22);
       font-weight: 400;
-      background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0));
-      // background-color: $dark-gray;
+      background: linear-gradient(to right, $dark-gray, transparent);
       text-align: center;
       transition:
       color .4s ease-out;
-      // background-color .6s ease-out;
       &::before {
         content: "";
         position: absolute;
@@ -197,13 +194,10 @@
         max-width: rem-calc(160);
         overflow: hidden;
         right: 0;
-        left: 25%;//
-        bottom: $column-gutter;//
+        left: 25%;
+        bottom: $column-gutter;
         margin: 0 auto;
         margin-left: $column-gutter;
-        // bottom: rem-calc(0); /////
-        // background-color: $dark-gray;
-        // transform: translateY(24px); ///поменять и в модал!!!!!!
         transition: all .4s ease-out;
       }
     }
@@ -228,7 +222,7 @@
   &__col {
     @include column();
     display: inline-block;
-    background: linear-gradient(to right, #444446, rgba(125, 185, 232, 0));
+    background: linear-gradient(to right, $dark-gray, transparent);
     @include breakpoint(medium up) {
       margin-bottom: rem-calc(300); 
     }
