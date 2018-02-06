@@ -22,7 +22,7 @@
       var textElemTall = $('.three-col__text--tall');
       textElem.outerHeight(elemHeight);
       textElemTall.outerHeight((2*elemHeight)); 
-      resizeFont(textElem, 319, 18); 
+      resizeFont(textElem, 309.19, 18); 
     };
 
     function resizeFont(elem, width, size) {
@@ -31,6 +31,9 @@
       var fontSize;
       if (scale < 1) {
         fontSize = size * scale + 'px';
+        elem.css({ fontSize: fontSize});
+      } else {
+        fontSize = size + 'px';
         elem.css({ fontSize: fontSize});
       }
     };
