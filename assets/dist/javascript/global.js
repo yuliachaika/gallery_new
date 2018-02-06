@@ -10923,6 +10923,18 @@ const QObject = {
 
   $('.three-col__img-title-wrap').append('<div class="ya-share2" data-services="vkontakte,facebook,twitter,viber,whatsapp,telegram"></div>');
 
+  function scrollbarWidth() {
+    var documentWidth = parseInt(document.documentElement.clientWidth);
+  //   console.log(documentWidth);
+    var windowsWidth = parseInt(window.innerWidth);
+  //   console.log(windowsWidth);
+    var scrollbarWidth = windowsWidth - documentWidth;
+    // return scrollbarWidth;
+    console.log(scrollbarWidth);
+    if (scrollbarWidth > 0) {
+      $('.quick-view-overlay').css({marginRight: scrollbarWidth});
+    }
+  };
     
     function onresize() {
       var elem = $('.three-col__img-wrap');
@@ -10937,7 +10949,7 @@ const QObject = {
     function resizeFont(elem, width, size) {
       var textElemWidth = elem.outerWidth();
       var scale = textElemWidth / width;
-      console.log(scale);
+      // console.log(scale);
       var fontSize;
       if (scale < 1) {
         fontSize = size * scale + 'px';
@@ -10948,6 +10960,7 @@ const QObject = {
 
     $(window).on('load', function () {
       onresize();
+      scrollbarWidth();
     });
 
     $(window).on('resize', function () {
@@ -10959,6 +10972,7 @@ const QObject = {
     });
     
     $( function() {
+      scrollbarWidth();
       //switch between home page and tabs 
       var searchParams = new URLSearchParams(window.location.search);
       var targetHref = searchParams.get('t');
