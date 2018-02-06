@@ -69,7 +69,7 @@
       font-weight: 400;
       &-hide {
         font-size: rem-calc(16);
-        color: $white;//
+        color: $white;
         text-align: center;
       }
     }
@@ -82,9 +82,9 @@
       @include breakpoint(large up) {
         padding-left: $img-margin;      
       } 
-      &--color {
-        // color: $gray;
-      }
+      // &--color {
+      //   // color: $gray;
+      // }
     }
   }
   &-form {
@@ -229,8 +229,11 @@
       }  
     }
     &__title {
-      padding: rem-calc(10) rem-calc(15);
-      width: 100%; 
+      // padding: rem-calc(10) rem-calc(15);
+      padding: rem-calc(10) 0;
+      margin: auto;
+      max-width: rem-calc(160);
+      // width: 100%; 
       color: $white;
       font-family: $primary-font;
       font-size: rem-calc(32);
@@ -254,7 +257,7 @@
       }
       &-wrap {
         position: absolute;
-        max-width: rem-calc(160);
+        // max-width: rem-calc(160);
         overflow: hidden;
         right: 0;
         left: 0;
