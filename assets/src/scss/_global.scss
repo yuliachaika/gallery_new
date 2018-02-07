@@ -3,7 +3,10 @@
 }
 
 html {
-		@include breakpoint(medium down) {
+	// @include breakpoint(small only) {
+	// 	font-size: 70%;
+	// }
+	@include breakpoint(medium down) {
 		font-size: 80%;
 	}
 }
@@ -17,6 +20,7 @@ a, button, input, textarea  {
 	transition:
 	border-color .4s ease-in,
 	color .4s ease-in,
+	text-shadow .4s ease-in,
 	background-color .4s ease-in;
 	&:focus {
 		outline: none; 
@@ -48,23 +52,31 @@ img {
 	display: block;
 	width: 100%; 
 	min-height: 100vh;
-	background: url(../img/bg-01.jpg) center no-repeat;
+	background: url(../img/general/bg-01.jpg) center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	position: relative;
+	@include breakpoint(small only) {
+		background-repeat: repeat-y;
+    background-size: auto;
+    background-attachment: fixed;
+	}
 	&-bg {
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		top: 0;
 		left: 0;
-		background: url(../img/bg-01.jpg);
+		background: url(../img/general/bg-01.jpg);
 		background-position-x: center;
 		background-position-y: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-attachment: fixed;
 		cursor: pointer;
+		@include breakpoint(small only) {
+			background: none;
+		}
 	}
 }
 
