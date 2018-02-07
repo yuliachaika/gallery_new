@@ -10368,7 +10368,7 @@ return jQuery;
 const QObject = {
   itemName : "carré",  
   itemId : 981111,
-  itemSize: "&#34;52 x 52&#34;, 140 x 140 mm",
+  itemSize: "&#34;52 x 52&#34;, 140 x 140 sm",
   itemFabric: "polyester",
   itemPrice: 30,
   itemUrl: "assets/dist/img/999903.jpg",
