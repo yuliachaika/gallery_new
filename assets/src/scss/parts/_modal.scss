@@ -224,6 +224,7 @@
           opacity: 1;
         }
         & .modal-img__title {
+          background: linear-gradient(to right, #fff, transparent); 
           color: $black; 
         }
       }  
