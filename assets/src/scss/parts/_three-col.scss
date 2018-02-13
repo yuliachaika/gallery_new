@@ -12,7 +12,7 @@
     justify-content: center;
     z-index: 10;
     &--pd {
-      margin-top: $img-margin; 
+      //margin-top: $img-margin; 
     } 
   }
   &__wrap {
@@ -71,7 +71,8 @@
   }
   &__text {
     width: 100%;
-    padding: rem-calc(5) rem-calc(5) 0 rem-calc(10); 
+    padding: 0 rem-calc(5) 0 0; 
+    margin-bottom: 1.875rem;
     @include text(18, $white);
     text-align: justify;
     @include breakpoint(small only) {
@@ -162,17 +163,19 @@
           opacity: 1;
         }
         & .three-col__img-title {
+          background: linear-gradient(to right, #fff, transparent);
           color: $black;
         }
       } 
     }
     &-title {
-      padding: rem-calc(10) 0;
+      padding: 0;
+      // padding: rem-calc(10) 0;
       width: 100%; 
       position: relative;
       color: $white;
       font-family: $primary-font;
-      font-size: rem-calc(22);
+      font-size: rem-calc(20);
       font-weight: 400;
       background: linear-gradient(to right, $dark-gray, transparent);
       text-align: center;
@@ -194,10 +197,11 @@
         max-width: rem-calc(160);
         overflow: hidden;
         right: 0;
-        left: 25%;
+        left: 0;
+        //left: 25%;
         bottom: $column-gutter;
         margin: 0 auto;
-        margin-left: $column-gutter;
+        //margin-left: $column-gutter;
         transition: all .4s ease-out;
       }
     }

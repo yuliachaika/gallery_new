@@ -1,5 +1,4 @@
 'use strict';
-;
 
 (function($){
 
@@ -16,13 +15,26 @@
   };
     
     function onresize() {
+      
       if ($(document).width() > 480) {
-        var elem = $('.three-col__img-wrap');
-        var elemHeight = elem.outerHeight(true);
-        var textElem = $('.three-col__text--bg');
-        var textElemTall = $('.three-col__text--tall');
-        textElem.outerHeight(elemHeight);
-        textElemTall.outerHeight((2*elemHeight)); 
+        // const elem = $('.three-col__img-wrap'); // can be element with none loaded image
+        // const elemHeight = (function(){
+        //   var h = 0;
+        //   elem.each(function(){
+        //     const _h = $(this).outerHeight(true);
+        //     if( h < _h ){
+        //       h =  _h;  
+        //     }
+        //   });
+        //   return h;
+        // })();
+        const baseWidth = $('.three-col__tab--active .three-col__col').outerWidth() || $('.three-col').outerWidth();        
+        const textElem = $('.three-col__text--bg');
+        const textElemTall = $('.three-col__text--tall');
+        textElem.outerHeight( baseWidth - parseFloat($('html').css('font-size')) * 0.625); 
+        textElemTall.outerHeight( baseWidth * 2 );
+        //textElem.outerHeight( elemHeight );
+        //textElemTall.outerHeight( elemHeight * 2 ); 
         resizeFont(textElem, 309.19, 18); 
       }
     };
@@ -55,6 +67,7 @@
         $(window).scrollTop(0);
     });
     
+    
     $( function() {
      
      //resize text on mobile
@@ -65,7 +78,13 @@
 
       //switch between home page and tabs 
       var searchParams = new URLSearchParams(window.location.search);
-      var targetHref = searchParams.get('t');
+      
+      var targetHref = searchParams.get('t') ;
+
+      if('scarves wall author'.indexOf( targetHref ) === -1){
+        targetHref = 'author';
+      }
+
       $('.three-col-nav__link[href*='+ targetHref +']').addClass('three-col__link--active');
       $('#'+ targetHref).addClass('three-col__tab--active');
 
@@ -162,17 +181,14 @@
         e.preventDefault();
         var element = $(this);
         var href = $($(this).attr('href'));
-        element
-        .addClass('three-col__link--active')
-        .parent()
-        .addClass('three-col-nav__item--active')
-        .siblings()
-        .removeClass('three-col-nav__item--active')
-        .find('.three-col__link--active')
-        .removeClass('three-col__link--active');
-        $('.three-col__tab')
-        .not(href)
-        .removeClass('three-col__tab--active'); 
+        element.addClass('three-col__link--active')
+                .parent()
+                .addClass('three-col-nav__item--active')
+                .siblings()
+                .removeClass('three-col-nav__item--active')
+                .find('.three-col__link--active')
+                .removeClass('three-col__link--active');
+        $('.three-col__tab').not(href).removeClass('three-col__tab--active'); 
         href.addClass('three-col__tab--active');
         onresize();
       });
