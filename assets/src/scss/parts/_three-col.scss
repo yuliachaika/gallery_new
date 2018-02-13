@@ -270,6 +270,16 @@
 }
 
 
+/*Ie 10/11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+{
+    .three-col__img-title-wrap {
+      position: relative;
+      margin: auto;
+      bottom: 2.4rem;
+    }
+
+}
 
 
 
