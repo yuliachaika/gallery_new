@@ -273,10 +273,12 @@
 /*Ie 10/11 */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
 {
-    .three-col__img-title-wrap {
-      position: relative;
+    .three-col__img-title {
+      max-width: rem-calc(160);
       margin: auto;
-      bottom: 2.4rem;
+      &-wrap {
+        width: 100%;
+      }
     }
 
 }
