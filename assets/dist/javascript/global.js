@@ -10742,7 +10742,7 @@ const QObject = {
     
     QuickView.prototype = {
         _init: function() {
-            this.$element.on('click', '.three-col__img-wrap', this._triggerHandler.bind(this));
+            this.$element.on('click', '.three-col__img-wrap img, .three-col__img-wrap .three-col__img-title', this._triggerHandler.bind(this));
         },
         _stop: function () {
             $(this.options.selectors.quickViewOverlay).on('click', this._overlayHandler.bind(this));
