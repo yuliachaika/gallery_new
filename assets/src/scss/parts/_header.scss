@@ -1,19 +1,17 @@
  .header {
 	width: 100%;
-	height: $header-min; //////
+	height: $header-min; //
 	@include breakpoint(medium up) {
-    height: rem-calc(130);
+    height: $header-max; //130
   } 
   position: relative;
   overflow: hidden;
   &__fix {
     width: 100%; 
-    height: rem-calc(110); 
+    height: rem-calc(110); //???
     position: fixed;
   }
   &__row {
-    // @include row(); //
-    // align-items: center; //
     position: fixed;
     top: 0;
     left: 0;
@@ -31,32 +29,23 @@
       background: linear-gradient(to bottom, $dark-gray 0%, rgba(68,68,70,0.7) 65%, transparent 100%);
      }
     @include breakpoint(medium up) {
-      height: rem-calc(130);
+      height: $header-max;
     } 
   }
   &__wrap {
     position: relative;
   }
   &-title {
-    // max-width: rem-calc(400);
-    position: absolute;
-    top: 2.875rem;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    text-align: center;
     // position: absolute;
-    // top: $img-margin;
-    // bottom: 0;
+    // top: 0; //2.875
     // left: 0;
     // right: 0;
-    // margin: auto;
-    // @include row();
-    // justify-content: center;
-    // align-items: center;
-    @include breakpoint(small only) {
-      top: $column-gutter;
-    }
+    padding: 0 rem-calc(10);
+    margin: 0 auto;
+    text-align: center;
+    // @include breakpoint(small only) {
+    //   top: $column-gutter;
+    // }
     &__link {
       @include link(36);
       @include breakpoint(small only) {
