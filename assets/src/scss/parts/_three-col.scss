@@ -28,7 +28,7 @@
     position: sticky;
     top: $header-min;
     @include breakpoint(medium up) {
-      top: rem-calc(130);
+      top: $header-max;
     } 
     overflow: hidden;
     z-index: 20;
@@ -259,7 +259,7 @@
     position: sticky;
     top: $header-min;
     @include breakpoint(medium up) {
-      top: rem-calc(130);
+      top: $header-max;
     } 
     overflow: hidden;
     z-index: 20;

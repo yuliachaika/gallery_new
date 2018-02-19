@@ -1,16 +1,19 @@
 .search {
+  margin-bottom: rem-calc(20);
   display: flex;
   border-radius: rem-calc(30); 
   border: 1px solid rgba(68, 68, 70, 0.3);
   background: rgba(68, 68, 70, 0.3);
-  padding: 0 rem-calc(15); 
+  padding: 0 rem-calc(15);
+  align-self: flex-end; // 
   @include breakpoint(small only) {
+    margin-bottom: rem-calc(5);
     border-color: transparent; 
   }
    z-index: 1;
   &__wrap { 
-    padding: rem-calc(30);
-    justify-content: flex-end; 
+    padding: rem-calc(15);
+    flex-direction: column; //
     @include breakpoint(small only) {
       padding: rem-calc(5); 
     }
