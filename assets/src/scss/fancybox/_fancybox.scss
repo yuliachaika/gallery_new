@@ -1,0 +1,14 @@
+.fancybox {
+	&__title {
+		@extend .modal-img__title;
+		top: calc(100% - 4.8125rem);
+	}
+}
+
+
+
+
+
+
+
+
