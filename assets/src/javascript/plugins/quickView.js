@@ -14,7 +14,7 @@ const QObject = {
 
   _init: function(target){
     try{
-        console.log('init class QObject');
+        //console.log('init class QObject');
         this.itemId = target.dataset.productId;
         this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
         this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
@@ -221,7 +221,7 @@ const QObject = {
             //$('.modal-hide').removeClass('is-active');
             this.toggleCondition(true);
             
-            console.log('removeClassClass');
+            //console.log('removeClassClass');
         },
         _resetModal: function() {
             this.$canvas.removeAttr("style");
