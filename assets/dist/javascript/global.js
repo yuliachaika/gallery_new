@@ -10548,46 +10548,6 @@ const QObject = {
             $(this.options.selectors.quickViewModal)
                     .toggleClass(this.options.classNames.active
                     .join(' '));
-            //var $currentProduct = $(event.target).closest(this.options.selectors.quickViewItem);
-            //var $productUrl = 'assets/dist/product-data/product.json'; 
-
-            // // init current object
-            // QObject.init(event.target);
-            // $('#modal__num, .modal-img__title').html(QObject.itemId);
-            // $('#modal__size').html('size: ' + QObject.itemSize);
-            // $('#modal__fabric').html('fabric: ' + QObject.itemFabric);
-            // $('#modal__price').html('cena: ' + QObject.itemPrice + '&#8364;');
-            // // $('.modal-img__wrap').html(QObject.itemUrl);
-            // $('.modal-img').attr('src',QObject.itemUrl);
-            // $('.modal-img__title').text(QObject.itemId);
-
-            // this._resetModal();
-            // $(this.options.selectors.quickViewModal)
-            //         .toggleClass(this.options.classNames.active
-            //         .join(' '));
-
-            // $.ajax( $productUrl ).done(function(response) {
-            //     $('#modal__num, .modal-img__title') 
-            //     .html(response.itemId);
-
-            //     $('#modal__size')
-            //     .html('size: ' + response.itemSize);
-
-            //     $('#modal__fabric')
-            //     .html('fabric: ' + response.itemFabric);
-
-            //     $('#modal__price')
-            //     .html('cena: ' + response.itemPrice + '&#8364;');
-
-            //     $('.modal-img__wrap')
-            //     .html(response.imgUrl);
-
-            //     this._resetModal();
-            //     $(this.options.selectors.quickViewModal)
-            //         .toggleClass(this.options.classNames.active
-            //         .join(' '));
-
-            // }.bind(this));
 
             $("html").css("overflow-y","hidden");
 
@@ -10598,13 +10558,10 @@ const QObject = {
                 .join(' '));
 
             $("html").css("overflow-y","");
-            // added
+
             this.clearContent();
-            //$(".modal-hide").hide();
-            //$('.modal-hide').removeClass('is-active');
             this.toggleCondition(true);
-            
-            //console.log('removeClassClass');
+
         },
         _resetModal: function() {
             this.$canvas.removeAttr("style");
@@ -10636,7 +10593,6 @@ const QObject = {
       return 'close';
     },
     mobile : {
-
       dblclickContent : function( current, event ) {
         return current.type === 'image' ? 'close' : false;
       }
@@ -10755,8 +10711,10 @@ const Utils = new function(){
       const textElem = $('.three-col__text--bg');
       console.log(`onresize() baseWidth:${baseWidth}, remBase:${remBase}`);
       const textElemTall = $('.three-col__text--tall');
-      textElem.outerHeight( baseWidth - remBase); 
-      textElemTall.outerHeight( baseWidth * 2 );
+      var calcWidth = baseWidth - remBase;
+      if(calcWidth > 600){ calcWidth = 600;}
+      textElem.outerHeight( calcWidth ); 
+      textElemTall.outerHeight( ( baseWidth > 600 ? 600 : baseWidth )  * 2 );
       resizeFont(textElem, 309.19, 18); 
     }
 
@@ -10880,6 +10838,7 @@ const Utils = new function(){
     });
 
     setActiveTab();
+    
     onresize();
 
     /**
