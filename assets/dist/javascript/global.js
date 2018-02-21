@@ -10976,7 +10976,7 @@ const QObject = {
 
 (function($){
 
-  $('.three-col__img-share').append('<div class="ya-share2" data-services="vkontakte,facebook,twitter,viber,whatsapp,telegram"></div>');
+  // $('.three-col__img-share').append('<div class="ya-share2" data-services="vkontakte,facebook,twitter,viber,whatsapp,telegram"></div>');
 
   function scrollbarWidth() {
     var documentWidth = parseInt(document.documentElement.clientWidth);

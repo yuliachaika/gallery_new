@@ -1,0 +1,38 @@
+.share {
+	&__btn {
+		display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+    margin-right: rem-calc(4);
+    text-align: center;
+    color: $white;
+    font-size: rem-calc(18);
+    line-height: 24px;
+    transition: opasity .4s ease-in-out;
+    &:last-child {
+    	margin-right: 0;
+    }
+    &:hover {
+    	opacity: 0.9;
+    }
+    &--vkontakte {
+    	background-color: #48729E;
+    }
+    &--facebook {
+    	background-color: #3B5998;
+    }
+    &--twitter {
+    	background-color: #00aced;
+    }
+    &--viber {
+    	background-color: #7b519d;
+    }
+    &--whatsapp {
+    	background-color: #65bc54;
+    }
+    &--telegram {
+    	background-color: #64a9dc;
+    }
+	}
+}
