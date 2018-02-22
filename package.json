@@ -21,13 +21,23 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
     "imagemin-pngquant": "^5.0.1",
-    "pump": "^1.0.2"
+    "pump": "^1.0.2",
+    "url-search-params-polyfill": "^2.0.2"
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.2.5",
+    "animate": "^1.0.0",
     "gulp-install": "^1.1.0",
     "magnific-popup": "^1.1.0",
     "stickyfilljs": "^2.0.3",
     "wiredep": "^4.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuliachaika/gallery_new.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yuliachaika/gallery_new/issues"
+  },
+  "homepage": "https://github.com/yuliachaika/gallery_new#readme"
 }

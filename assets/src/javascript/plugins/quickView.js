@@ -1,27 +1,31 @@
 'use strict';
 
 const QObject = {
+  itemName : "prote", // used in forms 
   itemId : 981111,
-  itemSize: "&#34;52 x 52&#34;, 140 x 140 mm",
+  itemSize: "&#34;52 x 52&#34;, 140 x 140 cm",
   itemFabric: "polyester",
-  itemPrice: 30,
+  itemPrice: 40,
   itemUrl: "assets/dist/img/999903.jpg",
-  itemBigUrl: "assets/dist/img/b/999903.jpg", //
-  //itemUrl1: "<img src='assets/dist/img/999903.jpg',alt='999903' class='modal-img'>",
+  itemBigUrl: "assets/dist/img/b/999903.jpg", 
   init: function(target){
-    
-    // console.log('init class QObject');
-    // this.itemId = target.dataset.productId;
-    // this.itemUrl = 'assets/dist/img/b/' + target.dataset.fileName;
     return target.tagName.toLowerCase() === 'img' ? this._init(target): this._init( target.parentNode.previousElementSibling );
   },
 
   _init: function(target){
-    console.log('init class QObject');
-    this.itemId = target.dataset.productId;
-    // this.itemUrl = 'assets/dist/img/b/' + target.dataset.fileName;
-    this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
-    this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
+    try{
+        console.log('init class QObject');
+        this.itemId = target.dataset.productId;
+        this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
+        this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
+        const info = JSON.parse( target.dataset.info );
+        this.itemSize = '&#34;' + info.size.inch + '&#34;, ' + info.size.sm;
+        this.itemFabric = info.product;
+        this.itemPrice = info.price;
+        this.itemName = info.name;    
+    }catch(exception){
+        console.log(exception);
+    }
     return this;
   }
 };
@@ -105,14 +109,17 @@ const QObject = {
         },
         initData: function(QObject){
             // init current object
-            $('#modal__num, .modal-img__title').html(QObject.itemId);
+            // $('#modal__num, .modal-img__title').html(QObject.itemId);
+            $('#modal__num, .modal-img__title').html(QObject.itemName + ' ' + QObject.itemId);
             $('#modal__size').html('size: ' + QObject.itemSize);
             $('#modal__fabric').html('fabric: ' + QObject.itemFabric);
-            $('#modal__price').html('cena: ' + QObject.itemPrice + '&#8364;');
+            $('#modal__price').html('price: ' + QObject.itemPrice ); //
+            //$('#modal__price').html('price: ' + QObject.itemPrice + '&#8364;'); //
             // $('.modal-img__wrap').html(QObject.itemUrl);
             $('.modal-img-big').attr('href',QObject.itemBigUrl); //
             $('.modal-img').attr('src',QObject.itemUrl);
-            $('.modal-img__title').text(QObject.itemId);
+            // $('.modal-img__title').text(QObject.itemId);
+            $('.modal-img__title').text(QObject.itemName + ' ' + QObject.itemId);
             return false;
         },
         toggleCondition: function(remove){

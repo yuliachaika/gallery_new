@@ -7,6 +7,7 @@
   @include breakpoint(small only) {
     border-color: transparent; 
   }
+   z-index: 1;
   &__wrap { 
     padding: rem-calc(30);
     justify-content: flex-end; 

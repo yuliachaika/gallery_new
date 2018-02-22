@@ -4,7 +4,7 @@
   @include breakpoint(medium up) {
     margin-bottom: rem-calc(300); 
   }
-  background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0));
+  background: linear-gradient(to right, $dark-gray, transparent);
   z-index: 1;
   &__row {
     width: 100%; 
@@ -12,7 +12,7 @@
     justify-content: center;
     z-index: 10;
     &--pd {
-      margin-top: $img-margin; 
+      //margin-top: $img-margin; 
     } 
   }
   &__wrap {
@@ -26,7 +26,7 @@
   &__title {
     width: 100%; 
     position: sticky;
-    top: rem-calc(60);
+    top: $header-min;
     @include breakpoint(medium up) {
       top: rem-calc(130);
     } 
@@ -52,25 +52,35 @@
     align-items: center;
     @include link(28);
     text-align: center;
-    transition: all .4s ease-out;
+    transition: color .4s ease-out; 
     position: relative;
-    &:focus {
+    &:focus, &:active {
       color: $white;
     }
     &--active {
       color: $white;
-      &:focus {
+      text-shadow: 0px 0px rem-calc(8) rgba(255, 255, 255, 0.5);
+      &:focus, &:hover {
         color: $white;
+        text-shadow: 0px 0px rem-calc(6) rgba(255, 255, 255, 0.4);
       }
     }
     &--bg {
-      background: linear-gradient(to right, $dark-gray, rgba(125, 185, 232, 0)); //111
+      background: linear-gradient(to right, $dark-gray, transparent); 
     }
   }
   &__text {
-    padding: rem-calc(10);
+    width: 100%;
+    padding: 0 rem-calc(5) 0 0; 
+    margin-bottom: 1.875rem;
     @include text(18, $white);
     text-align: justify;
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(15);
+      padding-bottom: rem-calc(30);
+      height: rem-calc(45);
+      overflow: hidden;
+    }
     &-wrap {
       position: absolute;
       width: 100%;
@@ -80,64 +90,118 @@
     }
     &--link {
       display: block;
-      padding-top: 0;
+      padding: 0;
       color: $white;
+      @include breakpoint(small only) {
+        margin: 0;
+      }
       &:hover {
         opacity: 0.7;
       }
     }
     &--pd {
       padding-bottom: rem-calc(150); 
+      background: linear-gradient(to bottom, $dark-gray, transparent);
+      @include breakpoint(small only) {
+        padding-bottom: 0;
+      }
+    }
+    &--bg {
+      background: linear-gradient(to bottom, $dark-gray, transparent);
+    }
+    &--tall {
+      align-items: center;
+    }
+    &--mobile {
+      height: auto;
+      padding-bottom: 0;
+    }
+    &--visible {
+      height: auto;
+      padding-bottom: 0;
     }
   }
   &__img {
-    &--hid {
+    &-text {
+      padding-left: rem-calc(10);
+      margin-bottom: $img-margin; 
+      position: relative;
+      font-size: 0;
+      overflow: visible;
+    }
+    &-hid {
       visibility: hidden;
     }
-    &--none {
+    &-none {
       @include breakpoint(small only) {
         display: none;
       }
+      @include breakpoint(large) {
+        display: none;
+      }
+    }
+    &-share {
+      position: absolute;
+      top: $column-gutter;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transition: opacity .4s ease-out; 
     }
     &-wrap {
-      margin-bottom: $img-margin; 
-      transition: all .4s ease-in;
+      margin-bottom: $img-margin;
+      padding-left: rem-calc(10);
+      transition: all .3s ease-in;
       position: relative;
       font-size: 0;
       overflow: hidden; 
-      &--over {
-        overflow: visible; 
-      }
       &:hover {
         cursor: pointer;
+        & .three-col__img-share {
+          opacity: 1;
+        }
         & .three-col__img-title {
+          background: linear-gradient(to right, #fff, transparent);
           color: $black;
-          background-color: $white;
-          &-wrap {
-            transform: translateY(0);
-          } 
         }
       } 
     }
     &-title {
-      padding: rem-calc(10) rem-calc(15);
+      padding: 0;
+      // padding: rem-calc(10) 0;
       width: 100%; 
+      position: relative;
       color: $white;
       font-family: $primary-font;
-      font-size: rem-calc(22);
+      font-size: rem-calc(20);
       font-weight: 400;
-      background-color: $dark-gray;
+      background: linear-gradient(to right, $dark-gray, transparent);
       text-align: center;
       transition:
-      color .4s ease-in,
-      background-color .6s ease-out;
+      color .4s ease-out;
+      &::before {
+        content: "";
+        position: absolute;
+        width: rem-calc(30);
+        height: rem-calc(30);
+        background: url(../img/general/logo.svg) center no-repeat;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
       &-wrap {
         position: absolute;
+        max-width: rem-calc(160);
         overflow: hidden;
         right: 0;
-        bottom: rem-calc(0); 
-        background-color: $dark-gray;
-        transform: translateY(24px); 
+        left: 0;
+        //left: 25%;
+        bottom: $column-gutter;
+        margin: 0 auto;
+        //margin-left: $column-gutter;
         transition: all .4s ease-out;
       }
     }
@@ -162,7 +226,7 @@
   &__col {
     @include column();
     display: inline-block;
-    background: linear-gradient(to right, #444446, rgba(125, 185, 232, 0));
+    background: linear-gradient(to right, $dark-gray, transparent);
     @include breakpoint(medium up) {
       margin-bottom: rem-calc(300); 
     }
@@ -177,12 +241,18 @@
     @include row();
     justify-content: center;
     position: sticky;
-    top: rem-calc(60);
+    top: $header-min;
     @include breakpoint(medium up) {
       top: rem-calc(130);
     } 
     overflow: hidden;
     z-index: 20;
+    &__link {
+      transition: none;
+      &:hover {
+        transition: color .4s ease-out;
+      }
+    }
     &__item {
       @include column();
       margin-bottom: rem-calc(16); 
@@ -198,4 +268,9 @@
     }
   }
 }
+
+
+
+
+
 
