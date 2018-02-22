@@ -14,7 +14,7 @@ const QObject = {
 
   _init: function(target){
     try{
-        console.log('init class QObject');
+        //console.log('init class QObject');
         this.itemId = target.dataset.productId;
         this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
         this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
@@ -56,7 +56,7 @@ const QObject = {
     
     QuickView.prototype = {
         _init: function() {
-            this.$element.on('click', '.three-col__img-wrap', this._triggerHandler.bind(this));
+            this.$element.on('click', '.three-col__img-wrap img, .three-col__img-wrap .three-col__img-title', this._triggerHandler.bind(this));
         },
         _stop: function () {
             $(this.options.selectors.quickViewOverlay).on('click', this._overlayHandler.bind(this));
@@ -165,46 +165,6 @@ const QObject = {
             $(this.options.selectors.quickViewModal)
                     .toggleClass(this.options.classNames.active
                     .join(' '));
-            //var $currentProduct = $(event.target).closest(this.options.selectors.quickViewItem);
-            //var $productUrl = 'assets/dist/product-data/product.json'; 
-
-            // // init current object
-            // QObject.init(event.target);
-            // $('#modal__num, .modal-img__title').html(QObject.itemId);
-            // $('#modal__size').html('size: ' + QObject.itemSize);
-            // $('#modal__fabric').html('fabric: ' + QObject.itemFabric);
-            // $('#modal__price').html('cena: ' + QObject.itemPrice + '&#8364;');
-            // // $('.modal-img__wrap').html(QObject.itemUrl);
-            // $('.modal-img').attr('src',QObject.itemUrl);
-            // $('.modal-img__title').text(QObject.itemId);
-
-            // this._resetModal();
-            // $(this.options.selectors.quickViewModal)
-            //         .toggleClass(this.options.classNames.active
-            //         .join(' '));
-
-            // $.ajax( $productUrl ).done(function(response) {
-            //     $('#modal__num, .modal-img__title') 
-            //     .html(response.itemId);
-
-            //     $('#modal__size')
-            //     .html('size: ' + response.itemSize);
-
-            //     $('#modal__fabric')
-            //     .html('fabric: ' + response.itemFabric);
-
-            //     $('#modal__price')
-            //     .html('cena: ' + response.itemPrice + '&#8364;');
-
-            //     $('.modal-img__wrap')
-            //     .html(response.imgUrl);
-
-            //     this._resetModal();
-            //     $(this.options.selectors.quickViewModal)
-            //         .toggleClass(this.options.classNames.active
-            //         .join(' '));
-
-            // }.bind(this));
 
             $("html").css("overflow-y","hidden");
 
@@ -215,13 +175,10 @@ const QObject = {
                 .join(' '));
 
             $("html").css("overflow-y","");
-            // added
+
             this.clearContent();
-            //$(".modal-hide").hide();
-            //$('.modal-hide').removeClass('is-active');
             this.toggleCondition(true);
-            
-            console.log('removeClassClass');
+
         },
         _resetModal: function() {
             this.$canvas.removeAttr("style");

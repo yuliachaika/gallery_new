@@ -13,6 +13,7 @@ html {
 
 body {
 	margin: 0; 
+	background-color: $background;
 }
 
 a, button, input, textarea  {
@@ -103,9 +104,11 @@ img {
         overflow: auto;
         height: 100%;
     }
+
 }
 
 /***** added ******/
 .hidden{
 	display: none !important;
 }
+
