@@ -157,6 +157,7 @@
       position: relative;
       font-size: 0;
       overflow: hidden; 
+      width: 100%; /*!!!!!!!!!!!!*/
       &:hover {
         cursor: pointer;
         & .three-col__img-share {

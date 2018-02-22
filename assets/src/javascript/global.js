@@ -22,10 +22,8 @@
       const textElem = $('.three-col__text--bg');
       console.log(`onresize() baseWidth:${baseWidth}, remBase:${remBase}`);
       const textElemTall = $('.three-col__text--tall');
-      var calcWidth = baseWidth - remBase;
-      if(calcWidth > 600){ calcWidth = 600;}
-      textElem.outerHeight( calcWidth ); 
-      textElemTall.outerHeight( ( baseWidth > 600 ? 600 : baseWidth )  * 2 );
+      textElem.outerHeight( baseWidth - remBase ); 
+      textElemTall.outerHeight( baseWidth  * 2 );
       resizeFont(textElem, 309.19, 18); 
     }
 
