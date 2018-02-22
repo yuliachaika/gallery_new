@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 
 //font-awesome
-$fa-font-path:  "../fonts";
-@import "../../../node_modules/font-awesome/scss/font-awesome";
+// $fa-font-path:  "../fonts";
+// @import "../../../node_modules/font-awesome/scss/font-awesome";
 
 //fonts variables
 $primary-font: 'Open Sans', sans-serif;
@@ -14,10 +14,10 @@ $primary-font: 'Open Sans', sans-serif;
   font-family: $primary-font;
   font-size: rem-calc($px);
   font-weight: 400;
-	line-height: 1.3; 
-	&:hover {
+  line-height: 1.3; 
+  &:hover {
     text-shadow: 0px 0px rem-calc(6) rgba(255, 255, 255, 0.4);
-	}
+  }
 }
 
 @mixin text($px, $color) {
@@ -25,5 +25,5 @@ $primary-font: 'Open Sans', sans-serif;
   font-family: $primary-font;
   font-size: rem-calc($px);
   font-weight: 300;
-	line-height: 1.3; 
+  line-height: 1.3; 
 }

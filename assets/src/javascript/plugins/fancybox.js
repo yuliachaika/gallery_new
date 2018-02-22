@@ -14,7 +14,6 @@
       return 'close';
     },
     mobile : {
-
       dblclickContent : function( current, event ) {
         return current.type === 'image' ? 'close' : false;
       }
