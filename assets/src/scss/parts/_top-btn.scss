@@ -9,7 +9,7 @@
 	z-index: 50;
 	&__btn {
 		display: inline-block;
-    background-color: rgba(125, 185, 232, 0.2);
+    background-color: $elements-bg;
     overflow: hidden;
     width: rem-calc(45);
     height: rem-calc(45);
@@ -19,7 +19,7 @@
 	  line-height: rem-calc(42);
 	  text-align: center; 
     &:hover {
-    	background-color: rgba(125, 185, 232, 0.5);
+    	background-color: $elements-hov;
     }
 	}
 }

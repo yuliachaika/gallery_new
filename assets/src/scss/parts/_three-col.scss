@@ -23,21 +23,21 @@
   &__container {
     padding-bottom: 30vh;
   }
-  &__title {
-    width: 100%; 
-    position: sticky;
-    top: $header-min;
-    @include breakpoint(medium up) {
-      top: $header-max;
-    } 
-    overflow: hidden;
-    z-index: 20;
-    &::before, 
-    &::after {
-      content: "";
-      display: table; 
-    }
-  }
+  // &__title {
+  //   width: 100%; 
+  //   position: sticky;
+  //   top: $header-min;
+  //   @include breakpoint(medium up) {
+  //     top: $header-max;
+  //   } 
+  //   overflow: hidden;
+  //   z-index: 20;
+  //   &::before, 
+  //   &::after {
+  //     content: "";
+  //     display: table; 
+  //   }
+  // }
   &__link {
     padding: rem-calc(10);
     @include breakpoint(medium up) {
@@ -52,21 +52,26 @@
     align-items: center;
     @include link(28);
     text-align: center;
-    transition: color .4s ease-out; 
+    transition: all .4s ease-out; 
     position: relative;
     &:focus, &:active {
       color: $white;
     }
+    
+    &--bg {
+      @include gradient($dark-gray, $elements);
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+      } 
+    }
     &--active {
       color: $white;
-      text-shadow: 0px 0px rem-calc(8) rgba(255, 255, 255, 0.5);
+      background: linear-gradient(to right, $elements, transparent);
       &:focus, &:hover {
         color: $white;
-        text-shadow: 0px 0px rem-calc(6) rgba(255, 255, 255, 0.4);
       }
-    }
-    &--bg {
-      background: linear-gradient(to right, $dark-gray, transparent); 
     }
   }
   &__text {
@@ -89,9 +94,12 @@
       left: 0;
     }
     &--link {
+      margin-bottom: rem-calc(5);
       display: block;
       padding: 0;
       color: $white;
+      transition: color,
+      opacity .4s ease-out;
       @include breakpoint(small only) {
         margin: 0;
       }
@@ -157,6 +165,7 @@
       position: relative;
       font-size: 0;
       overflow: hidden; 
+      width: 100%; /*!!!!!!!!!!!!*/
       &:hover {
         cursor: pointer;
         & .three-col__img-share {
@@ -173,18 +182,15 @@
     }
     &-title {
       padding: 0;
-      // padding: rem-calc(10) 0;
       width: 100%; 
-      position: relative;
       color: $white;
       font-family: $primary-font;
       font-size: rem-calc(20);
       font-weight: 400;
-      background-image: linear-gradient(to right, $dark-gray, transparent); 
+      @include gradient($dark-gray, $white); 
       text-align: center;
       transition:
       color .4s ease-out;
-      z-index: 2;
       &::before {
         content: "";
         position: absolute;
@@ -195,18 +201,6 @@
         bottom: 0;
         left: 0;
         margin: auto;
-      }
-      &::after {
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(to right, $white, transparent); 
-        opacity: 0; 
-        transition: opacity .8s ease-out;
-        z-index: -1;
       }
       &-wrap {
         position: absolute;
@@ -265,21 +259,44 @@
     z-index: 20;
     &__link {
       transition: none;
+      // background: pink;
       &:hover {
         transition: color .4s ease-out;
       }
     }
     &__item {
       @include column();
-      margin-bottom: rem-calc(16); 
+      margin-bottom: 0;
       @include breakpoint(small only) { 
         margin-bottom: rem-calc(5);
       }
       &--active {
-        order: 3; 
-        @include breakpoint(medium up) {
-          order: inherit;
-        }
+        // order: 3; 
+        // @include breakpoint(medium up) {
+        //   order: inherit;
+        // }
+      }
+    }
+  }
+  &-video {
+    &__btn {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      display: inline-block;
+      width: rem-calc(60);
+      height: rem-calc(60);
+      text-align: center;
+      color: $white;
+      font-size: rem-calc(60);
+      line-height: rem-calc(60);
+      opacity: .6;
+      transition: opacity .4s ease-out;
+      &:hover {
+        opacity: 1;
       }
     }
   }
