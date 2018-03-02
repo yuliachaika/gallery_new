@@ -15,9 +15,6 @@ $primary-font: 'Open Sans', sans-serif;
   font-size: rem-calc($px);
   font-weight: 400;
   line-height: 1.3; 
-  &:hover {
-    text-shadow: 0px 0px rem-calc(6) rgba(255, 255, 255, 0.4);
-  }
 }
 
 @mixin text($px, $color) {

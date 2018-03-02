@@ -42,7 +42,7 @@ img {
 }
 
 .container {
-	max-width: rem-calc(3000);
+	max-width: rem-calc(1140); //3000
 	padding: 0 rem-calc(15);
 	margin: 0 auto;
 	@include row();

@@ -82,9 +82,6 @@
       @include breakpoint(large up) {
         padding-left: $img-margin;      
       } 
-      // &--color {
-      //   // color: $gray;
-      // }
     }
   }
   &-form {
@@ -238,18 +235,15 @@
       padding-left: rem-calc(20);
       margin: auto;
       max-width: rem-calc(220);
-      // width: 100%; 
       color: $white;
       font-family: $primary-font;
       font-size: rem-calc(32);
       font-weight: 400;
-      background: linear-gradient(to right, $dark-gray, transparent);
+      @include gradient($dark-gray, $white);
       text-align: center;
       transition:
       color .4s ease-out,
       background-color .6s ease-out;
-      position: relative;
-      z-index: 2;
       &::before {
         content: "";
         position: absolute;
@@ -260,18 +254,6 @@
         bottom: 0;
         left: $column-gutter;
         margin: auto;
-      }
-      &::after {
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(to right, $white, transparent); 
-        opacity: 0; 
-        transition: opacity .8s ease-out;
-        z-index: -1;
       }
       &-wrap {
         position: absolute;
