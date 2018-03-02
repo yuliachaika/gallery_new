@@ -63,7 +63,8 @@
       line-height: rem-calc(35); 
     }
     &:hover {
-      color: $elements;
+      color: $elements
+      ;
       cursor: pointer; 
     }
   }

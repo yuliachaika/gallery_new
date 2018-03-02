@@ -132,6 +132,8 @@
 //   */
   function hideHeaderTitle(){
 
+    //ДЕЛАТЬ ДЛЯ position!!!!
+
     const scrollBasis = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
       
     $(scrollBasis).scroll(function (){
