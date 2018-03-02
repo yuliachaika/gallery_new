@@ -10829,24 +10829,29 @@ const Utils = new function(){
 //   */
   function hideHeaderTitle(){
 
-    //ДЕЛАТЬ ДЛЯ position!!!!
 
     const scrollBasis = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
       
     $(scrollBasis).scroll(function (){
-      if ($(this).scrollTop() > 30){
-        $(".header-title").fadeOut();
+      if ($(this).scrollTop() > 10){
+        // $(".header-title").fadeOut();
+        $(".header-title").slideUp();
         if ($(document).width() > 480) {
           $(".header__row").css({height: '75px'});
           $(".three-col-nav").css({top: '75px'});
         } else {
-          $(".header__row").css({height: '36px'});
-          $(".three-col-nav").css({top: '36px'});
+          $(".header__row").css({height: '42px'});
+          $(".three-col-nav").css({top: '42px'});//
         }
         
       } else{
-        $(".header-title").fadeIn();
-        $(".header__row").css('height');
+        // $(".header-title").fadeIn();
+        $(".header-title").slideDown();
+        if ($(document).width() > 480) {
+          $(".header__row").css({height: '144px'});
+        } else {
+          $(".header__row").css({height: '104px'});
+        }
       }
     });
 
