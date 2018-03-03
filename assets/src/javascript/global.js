@@ -44,7 +44,7 @@
   function showMore() {
     var readMoreHtml = $('.three-col__text--bg').html();
     var charCount = ($(document).width() > 480) ? 330 : 50;
-    var lessText = readMoreHtml.substr(0, charCount);
+    var lessText = readMoreHtml.substr(0, charCount) + "...";
 
     if (readMoreHtml.length > charCount) {
       $('.three-col__text--bg').html(lessText).append("<a href='' class='three-col__text--more'> show more</a>");   ///class добавить!!!!!
@@ -246,14 +246,14 @@
       $('#modal-info__content').removeClass('hidden');
     });
 
-    //redirect to home page
-    $(".content-bg, .header__row").on('click', function(e) {
-      if ( e.target == $(this)[0] ) {
-        var url = "index.html";
-        $(location).attr('href',url);
-        $("body").fadeOut(1000, redirectPage);
-      }
-    });
+    //redirect to home page 
+    // $(".content-bg, .header__row").on('click', function(e) {
+    //   if ( e.target == $(this)[0] ) {
+    //     var url = "index.html";
+    //     $(location).attr('href',url);
+    //     $("body").fadeOut(1000, redirectPage);
+    //   }
+    // });
 
  
 
