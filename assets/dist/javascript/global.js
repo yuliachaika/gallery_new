@@ -10713,11 +10713,10 @@ const Utils = new function(){
   function onresize() {
     console.log('onresize() called');
     if ($(document).width() > 480) {
-      console.log('onresize() width less then 480');
+      // console.log('onresize() width less then 480');
       const baseWidth = $('.three-col__tab--active .three-col__col').outerWidth() || $('.three-col').outerWidth();        
       const remBase = parseFloat($('html').css('font-size')) * 0.625;
-      const textElem = $('.three-col__text--bg');
-      console.log(`onresize() baseWidth:${baseWidth}, remBase:${remBase}`);
+      const textElem = ($('.three-col__tab--active').length) ? $('.three-col__tab--active .three-col__text--bg') : $('.three-col__text--bg');
       const textElemTall = $('.three-col__text--tall');
       textElem.outerHeight( baseWidth - remBase ); 
       textElemTall.outerHeight( baseWidth  * 2 );
@@ -10739,14 +10738,39 @@ const Utils = new function(){
     }
   };
 
+  function showMore() {
+    var readMoreHtml = $('.three-col__text--bg').html();
+    var charCount = ($(document).width() > 480) ? 330 : 50;
+    var lessText = readMoreHtml.substr(0, charCount);
+
+    if (readMoreHtml.length > charCount) {
+      $('.three-col__text--bg').html(lessText).append("<a href='' class='three-col__text--more'> show more</a>");   ///class добавить!!!!!
+    } else {
+      $('.three-col__text--bg').html(readMoreHtml);
+    }
+
+    $('body').on('click', '.three-col__text--more', function(e) {
+      e.preventDefault();
+      $(this).parent('.three-col__text--bg').html(readMoreHtml).append("<a href='' class='three-col__text--less'> show less</a>");
+    });
+    
+    $('body').on('click', '.three-col__text--less', function(e) {
+      e.preventDefault();
+      $(this).parent('.three-col__text--bg').html(lessText).append("<a href='' class='three-col__text--more'> show more</a>");
+    });
+
+
+  };
+
 
   $(window).on('load', function () {
-    //onresize(); // !!! no active tab here
+    // onresize(); // !!! no active tab here 
     scrollbarWidth();
   });
 
   $(window).on('resize', function () {
     onresize();
+    showMore();
     scrollbarWidth();
   });
 
@@ -10807,11 +10831,10 @@ const Utils = new function(){
     $(scrollBase).scroll(function (){
       if ($(this).scrollTop() > 100){
         $("#back-top").fadeIn();
-        // $(".header-title").fadeOut();
 
       } else{
         $("#back-top").fadeOut();
-        // $(".header-title").fadeIn();
+
       }
     });
 
@@ -10878,14 +10901,16 @@ const Utils = new function(){
   */
   $( function() {
    
-    //resize text on mobile
-    $('.three-col__text').on('click',  function() {
-      $(this).toggleClass('three-col__text--mobile');
-    });
+    // //resize text on mobile
+    // $('.three-col__text').on('click',  function() {
+    //   $(this).toggleClass('three-col__text--mobile');
+    // });
 
     setActiveTab();
     
     onresize();
+
+    showMore();
 
     /**
     * Filter (Top search field)
@@ -10992,6 +11017,7 @@ const Utils = new function(){
       $('.three-col__tab').not(href).removeClass('three-col__tab--active'); 
       href.addClass('three-col__tab--active');
       onresize();
+      showMore();
       smoothScrollTop();
     });
 
