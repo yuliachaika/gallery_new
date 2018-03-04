@@ -1,12 +1,9 @@
 .back {
 	position:fixed;
-	// bottom: 0;
-	// top: calc(50% - rem-calc(22));
 	top: 50%;
 	left: rem-calc(5);
 	margin: auto;
-	@include breakpoint(medium up) {
-    // bottom: rem-calc(20);
+	@include breakpoint(large) {
 		left: rem-calc(20); 
   }
 	z-index: 50;

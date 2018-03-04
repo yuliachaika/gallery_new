@@ -74,7 +74,7 @@ img {
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-attachment: fixed;
-		cursor: pointer;
+		// cursor: pointer;
 		@include breakpoint(small only) {
 			background: none;
 		}

@@ -262,7 +262,7 @@
     Stickyfill.add(elements);
     
     //hide header title
-    hideHeaderTitle();
+    // hideHeaderTitle();
 
 
     //scroll to top

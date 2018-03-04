@@ -6,6 +6,20 @@
   }
   background: linear-gradient(to right, $dark-gray, transparent);
   z-index: 1;
+  &-title {
+    padding: 0 rem-calc(10);
+    padding-bottom: rem-calc(30);
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+    &__link {
+      @include link(36);
+      @include breakpoint(small only) {
+        padding-bottom: rem-calc(15);
+        font-size: rem-calc(30);
+      }
+    }
+  }
   &__row {
     width: 100%; 
     @include row();
