@@ -22,7 +22,7 @@ const QObject = {
         const info = JSON.parse( target.dataset.info );
 
         if ( info.hasOwnProperty('sold') ) {
-          this.itemSold = ( info.sold === 1 );
+          this.itemSold = ( info.sold === "1" );
         } else {
           this.itemSold = false;
         };
@@ -84,6 +84,8 @@ const QObject = {
         clearContent: function(){
            $(".modal-info__content").html( $("#modal-info-show").html() ); 
         },
+
+        
 
         //change modal content
         addActionListener: function(){
@@ -165,9 +167,9 @@ const QObject = {
         _openModal: function() {
 
             /***********added**************/
-            $('#modal-info__content').addClass('hidden');
+            $('#modal-info__content').addClass('hidden'); ///////////
 
-            this.addActionListener();
+            this.addActionListener(); ////////////////////
 
             this.initData( QObject.init(event.target) );
            

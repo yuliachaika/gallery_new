@@ -10405,7 +10405,7 @@ const QObject = {
         const info = JSON.parse( target.dataset.info );
 
         if ( info.hasOwnProperty('sold') ) {
-          this.itemSold = ( info.sold === 1 );
+          this.itemSold = ( info.sold === "1" );
         } else {
           this.itemSold = false;
         };
@@ -10467,6 +10467,8 @@ const QObject = {
         clearContent: function(){
            $(".modal-info__content").html( $("#modal-info-show").html() ); 
         },
+
+        
 
         //change modal content
         addActionListener: function(){
@@ -10548,9 +10550,9 @@ const QObject = {
         _openModal: function() {
 
             /***********added**************/
-            $('#modal-info__content').addClass('hidden');
+            $('#modal-info__content').addClass('hidden'); ///////////
 
-            this.addActionListener();
+            this.addActionListener(); ////////////////////
 
             this.initData( QObject.init(event.target) );
            
@@ -10959,10 +10961,10 @@ const Utils = new function(){
         });
     });
 
-    // hide "buy" block on open
-    $("#modal-buy__btn").on('click', function(){
-      $('.modal-info__content').removeClass('hidden');
-    });
+    // // hide "buy" block on open
+    // $("#modal-buy__btn").on('click', function(){
+    //   $('.modal-info__content').removeClass('hidden');
+    // });
 
     //redirect to home page 
     $(".content-bg, .header__row").on('click', function(e) {

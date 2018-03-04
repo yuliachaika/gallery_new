@@ -248,10 +248,10 @@
         });
     });
 
-    // hide "buy" block on open
-    $("#modal-buy__btn").on('click', function(){
-      $('.modal-info__content').removeClass('hidden');
-    });
+    // // hide "buy" block on open
+    // $("#modal-buy__btn").on('click', function(){
+    //   $('.modal-info__content').removeClass('hidden');
+    // });
 
     //redirect to home page 
     $(".content-bg, .header__row").on('click', function(e) {
