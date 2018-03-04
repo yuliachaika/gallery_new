@@ -1,11 +1,8 @@
 .back {
-	position:fixed;
-	top: 50%;
-	left: rem-calc(5);
-	margin: auto;
-	@include breakpoint(large) {
-		left: rem-calc(20); 
-  }
+	position: absolute;
+  top: 50%;
+  right: rem-calc(-50);
+  margin: auto;
 	z-index: 50;
 	&__btn {
 		display: inline-block;

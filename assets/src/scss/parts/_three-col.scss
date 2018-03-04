@@ -92,7 +92,7 @@
     padding: 0 rem-calc(5) 0 0; 
     margin-bottom: 1.875rem;
     @include text(18, $white);
-    text-align: justify;
+    text-align: left;
     // @include breakpoint(small only) {
     //   margin-bottom: rem-calc(15);
     //   padding-bottom: rem-calc(30);
@@ -108,7 +108,7 @@
     }
     &--link {
       margin: 0;
-      margin-bottom: rem-calc(4);
+      // margin-bottom: rem-calc(4);
       // margin-bottom: rem-calc(5);
       display: block;
       padding: 0;
@@ -313,10 +313,9 @@
       color: $white;
       font-size: rem-calc(60);
       line-height: rem-calc(60);
-      opacity: .6;
-      transition: opacity .4s ease-out;
+      transition: transform .4s ease-out;
       &:hover {
-        opacity: 1;
+        transform: scale(1.1, 1.1);
       }
     }
   }

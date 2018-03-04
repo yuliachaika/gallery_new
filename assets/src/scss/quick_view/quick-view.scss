@@ -29,7 +29,7 @@ $media-queries: true;
     z-index: 55; 
     &.is-active {
       display: block;
-      overflow-x: hidden;
+      // overflow-x: hidden;
       overflow-y: scroll;
     }
   }

@@ -16,7 +16,6 @@
   function onresize() {
     console.log('onresize() called');
     if ($(document).width() > 480) {
-      // console.log('onresize() width less then 480');
       const baseWidth = $('.three-col__tab--active .three-col__col').outerWidth() || $('.three-col').outerWidth();        
       const remBase = parseFloat($('html').css('font-size')) * 0.625;
       const textElem = ($('.three-col__tab--active').length) ? $('.three-col__tab--active .three-col__text--bg') : $('.three-col__text--bg');
@@ -255,13 +254,13 @@
     });
 
     //redirect to home page 
-    // $(".content-bg, .header__row").on('click', function(e) {
-    //   if ( e.target == $(this)[0] ) {
-    //     var url = "index.html";
-    //     $(location).attr('href',url);
-    //     $("body").fadeOut(1000, redirectPage);
-    //   }
-    // });
+    $(".content-bg, .header__row").on('click', function(e) {
+      if ( e.target == $(this)[0] ) {
+        var url = "index.html";
+        $(location).attr('href',url);
+        $("body").fadeOut(1000, redirectPage);
+      }
+    });
 
  
 

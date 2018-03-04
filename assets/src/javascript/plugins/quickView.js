@@ -22,7 +22,11 @@ const QObject = {
         this.itemSize = '&#34;' + info.size.inch + '&#34;, ' + info.size.sm;
         this.itemFabric = info.product;
         this.itemPrice = info.price;
-        this.itemName = info.name;    
+        this.itemName = info.name;
+
+        ///
+
+        ///    
     }catch(exception){
         console.log(exception);
     }
@@ -46,7 +50,7 @@ const QObject = {
         selectors: {
             quickViewModal: '.quick-view-modal',
             quickViewItem: '.three-col__img-wrap',
-            quickViewOverlay: '.quick-view-overlay',
+            quickViewOverlay: '#back',
             quickViewCanvas: '.quick-view-canvas'
         },
         classNames: {
@@ -194,3 +198,6 @@ const QObject = {
     }; 
 
 })( jQuery );
+
+
+
