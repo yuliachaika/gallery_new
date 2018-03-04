@@ -54,12 +54,18 @@
 
     $('body').on('click', '.three-col__text--more', function(e) {
       e.preventDefault();
-      $(this).parent('.three-col__text--bg').html(readMoreHtml).append("<a href='' class='three-col__text--less'> show less</a>");
+      $(this).parent('.three-col__text--bg')
+              .html(readMoreHtml)
+              .append("<a href='' class='three-col__text--less'> show less</a>")
+              .css({overflowY: 'scroll'});
     });
     
     $('body').on('click', '.three-col__text--less', function(e) {
       e.preventDefault();
-      $(this).parent('.three-col__text--bg').html(lessText).append("<a href='' class='three-col__text--more'> show more</a>");
+      $(this).parent('.three-col__text--bg')
+              .html(lessText)
+              .append("<a href='' class='three-col__text--more'> show more</a>")
+              .css({overflowY: 'hidden'});
     });
 
 
@@ -160,24 +166,26 @@
       
     $(scrollBasis).scroll(function (){
       if ($(this).scrollTop() > 10){
+        $('.three-col-title').css({opacity: '0'});
         // $(".header-title").fadeOut();
-        $(".header-title").slideUp();
-        if ($(document).width() > 480) {
-          $(".header__row").css({height: '75px'});
-          $(".three-col-nav").css({top: '75px'});
-        } else {
-          $(".header__row").css({height: '42px'});
-          $(".three-col-nav").css({top: '42px'});//
-        }
+        // $(".header-title").slideUp();
+        // if ($(document).width() > 480) {
+        //   $(".header__row").css({height: '75px'});
+        //   $(".three-col-nav").css({top: '75px'});
+        // } else {
+        //   $(".header__row").css({height: '42px'});
+        //   $(".three-col-nav").css({top: '42px'});//
+        // }
         
       } else{
+        $('.three-col-title').css({opacity: '1'});
         // $(".header-title").fadeIn();
-        $(".header-title").slideDown();
-        if ($(document).width() > 480) {
-          $(".header__row").css({height: '144px'});
-        } else {
-          $(".header__row").css({height: '104px'});
-        }
+        // $(".header-title").slideDown();
+        // if ($(document).width() > 480) {
+        //   $(".header__row").css({height: '144px'});
+        // } else {
+        //   $(".header__row").css({height: '104px'});
+        // }
       }
     });
 
@@ -262,7 +270,7 @@
     Stickyfill.add(elements);
     
     //hide header title
-    // hideHeaderTitle();
+    hideHeaderTitle();
 
 
     //scroll to top
