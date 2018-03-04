@@ -131,7 +131,7 @@
     }
     &--bg {
       background: linear-gradient(to bottom, $dark-gray, transparent);
-      overflow-y: scroll;
+      // overflow-y: scroll;
     }
     &--tall {
       align-items: center;
