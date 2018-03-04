@@ -28,6 +28,16 @@
     }
   });
 
+  $('.video a').fancybox({
+    width: 640,
+    height: 400,
+  //   width  : 800px;
+  // height : 600px;
+  // max-width  : 80%;
+  // max-height : 80%;
+    type: 'iframe'
+  });
+
 })( jQuery );
 
 
