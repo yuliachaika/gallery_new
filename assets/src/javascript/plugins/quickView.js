@@ -6,6 +6,7 @@ const QObject = {
   itemSize: "&#34;52 x 52&#34;, 140 x 140 cm",
   itemFabric: "polyester",
   itemPrice: 40,
+  itemSold: false,
   itemUrl: "assets/dist/img/999903.jpg",
   itemBigUrl: "assets/dist/img/b/999903.jpg", 
   init: function(target){
@@ -19,14 +20,18 @@ const QObject = {
         this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
         this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
         const info = JSON.parse( target.dataset.info );
+
+        if ( info.hasOwnProperty('sold') ) {
+          this.itemSold = ( info.sold === 1 );
+        } else {
+          this.itemSold = false;
+        };
+
         this.itemSize = '&#34;' + info.size.inch + '&#34;, ' + info.size.sm;
         this.itemFabric = info.product;
         this.itemPrice = info.price;
         this.itemName = info.name;
-
-        ///
-
-        ///    
+  
     }catch(exception){
         console.log(exception);
     }
@@ -122,6 +127,7 @@ const QObject = {
             // $('.modal-img__wrap').html(QObject.itemUrl);
             $('.modal-img-big').attr('href',QObject.itemBigUrl); //
             $('.modal-img').attr('src',QObject.itemUrl);
+            console.log(QObject.itemSold);
             // $('.modal-img__title').text(QObject.itemId);
             $('.modal-img__title').text(QObject.itemName + ' ' + QObject.itemId);
             return false;
