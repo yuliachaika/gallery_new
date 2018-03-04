@@ -10948,7 +10948,7 @@ const Utils = new function(){
 
     // hide "buy" block on open
     $("#modal-buy__btn").on('click', function(){
-      $('#modal-info__content').removeClass('hidden');
+      $('.modal-info__content').removeClass('hidden');
     });
 
     //redirect to home page 

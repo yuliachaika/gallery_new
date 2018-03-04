@@ -49,7 +49,10 @@
       }
       &-hide { 
         @include col();
-      }  
+      } 
+      &--sold {
+        background: linear-gradient(to right, $sold-state, transparent);
+      } 
     }
     &__carre {
       margin-bottom: rem-calc(10);
@@ -76,11 +79,16 @@
     &__text {
       color: $white;
       font-family: $primary-font;
-      font-size: rem-calc(16);
-      font-weight: 400;
+      font-size: rem-calc(14); //16
+      font-weight: 300; //400
       padding-left: $column-gutter; 
       @include breakpoint(large up) {
         padding-left: $img-margin;      
+      }
+      &--sold {
+        padding-top: rem-calc(20);
+        font-size: rem-calc(16);
+        color: $light-gray;
       } 
     }
   }
@@ -231,6 +239,7 @@
     }
     &__title {
       // padding: rem-calc(10) rem-calc(15);
+      // padding: rem-calc(10) 0;
       padding: 0;
       padding-left: rem-calc(20);
       margin: auto;
@@ -300,5 +309,6 @@
     }
   } 
 }
+
 
 

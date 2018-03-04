@@ -597,59 +597,74 @@
 								<span class="modal-buy__text">buy</span>
 							</button>
 						</div>
-						<div id="modal-info__content" class="modal-info__content  hidden">
-							<div class="modal-info__wrap">
-								<div class="modal-info__carre">
-									<p class="modal-info__num">product:</p>
-									<p class="modal-info__num" id="modal__num"></p>
+						<div id="modal-info__content" class="modal-info__content  hidden" data-state="buy-now">
+								<div class="modal-info__wrap">
+									<div class="modal-info__carre">
+										<p class="modal-info__num">product:</p>
+										<p class="modal-info__num" id="modal__num"></p>
+									</div>
+									<p class="modal-info__size modal-info__text modal-info__text--color" id="modal__size"></p>
+									<p class="modal-info__fabric modal-info__text" id="modal__fabric"></p>
+									<p class="modal-info__price modal-info__text" id="modal__price"></p>
+									<form class="modal-form">
+										<label for="modal__email">
+											<input id="modal__email" class="modal-form__input modal-form__item" type="email" placeholder="your email">
+										</label>
+										<textarea class="modal-form__area modal-form__item" placeholder="message"></textarea>
+									</form>
+									<div class="modal-footer">
+										<a href='#' class='modal-footer__link'>...</a>
+										<button id="modal-footer__submit" class='modal-footer__submit'>confirm</button>
+									</div>
 								</div>
-								<p class="modal-info__size modal-info__text modal-info__text--color" id="modal__size"></p>
-								<p class="modal-info__fabric modal-info__text" id="modal__fabric"></p>
-								<p class="modal-info__price modal-info__text" id="modal__price"></p>
-								<form class="modal-form">
-									<label for="modal__email">
-										<input id="modal__email" class="modal-form__input modal-form__item" type="email" placeholder="your email"></input>
-									</label>
-									<textarea class="modal-form__area modal-form__item" placeholder="message"></textarea>
-								</form>
 							</div>
-							<div class="modal-footer">
-								<a href='#' class='modal-footer__link'>...</a>
-								<button id="modal-footer__submit" class='modal-footer__submit'>confirm</button>
-							</div>
-						</div>
-						<div  id="modal-info-hide" class="modal-info-hide">
-							<div class="modal-info__header-hide">
-								<p class="modal-info__num-hide modal-info__num">You're done!</p>
-							</div>
-							<div class="modal-form-hide modal-form">
-								<p class="modal-info__num-hide modal-info__num">The buyer email <br>has been sent - your <br>order is avaiable</p>
-							</div>
-							<div class="modal-footer-hide">
-								<button id="modal-footer__submit-hide" class="modal-footer__submit-hide">sent another?</button>
-							</div>
-						</div>
-						<div  id="modal-info-show" class="modal-info-show">
-							<div class="modal-info__wrap">
-								<div class="modal-info__carre">
-									<p class="modal-info__num">product:</p>
-									<p class="modal-info__num" id="modal__num"></p>
+							<div  id="modal-info-hide" class="modal-info-hide">
+								<div class="modal-info__header-hide">
+									<p class="modal-info__num-hide modal-info__num">You're done!</p>
 								</div>
-								<p class="modal-info__size modal-info__text modal-info__text--color" id="modal__size"></p>
-								<p class="modal-info__fabric modal-info__text" id="modal__fabric"></p>
-								<p class="modal-info__price modal-info__text" id="modal__price"></p>
-								<form class="modal-form">
-									<label for="modal__email">
-										<input id="modal__email" class="modal-form__input modal-form__item" type="email" placeholder="your email"></input>
-									</label>
-									<textarea class="modal-form__area modal-form__item" placeholder="message"></textarea>
-								</form>
+								<div class="modal-form-hide modal-form">
+									<p class="modal-info__num-hide modal-info__num">The buyer email <br>has been sent - your <br>order is avaiable</p>
+								</div>
+								<div class="modal-footer-hide">
+									<button id="modal-footer__submit-hide" class="modal-footer__submit-hide">sent another?</button>
+								</div>
 							</div>
-							<div class="modal-footer">
-								<a href='#' class='modal-footer__link'>...</a>
-								<button id="modal-footer__submit" class='modal-footer__submit'>confirm</button>
+							<div  id="modal-info-show" class="modal-info-show">
+								<div class="modal-info__wrap">
+									<div class="modal-info__carre">
+										<p class="modal-info__num">product:</p>
+										<p class="modal-info__num" id="modal__num"></p>
+									</div>
+									<p class="modal-info__size modal-info__text modal-info__text--color" id="modal__size"></p>
+									<p class="modal-info__fabric modal-info__text" id="modal__fabric"></p>
+									<p class="modal-info__price modal-info__text" id="modal__price"></p>
+									<form class="modal-form">
+										<label for="modal__email">
+											<input id="modal__email" class="modal-form__input modal-form__item" type="email" placeholder="your email"></input>
+										</label>
+										<textarea class="modal-form__area modal-form__item" placeholder="message"></textarea>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<a href='#' class='modal-footer__link'>...</a>
+									<button id="modal-footer__submit" class='modal-footer__submit'>confirm</button>
+								</div>
 							</div>
-						</div>
+							<!-- sold -->
+<!-- 							<div class="modal-info__content modal-info__content--sold hidden" data-state="sold">
+								<div  id="modal-info-sold" class="modal-info__wrap modal-info-sold" data-state="sold">
+									<div class="modal-info__wrap">
+										<div class="modal-info__carre">
+											<p class="modal-info__num">product:</p>
+											<p class="modal-info__num" id="modal__num"></p>
+										</div>
+										<p class="modal-info__size modal-info__text modal-info__text--color" id="modal__size"></p>
+										<p class="modal-info__fabric modal-info__text" id="modal__fabric"></p>
+										<p class="modal-info__text modal-info__text--sold"">SOLD</p>
+									</div>
+								</div>
+							</div> -->
+							<!-- /sold -->
 					</div>
 					<!-- /.modal-info -->
 					<div class="modal-img__wrap">
