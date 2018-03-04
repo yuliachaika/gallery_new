@@ -23,6 +23,8 @@
       textElem.outerHeight( baseWidth - remBase ); 
       textElemTall.outerHeight( baseWidth  * 2 );
       resizeFont(textElem, 309.19, 18); 
+    } else {
+      $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
     }
 
   };
@@ -41,6 +43,9 @@
   };
 
   function showMore() {
+
+    $('.three-col__text--bg').css({overflowY: 'hidden'});
+
     var readMoreHtml = $('.three-col__text--bg').html();
     var charCount = ($(document).width() > 480) ? 330 : 50;
     var lessText = readMoreHtml.substr(0, charCount) + "...";

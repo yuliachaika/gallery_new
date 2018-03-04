@@ -10465,10 +10465,33 @@ const QObject = {
         
         // added
         clearContent: function(){
-           $(".modal-info__content").html( $("#modal-info-show").html() ); 
+           // $(".modal-info__content ").html( $("#modal-info-show").html() ); 
+           $(".modal-info__content ").html(); 
+
         },
 
+        toggleContent: function(){
+
+          $( ".modal-info__content" ).each(function() {
+
+            if ( !($(this).hasClass("hidden") ) ) {
+              $(this).addClass("hidden");
+            }
+
+          });
         
+          $("#modal-buy__btn").on('click', function(){
+
+            if(QObject.itemSold === true) {
+              $('[data-state="sold"]').removeClass('hidden');
+              console.log('[data-state="sold"]');
+            } else {
+              $('[data-state="buy-now"]').removeClass('hidden');
+            }
+
+          });
+
+        },
 
         //change modal content
         addActionListener: function(){
@@ -10550,9 +10573,10 @@ const QObject = {
         _openModal: function() {
 
             /***********added**************/
-            $('#modal-info__content').addClass('hidden'); ///////////
+            // $('#modal-info__content').addClass('hidden'); 
 
-            this.addActionListener(); ////////////////////
+            this.toggleContent(); 
+            this.addActionListener(); 
 
             this.initData( QObject.init(event.target) );
            
@@ -10576,7 +10600,7 @@ const QObject = {
 
         },
         _resetModal: function() {
-            this.$canvas.removeAttr("style");
+            this.$canvas.removeAttr("style");  
         },
 
 
@@ -10736,6 +10760,8 @@ const Utils = new function(){
       textElem.outerHeight( baseWidth - remBase ); 
       textElemTall.outerHeight( baseWidth  * 2 );
       resizeFont(textElem, 309.19, 18); 
+    } else {
+      $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
     }
 
   };
@@ -10754,6 +10780,9 @@ const Utils = new function(){
   };
 
   function showMore() {
+
+    $('.three-col__text--bg').css({overflowY: 'hidden'});
+
     var readMoreHtml = $('.three-col__text--bg').html();
     var charCount = ($(document).width() > 480) ? 330 : 50;
     var lessText = readMoreHtml.substr(0, charCount) + "...";

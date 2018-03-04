@@ -82,10 +82,33 @@ const QObject = {
         
         // added
         clearContent: function(){
-           $(".modal-info__content").html( $("#modal-info-show").html() ); 
+           // $(".modal-info__content ").html( $("#modal-info-show").html() ); 
+           $(".modal-info__content ").html(); 
+
         },
 
+        toggleContent: function(){
+
+          $( ".modal-info__content" ).each(function() {
+
+            if ( !($(this).hasClass("hidden") ) ) {
+              $(this).addClass("hidden");
+            }
+
+          });
         
+          $("#modal-buy__btn").on('click', function(){
+
+            if(QObject.itemSold === true) {
+              $('[data-state="sold"]').removeClass('hidden');
+              console.log('[data-state="sold"]');
+            } else {
+              $('[data-state="buy-now"]').removeClass('hidden');
+            }
+
+          });
+
+        },
 
         //change modal content
         addActionListener: function(){
@@ -167,9 +190,10 @@ const QObject = {
         _openModal: function() {
 
             /***********added**************/
-            $('#modal-info__content').addClass('hidden'); ///////////
+            // $('#modal-info__content').addClass('hidden'); 
 
-            this.addActionListener(); ////////////////////
+            this.toggleContent(); 
+            this.addActionListener(); 
 
             this.initData( QObject.init(event.target) );
            
@@ -193,7 +217,7 @@ const QObject = {
 
         },
         _resetModal: function() {
-            this.$canvas.removeAttr("style");
+            this.$canvas.removeAttr("style");  
         },
 
 
