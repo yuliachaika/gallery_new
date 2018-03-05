@@ -10650,12 +10650,62 @@ const QObject = {
   $('.video a').fancybox({
     width: 640,
     height: 400,
-  //   width  : 800px;
-  // height : 600px;
-  // max-width  : 80%;
-  // max-height : 80%;
     type: 'iframe'
   });
+
+  $(".fancybox-video").fancybox({
+    afterShow: function() {
+      // After the show-slide-animation has ended - play the vide in the current slide
+      var vid = document.getElementById("myVideo"); 
+      vid.play(); 
+
+      // Attach the ended callback to trigger the fancybox.next() once the video has ended.
+      this.content.find('video').on('ended', function() {
+        $.fancybox.next();
+      });
+    }
+  });
+
+
+  // $(".fancybox-single").fancybox({
+    
+  //   afterShow: function() {
+  //     // After the show-slide-animation has ended - play the video
+  //     this.content.find('video').trigger('play');
+  //     // this.content.find('video').play();
+
+
+  //     // Trigger fancybox.close() once the video has ended
+  //     this.content.find('video').on('ended', function() {
+  //       $.fancybox.close();
+  //     });
+  //   }
+      
+  // });
+
+  // //$('.fancybox-second').click(function(e) {
+  //   e.preventDefault();
+
+  //   $.fancybox.open({
+  //     content: '<video id="video" width="' + $(this).attr('data-width') +
+  //     '" height="' + $(this).attr('data-height') +
+  //     '" preload="auto" controls="controls" autoplay="autoplay"><source src="'
+  //     + $(this).attr('href') + '" type="video/mp4" /><div>Your browser does not support the HTML5 video tag.</div></video>',
+  //     afterShow: function() {
+  //   //     // do this for the dynamically loaded video
+  //   //    // this.content.find('video').trigger('play');
+  //     this.content.find('video').play();
+
+
+  //    this.content.find('video').on('ended', function() {
+  //       $.fancybox.close();
+  //     });
+
+  //     }
+  //   });
+
+  // });
+
 
 })( jQuery );
 
@@ -10771,7 +10821,7 @@ const Utils = new function(){
       textElemTall.outerHeight( baseWidth  * 2 );
       resizeFont(textElem, 309.19, 18); 
     } else {
-      $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
+      // $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
     }
 
   };

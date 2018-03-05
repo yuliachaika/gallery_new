@@ -24,7 +24,7 @@
       textElemTall.outerHeight( baseWidth  * 2 );
       resizeFont(textElem, 309.19, 18); 
     } else {
-      $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
+      // $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
     }
 
   };
