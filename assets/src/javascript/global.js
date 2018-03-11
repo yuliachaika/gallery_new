@@ -24,7 +24,7 @@
       textElemTall.outerHeight( baseWidth  * 2 );
       resizeFont(textElem, 309.19, 18); 
     } else {
-      // $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
+      $('.three-col__text--bg, .three-col__text--tall').removeAttr("style");  
     }
 
   };
@@ -42,36 +42,32 @@
     }
   };
 
+
   function showMore() {
 
-    $('.three-col__text--bg').css({overflowY: 'hidden'});
+    $('.three-col__text--bg').each(function(index, value){
+      
+      var $c = $(this);
 
-    var readMoreHtml = $('.three-col__text--bg').html();
-    var charCount = ($(document).width() > 480) ? 330 : 50;
-    var lessText = readMoreHtml.substr(0, charCount) + "...";
+      $c.css({overflowY: 'hidden'});
 
-    if (readMoreHtml.length > charCount) {
-      $('.three-col__text--bg').html(lessText).append("<a href='' class='three-col__text--more'> show more</a>");   ///class добавить!!!!!
-    } else {
-      $('.three-col__text--bg').html(readMoreHtml);
-    }
+      if( !$c[0].hasOwnProperty('fullText') ){
 
-    $('body').on('click', '.three-col__text--more', function(e) {
-      e.preventDefault();
-      $(this).parent('.three-col__text--bg')
-              .html(readMoreHtml)
-              .append("<a href='' class='three-col__text--less'> show less</a>")
-              .css({overflowY: 'scroll'});
+        $c[0].fullText = $c.html();  
+
+      }
+
+      const charCount = $(document).width() > 480 ? 330 : 50;
+
+      $c[0].lessText = $c[0].fullText.substr(0,  charCount ) + "...";
+
+      if ($c[0].fullText.length > charCount) {
+        $c.html($c[0].lessText).append("<a href='' class='three-col__text--more'>show more</a>");   ///class добавить!!!!!
+      } else {
+        $c.html($c[0].fullText);
+      }
+
     });
-    
-    $('body').on('click', '.three-col__text--less', function(e) {
-      e.preventDefault();
-      $(this).parent('.three-col__text--bg')
-              .html(lessText)
-              .append("<a href='' class='three-col__text--more'> show more</a>")
-              .css({overflowY: 'hidden'});
-    });
-
 
   };
 
@@ -171,25 +167,8 @@
     $(scrollBasis).scroll(function (){
       if ($(this).scrollTop() > 10){
         $('.three-col-title').css({opacity: '0'});
-        // $(".header-title").fadeOut();
-        // $(".header-title").slideUp();
-        // if ($(document).width() > 480) {
-        //   $(".header__row").css({height: '75px'});
-        //   $(".three-col-nav").css({top: '75px'});
-        // } else {
-        //   $(".header__row").css({height: '42px'});
-        //   $(".three-col-nav").css({top: '42px'});//
-        // }
-        
       } else{
         $('.three-col-title').css({opacity: '1'});
-        // $(".header-title").fadeIn();
-        // $(".header-title").slideDown();
-        // if ($(document).width() > 480) {
-        //   $(".header__row").css({height: '144px'});
-        // } else {
-        //   $(".header__row").css({height: '104px'});
-        // }
       }
     });
 
@@ -201,6 +180,9 @@
   * Init all nessesery plugins
   */
   function initPlugins(){
+
+    //stickyfill 
+    Stickyfill.add( $('.three-col__title, .three-col-nav') );
     
     //quick-view
     if ($.fn.quickView) {
@@ -211,21 +193,7 @@
   }
 
 
-  /**
-  * Document ready state
-  */
-  $( function() {
-   
-    // //resize text on mobile
-    // $('.three-col__text').on('click',  function() {
-    //   $(this).toggleClass('three-col__text--mobile');
-    // });
-
-    setActiveTab();
-    
-    onresize();
-
-    showMore();
+  function initListeners(){
 
     /**
     * Filter (Top search field)
@@ -253,11 +221,6 @@
         });
     });
 
-    // // hide "buy" block on open
-    // $("#modal-buy__btn").on('click', function(){
-    //   $('.modal-info__content').removeClass('hidden');
-    // });
-
     //redirect to home page 
     $(".content-bg, .header__row").on('click', function(e) {
       if ( e.target == $(this)[0] ) {
@@ -266,56 +229,6 @@
         $("body").fadeOut(1000, redirectPage);
       }
     });
-
- 
-
-    //stickyfill 
-    var elements = $('.three-col__title, .three-col-nav');
-    Stickyfill.add(elements);
-    
-    //hide header title
-    hideHeaderTitle();
-
-
-    //scroll to top
-    initStickyScrollTopBtn();
-
-     
-
-//     $("#back-top").hide();
-//       
-//         $(window).scroll(function (){
-//           if ($(this).scrollTop() > 100){
-//             $("#back-top").fadeIn();
-//           } else{
-//             $("#back-top").fadeOut();
-//           }
-//         });
-
-//         $("#back-top a").click(function (){
-//           $("body,html").animate({
-//             scrollTop:0
-//           }, 800);
-//           return false;
-//         });
-
-//         //scroll to top ie
-//         if(navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/)) {
-//           $("body").scroll(function (){
-//             if ($(this).scrollTop() > 100){
-//               $("#back-top").fadeIn();
-//             } else{
-//               $("#back-top").fadeOut();
-//             }
-//           });
-
-//           $("#back-top a").click(function (){
-//             $("body").animate({
-//               scrollTop:0
-//             }, 800);
-//             return false;
-//           });
-//         }
 
     //tabs
     $('.three-col-nav__link').on('click', function(e) {
@@ -336,7 +249,51 @@
       smoothScrollTop();
     });
 
+    //text show more /show less approach 
+    $('.three-col__text--bg').on('click', '.three-col__text--more', function(e) {
+        
+      e.preventDefault();
+     
+      $this = $(this).parent();
+      
+      $this.html($this[0].fullText)
+              .append("<a href='' class='three-col__text--less'> show less</a>")
+              .css({overflowY: 'scroll'});
+
+    }).on('click', '.three-col__text--less', function(e) {
+
+      e.preventDefault();
+
+      $this =  $(this).parent();
+
+      $this.html($this[0].lessText)
+              .append("<a href='' class='three-col__text--more'> show more</a>")
+              .css({overflowY: 'hidden'});
+    });
+
+  }
+
+  /**
+  * Document ready state
+  */
+  $( function() {
+
+    setActiveTab();
+    
+    onresize();
+
+    showMore();
+
+    initListeners();
+    
+    //hide header title
+    hideHeaderTitle();
+
+    //scroll to top
+    initStickyScrollTopBtn();
+
     initPlugins();
+
   });   
 
 
