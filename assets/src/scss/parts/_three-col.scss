@@ -2,7 +2,7 @@
   // border: 1px solid red;
   @include column();
   @include breakpoint(medium up) {
-    // margin-bottom: rem-calc(300); 
+    margin-bottom: rem-calc(140); 
   }
   &__container {
     // padding-top: $header-min; 
@@ -20,6 +20,7 @@
     width: 100%; 
     @include row();
     justify-content: center;
+    // padding-bottom: rem-calc(200);
     @include breakpoint(small only) {
       padding-top: rem-calc(30); 
     }

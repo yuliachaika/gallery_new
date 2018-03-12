@@ -4,14 +4,14 @@
 
   //$('.three-col__img-share').append('<div class="ya-share2" data-services="vkontakte,facebook,twitter,viber,whatsapp,telegram"></div>');
 
-  function scrollbarWidth() {
-    var documentWidth = parseInt(document.documentElement.clientWidth);
-    var windowsWidth = parseInt(window.innerWidth);
-    var scrollbarWidth = windowsWidth - documentWidth;
-    if (scrollbarWidth > 0) {
-      $('.quick-view-overlay').css({marginRight: scrollbarWidth});
-    }
-  };
+  // function scrollbarWidth() {
+  //   var documentWidth = parseInt(document.documentElement.clientWidth);
+  //   var windowsWidth = parseInt(window.innerWidth);
+  //   var scrollbarWidth = windowsWidth - documentWidth;
+  //   if (scrollbarWidth > 0) {
+  //     $('.quick-view-overlay').css({marginRight: scrollbarWidth});
+  //   }
+  // };
     
   function onresize() {
     console.log('onresize() called');
@@ -113,15 +113,15 @@
   };
 
 
-  $(window).on('load', function () {
-    // onresize(); // !!! no active tab here 
-    scrollbarWidth();
-  });
+  // $(window).on('load', function () {
+  //   // onresize(); // !!! no active tab here 
+  //   scrollbarWidth();
+  // });
 
   $(window).on('resize', function () {
     onresize();
     showMore();
-    scrollbarWidth();
+    // scrollbarWidth();
     fixNav();
     if (  $(document).width() > 480 ) {     
       $('.header-nav').removeAttr('style');
@@ -151,26 +151,26 @@
   /**
   * Get tab name from URL Search part and select connected tab as active
   */
-  function setActiveTab(){
-    //switch between home page and tabs 
-    //var searchParams = new URLSearchParams(window.location.search);
-    var searchParams = Utils.createUrlSearchParser(window.location.search);
+  // function setActiveTab(){
+  //   //switch between home page and tabs 
+  //   //var searchParams = new URLSearchParams(window.location.search);
+  //   var searchParams = Utils.createUrlSearchParser(window.location.search);
     
-    var targetHref = searchParams.get('t') ;
+  //   var targetHref = searchParams.get('t') ;
 
-    if('scarves wall author'.indexOf( targetHref ) === -1){
-      targetHref = 'author';
-    }
+  //   if('scarves wall author'.indexOf( targetHref ) === -1){
+  //     targetHref = 'author';
+  //   }
 
-    $('.three-col-nav__link[href*='+ targetHref +']').addClass('three-col__link--active');
-    $('#'+ targetHref).addClass('three-col__tab--active');
+  //   $('.three-col-nav__link[href*='+ targetHref +']').addClass('three-col__link--active');
+  //   $('#'+ targetHref).addClass('three-col__tab--active');
 
-    scrollbarWidth();
+  //   scrollbarWidth();
 
-    console.log('setActiveTab() - called');
+  //   console.log('setActiveTab() - called');
 
-    return false;
-  }
+  //   return false;
+  // };
 
 
   /**
@@ -202,18 +202,18 @@
   /**
   * Init all nessesery plugins
   */
-  function initPlugins(){
+  // function initPlugins(){
 
-    //stickyfill 
-    Stickyfill.add( $('.three-col__title, .three-col-nav') );
+  //   //stickyfill 
+  //   Stickyfill.add( $('.three-col__title, .three-col-nav') );
     
-    //quick-view
-    if ($.fn.quickView) {
-      $('.content').quickView(); 
-      console.log('quickView initiated');
-    }
+  //   //quick-view
+  //   if ($.fn.quickView) {
+  //     $('.content').quickView(); 
+  //     console.log('quickView initiated');
+  //   }
 
-  }
+  // }
 
 
   function initListeners(){
@@ -221,56 +221,56 @@
     /**
     * Filter (Top search field)
     */
-    $("#filter").keypress(function(event){
+    // $("#filter").keypress(function(event){
 
-      // if not enter that return 
-      if (event.keyCode !== 13) {return;}
+    //   // if not enter that return 
+    //   if (event.keyCode !== 13) {return;}
 
-      event.preventDefault();
+    //   event.preventDefault();
 
-      var filter = $(this).val();
+    //   var filter = $(this).val();
 
-      $(".three-col__img-wrap img").each(function(){
-          const dataProductId = $(this).attr('data-product-id');
-          // undefined cos there are some element that doesn't
-          // have any data attribute
-          if (dataProductId !== undefined){
-            if(dataProductId.search(new RegExp(filter, "i")) < 0){
-              $(this).parent().fadeOut();
-            } else {
-              $(this).parent().show();
-            }
-          }
-        });
-    });
+    //   $(".three-col__img-wrap img").each(function(){
+    //       const dataProductId = $(this).attr('data-product-id');
+    //       // undefined cos there are some element that doesn't
+    //       // have any data attribute
+    //       if (dataProductId !== undefined){
+    //         if(dataProductId.search(new RegExp(filter, "i")) < 0){
+    //           $(this).parent().fadeOut();
+    //         } else {
+    //           $(this).parent().show();
+    //         }
+    //       }
+    //     });
+    // });
 
     //redirect to home page 
-    $(".content-bg, .header__row").on('click', function(e) {
-      if ( e.target == $(this)[0] ) {
-        var url = "index.html";
-        $(location).attr('href',url);
-        $("body").fadeOut(1000, redirectPage);
-      }
-    });
+    // $(".content-bg, .header__row").on('click', function(e) {
+    //   if ( e.target == $(this)[0] ) {
+    //     var url = "index.html";
+    //     $(location).attr('href',url);
+    //     $("body").fadeOut(1000, redirectPage);
+    //   }
+    // });
 
     //tabs
-    $('.three-col-nav__link').on('click', function(e) {
-      e.preventDefault();
-      var element = $(this);
-      var href = $($(this).attr('href'));
-      element.addClass('three-col__link--active')
-              .parent()
-              .addClass('three-col-nav__item--active')
-              .siblings()
-              .removeClass('three-col-nav__item--active')
-              .find('.three-col__link--active')
-              .removeClass('three-col__link--active');
-      $('.three-col__tab').not(href).removeClass('three-col__tab--active'); 
-      href.addClass('three-col__tab--active');
-      onresize();
-      showMore();
-      smoothScrollTop();
-    });
+    // $('.three-col-nav__link').on('click', function(e) {
+    //   e.preventDefault();
+    //   var element = $(this);
+    //   var href = $($(this).attr('href'));
+    //   element.addClass('three-col__link--active')
+    //           .parent()
+    //           .addClass('three-col-nav__item--active')
+    //           .siblings()
+    //           .removeClass('three-col-nav__item--active')
+    //           .find('.three-col__link--active')
+    //           .removeClass('three-col__link--active');
+    //   $('.three-col__tab').not(href).removeClass('three-col__tab--active'); 
+    //   href.addClass('three-col__tab--active');
+    //   onresize();
+    //   showMore();
+    //   smoothScrollTop();
+    // });
 
     //toggle menu
 
@@ -324,7 +324,7 @@
     //scroll to top
     initStickyScrollTopBtn();
 
-    initPlugins();
+    // initPlugins();
 
   });   
 

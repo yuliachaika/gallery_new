@@ -49,12 +49,12 @@ gulp.task('javascript', function (cb) {
     pump([
             gulp.src([
                 'assets/components/jquery/dist/jquery.js',
-                'node_modules/stickyfilljs/dist/stickyfill.min.js',
+                // 'node_modules/stickyfilljs/dist/stickyfill.min.js',
                 //'node_modules/url-search-params-polyfill/index.js',
                 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
-                'assets/src/javascript/plugins/quickView.js',
+                // 'assets/src/javascript/plugins/quickView.js',
                 'assets/src/javascript/plugins/fancybox.js',
-                'assets/src/javascript/util.js',
+                // 'assets/src/javascript/util.js',
                 'assets/src/javascript/global.js'])
             .pipe(concat('global.js')),
             // .uglify(), 
