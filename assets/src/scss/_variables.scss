@@ -1,4 +1,5 @@
 $black: #000000;
+$dark-text: #24292e;
 $dark-gray: #444446;
 $light-gray: #b0b2b4;
 $light-text: #d6d6d6;
@@ -11,13 +12,13 @@ $background-btn: rgba(99, 89, 88, 0.8);
 $elements: rgba(90, 131, 146, .8);
 $elements-bg: rgba(90, 131, 146, .2);
 $elements-hov: rgba(90, 131, 146, .5);
-$sold-state: #a38b8b;
+// $sold-state: #a38b8b;
 
 
-$column-gutter: rem-calc(15);
+$column-gutter: rem-calc(18); //15
 $img-margin: rem-calc(30);
-$header-min: rem-calc(42); //130
-$header-max: rem-calc(75); //180
+$header-min: rem-calc(110); //130
+$header-max: rem-calc(100); //180
 
 
 

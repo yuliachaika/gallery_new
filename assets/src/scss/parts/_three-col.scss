@@ -1,21 +1,18 @@
 .three-col {
+  // border: 1px solid red;
   @include column();
-   
   @include breakpoint(medium up) {
-    margin-bottom: rem-calc(300); 
+    // margin-bottom: rem-calc(300); 
   }
-  background: linear-gradient(to right, $dark-gray, transparent);
-  z-index: 1;
-  &-title {
-    padding-bottom: rem-calc(30);
-    text-align: center;
-    z-index: 2;
-    transition: opacity .4s ease-out;
-    &__link {
-      @include link(36);
-      @include breakpoint(small only) {
-        padding-bottom: rem-calc(15);
-        font-size: rem-calc(30);
+  &__container {
+    // padding-top: $header-min; 
+    @include breakpoint(medium up) {
+      // padding-top: $header-max; 
+    }
+    &--scroll {
+      padding-top: $header-min; 
+      @include breakpoint(medium up) {
+        padding-top: $header-max; 
       }
     }
   }
@@ -23,68 +20,8 @@
     width: 100%; 
     @include row();
     justify-content: center;
-    z-index: 10;
-    &--pd {
-      //margin-top: $img-margin; 
-    } 
-  }
-  &__wrap {
-    width: 100%;
-    height: 100%; 
-    position: relative;
-  }
-  &__container {
-    padding-bottom: 30vh;
-  }
-  // &__title {
-  //   width: 100%; 
-  //   position: sticky;
-  //   top: $header-min;
-  //   @include breakpoint(medium up) {
-  //     top: $header-max;
-  //   } 
-  //   overflow: hidden;
-  //   z-index: 20;
-  //   &::before, 
-  //   &::after {
-  //     content: "";
-  //     display: table; 
-  //   }
-  // }
-  &__link {
-    padding: rem-calc(10);
-    @include breakpoint(medium up) {
-      @include col();
-      padding: rem-calc(30);
-      min-height: rem-calc(132);  
-    } 
-    width: 100%;
-    height: 100%; 
-    @include row();
-    justify-content: center; 
-    align-items: center;
-    @include link(28);
-    text-align: center;
-    transition: all .4s ease-out; 
-    position: relative;
-    &:focus, &:active {
-      color: $white;
-    }
-    
-    &--bg {
-      @include gradient($dark-gray, $elements);
-      &:hover {
-        &::after {
-          opacity: 1;
-        }
-      } 
-    }
-    &--active {
-      color: $white;
-      background: linear-gradient(to right, $elements, transparent);
-      &:focus, &:hover {
-        color: $white;
-      }
+    @include breakpoint(small only) {
+      padding-top: rem-calc(30); 
     }
   }
   &__text {
@@ -93,81 +30,15 @@
     margin-bottom: 1.875rem;
     @include text(18, $white);
     text-align: left;
-    // @include breakpoint(small only) {
-    //   margin-bottom: rem-calc(15);
-    //   padding-bottom: rem-calc(30);
-    //   height: rem-calc(45);
-    //   overflow: hidden;
-    // }
-    &-wrap {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-    &--link {
-      margin: 0;
-      // margin-bottom: rem-calc(4);
-      // margin-bottom: rem-calc(5);
-      display: block;
-      padding: 0;
-      color: $white;
-      transition: color,
-      opacity .4s ease-out;
-      @include breakpoint(small only) {
-        // margin: 0;
-      }
-      &:hover {
-        opacity: 0.7;
-      }
-    }
-    &--pd {
-      padding-bottom: rem-calc(150); 
-      background: linear-gradient(to bottom, $dark-gray, transparent);
-      @include breakpoint(small only) {
-        padding-bottom: 0;
-      }
-    }
     &--bg {
       background: linear-gradient(to bottom, $dark-gray, transparent);
-      // overflow-y: scroll;
-    }
-    &--tall {
-      align-items: center;
-    }
-    &--mobile {
-      height: auto;
-      padding-bottom: 0;
     }
     &--more, 
     &--less {
       @include text(14, $light-gray);
     }
-    // &--visible {
-    //   height: auto;
-    //   padding-bottom: 0;
-    // }
   }
   &__img {
-    &-text {
-      padding-left: rem-calc(10);
-      margin-bottom: $img-margin; 
-      position: relative;
-      font-size: 0;
-      overflow: visible;
-    }
-    &-hid {
-      visibility: hidden;
-    }
-    &-none {
-      @include breakpoint(small only) {
-        display: none;
-      }
-      @include breakpoint(large) {
-        display: none;
-      }
-    }
     &-share {
       position: absolute;
       top: $column-gutter;
@@ -180,7 +51,7 @@
     }
     &-wrap {
       margin-bottom: $img-margin;
-      padding-left: rem-calc(10);
+      // padding-left: rem-calc(10);
       transition: all .3s ease-in;
       position: relative;
       font-size: 0;
@@ -203,140 +74,71 @@
     &-title {
       padding: 0;
       width: 100%; 
-      color: $white;
-      font-family: $primary-font;
-      font-size: rem-calc(20);
-      font-weight: 400;
-      @include gradient($dark-gray, $white); 
+      @include title(13, $dark-text)
       text-align: center;
       transition:
       color .4s ease-out;
-      &::before {
-        content: "";
-        position: absolute;
-        width: rem-calc(30);
-        height: rem-calc(30);
-        background: url(../img/general/logo.svg) center no-repeat;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-      }
       &-wrap {
-        position: absolute;
-        max-width: rem-calc(160);
+        padding: rem-calc(10);
         overflow: hidden;
-        right: 0;
-        left: 0;
-        //left: 25%;
-        bottom: $column-gutter;
         margin: 0 auto;
-        //margin-left: $column-gutter;
         transition: all .4s ease-out;
       }
     }
   }
-  &__tab {
-    width: 100%; 
-    display: none;
-    &--active {
-      display: block;
-    }
-  }
-  &__content {
-    width: 100%; 
-    @include row();
-    justify-content: center;
-    &--mod {
-      @include breakpoint(medium up) {
-        justify-content: space-between;
-      } 
-    }
-  }
-  &__col {
-    @include column();
-    display: inline-block;
-    background: linear-gradient(to right, $dark-gray, transparent);
-    @include breakpoint(medium up) {
-      margin-bottom: rem-calc(300); 
-    }
-    &--mod {
-      @include column-mod();
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-  &-nav {
-    width: 100%; 
-    @include row();
-    justify-content: center;
-    position: sticky;
-    top: $header-min;
-    @include breakpoint(medium up) {
-      top: $header-max;
-    } 
-    overflow: hidden;
-    z-index: 45;
-    &__link {
-      transition: none;
-      // background: pink;
-      &:hover {
-        transition: color .4s ease-out;
-      }
-    }
-    &__item {
-      @include column();
-      margin-bottom: 0;
-      @include breakpoint(small only) { 
-        margin-bottom: rem-calc(5);
-      }
-      &--active {
-        // order: 3; 
-        // @include breakpoint(medium up) {
-        //   order: inherit;
-        // }
-      }
-    }
-  }
-  &-video {
-    &__btn {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      margin: auto;
-      display: inline-block;
-      width: rem-calc(60);
-      height: rem-calc(60);
-      text-align: center;
-      color: $white;
-      font-size: rem-calc(60);
-      line-height: rem-calc(60);
-      transition: transform .4s ease-out;
-      &:hover {
-        transform: scale(1.1, 1.1);
-      }
-    }
-  }
+  // &-video {
+  //   &__btn {
+  //     position: absolute;
+  //     top: 0;
+  //     bottom: 0;
+  //     right: 0;
+  //     left: 0;
+  //     margin: auto;
+  //     display: inline-block;
+  //     width: rem-calc(60);
+  //     height: rem-calc(60);
+  //     text-align: center;
+  //     color: $white;
+  //     font-size: rem-calc(60);
+  //     line-height: rem-calc(60);
+  //     transition: transform .4s ease-out;
+  //     &:hover {
+  //       transform: scale(1.1, 1.1);
+  //     }
+  //   }
+  // }
 }
 
 
-/*Ie 10/11 */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-{
-    .three-col__img-title {
-      max-width: rem-calc(160);
-      margin: auto;
-      &-wrap {
-        width: 100%;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /*Ie 10/11 */
+// @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+// {
+  //     .three-col__img-title {
+    //       max-width: rem-calc(160);
+    //       margin: auto;
+    //       &-wrap {
+      //         width: 100%;
+      //       }
+      //     }
+
+      // }
+
+      video {
+        max-width: 640px;
       }
-    }
-
-}
-
-video {
-  max-width: 640px;
-}
 
 
