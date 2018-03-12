@@ -22,7 +22,7 @@
     @include row();
     justify-content: center; 
     align-items: center;
-    @include title(28, $dark-text);
+    @include title(24, $dark-text);
     text-align: center;
     transition: all .4s ease-out;
     @include breakpoint(small only) {
@@ -34,7 +34,10 @@
     }
     &:hover, &:focus, &:active {
       color: $elements;
-    } 
+    }
+    &--active {
+      color: $elements;
+    }
   }
   &__item {
     @include column();
