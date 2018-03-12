@@ -1,4 +1,5 @@
-@import "quick_view/quick-view";
+// @import "quick_view/quick-view";
+// @import 'normalize';
 @import "foundation";
 @import "../../../node_modules/@fancyapps/fancybox/dist/jquery.fancybox";
 @import "variables";
@@ -7,11 +8,13 @@
 
 @import "global";
 @import "parts/animation";
-@import "parts/search-btn";
-@import "parts/top-btn";
-@import "parts/back-btn";
-@import "parts/modal";
+// @import "parts/search-btn";
+// @import "parts/top-btn";
+// @import "parts/back-btn";
+// @import "parts/modal";
+@import "parts/nav";
 @import "parts/header";
 @import "parts/three-col";
+@import "parts/footer";
 @import "parts/share";
-@import "fancybox/fancybox";
+// @import "fancybox/fancybox";

@@ -10840,6 +10840,47 @@ const Utils = new function(){
   };
 
 
+  //1
+  function hideHeaderTitle(){
+    const scrollBasis = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
+
+    $(scrollBasis).scroll(function (){
+      if ($(this).scrollTop() > 20) {
+        $('.header-title').css({opacity: '0'});
+      } else {
+        $('.header-title').css({opacity: '1'});
+      }
+    });
+    return false;
+  };
+
+  //2 
+
+  function fixNav(){
+    const scrollField = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
+    const top = $('.header-title').outerHeight();//высота элементов перед меню
+    const topNav = $('#js-header-nav').outerHeight();
+    console.log(topNav);
+
+    $(scrollField).scroll(function (){
+      if ($(this).scrollTop() > top) {
+        $('#js-header-nav').addClass('header-nav__container--scroll');
+        $('.header__container').addClass('header__container--scroll');
+        $('.three-col__row').css({paddingTop: topNav});
+
+        // $('.three-col__container').addClass('three-col__container--scroll');
+
+      } else {
+        $('#js-header-nav').removeClass('header-nav__container--scroll');
+        $('.header__container').removeClass('header__container--scroll');
+        $('.three-col__row').removeAttr('style');
+        // $('.three-col__container').removeClass('three-col__container--scroll');
+      }
+    });
+    return false;
+  };
+
+
   function showMore() {
 
     $('.three-col__text--bg').each(function(index, value){
@@ -10878,6 +10919,10 @@ const Utils = new function(){
     onresize();
     showMore();
     scrollbarWidth();
+    fixNav();
+    if (  $(document).width() > 480 ) {     
+      $('.header-nav').removeAttr('style');
+     }
   });
 
   $(window).on('beforeunload', function(){
@@ -10950,28 +10995,6 @@ const Utils = new function(){
 
     return false;
   };
-
-
-
-//   /**
-//   * Change position of sticky elements on scroll.
-//   */
-  function hideHeaderTitle(){
-
-
-    const scrollBasis = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
-      
-    $(scrollBasis).scroll(function (){
-      if ($(this).scrollTop() > 10){
-        $('.three-col-title').css({opacity: '0'});
-      } else{
-        $('.three-col-title').css({opacity: '1'});
-      }
-    });
-
-    return false;
-  }
-
 
   /**
   * Init all nessesery plugins
@@ -11046,6 +11069,13 @@ const Utils = new function(){
       smoothScrollTop();
     });
 
+    //toggle menu
+
+    $('.header').on('click', '#js-menu-toggle', function(e) {
+      e.preventDefault();
+      $('.header-nav').slideToggle();
+    });
+
     //text show more /show less approach 
     $('.three-col__text--bg').on('click', '.three-col__text--more', function(e) {
         
@@ -11075,7 +11105,7 @@ const Utils = new function(){
   */
   $( function() {
 
-    setActiveTab();
+    // setActiveTab();
     
     onresize();
 
@@ -11085,6 +11115,8 @@ const Utils = new function(){
     
     //hide header title
     hideHeaderTitle();
+
+    fixNav();
 
     //scroll to top
     initStickyScrollTopBtn();
