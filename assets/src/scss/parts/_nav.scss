@@ -1,9 +1,11 @@
 .nav {
   width: 100%; 
-  @include row();
   justify-content: center;
   top: 0;
   background-color: $white;
+  @include breakpoint(medium){
+    @include row();
+  }
   &--hid {
     @include breakpoint(small only) {
     padding-top: rem-calc(10);
@@ -36,10 +38,12 @@
   }
   &__item {
     @include column();
+    // margin: auto;
     margin-bottom: 0;
-    margin: auto;
+    // margin: auto;
     @include breakpoint(small only) { 
       margin-bottom: rem-calc(5);
+      margin: auto;
     }
   }
 }
