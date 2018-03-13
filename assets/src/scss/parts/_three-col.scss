@@ -199,21 +199,89 @@
 
 
 
-// /*Ie 10/11 */
-// @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-// {
-  //     .three-col__img-title {
-    //       max-width: rem-calc(160);
-    //       margin: auto;
-    //       &-wrap {
-      //         width: 100%;
-      //       }
-      //     }
+/*Ie 10/11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+{
+  .three-col {
+    &__text {
+      &-wrap {
+        &-grid {
+          display: -ms-grid;
+          -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr auto auto;
+          & > div {
+            &:first-child {
+              -ms-grid-column: 1;
+              -ms-grid-row: 1;
+            }
+            &:nth-child(2) {
+              display: -ms-grid;
+              -ms-grid-columns: 2fr 3fr;
+              -ms-grid-column: 1;
+              -ms-grid-row: 2;
+              & > div {
+                &:first-child {
+                  -ms-grid-column: 1;
+                  -ms-grid-row: 1;
+                }
+                &:nth-child(2) {
+                  -ms-grid-column: 2;
+                  -ms-grid-row: 1;
+                }
+                &:nth-child(3) {
+                  -ms-grid-column: 1;
+                  -ms-grid-row: 2;
+                }
+                &:nth-child(4) {
+                  -ms-grid-column: 2;
+                  -ms-grid-row: 2;
+                }
+              }
+            }
+            &:nth-child(3) {
+              -ms-grid-row: 3;
+            }
+            &:nth-child(4) {
+              display: -ms-grid;
+              -ms-grid-columns: 2fr 3fr;
+              -ms-grid-column: 1;
+              -ms-grid-row: 4;
+              & > div {
+                &:first-child {
+                  -ms-grid-column: 1;
+                  -ms-grid-row: 1;
+                }
+                &:nth-child(2) {
+                  -ms-grid-column: 2;
+                  -ms-grid-row: 1;
+                }
+                &:nth-child(3) {
+                  -ms-grid-column: 1;
+                  -ms-grid-row: 2;
+                }
+                &:nth-child(4) {
+                  -ms-grid-column: 2;
+                  -ms-grid-row: 2;
+                }
+              }
+            }
+            &:nth-child(5) {
+              -ms-grid-row: 6;
+            }
+            &:nth-child(6) {
+              -ms-grid-row: 9;
+            }
+          }
 
-      // }
-
-      video {
-        max-width: 640px;
+        }
       }
+    }
+    
+  }
+
+}
+
+      // video {
+      //   max-width: 640px;
+      // }
 
 
