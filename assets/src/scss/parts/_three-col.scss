@@ -44,7 +44,7 @@
     &__text {
       @include title(13, $dark-text);
       margin: 0;
-      &--top {
+      &--top, &--bt {
         padding-top: rem-calc(8);
         // border-top: rem-calc(1) solid $light-text;
       }
@@ -209,7 +209,16 @@
       &-grid {
         display: -ms-grid;
         -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr auto auto;
+        &__text {
+          &--bt {
+            border-bottom: rem-calc(1) solid $light-text;
+          }
+          &--top {
+            border-top: rem-calc(1) solid $light-text;
+          }
+        }
         &__row {
+          border: none;
           &--first {
             -ms-grid-column: 1;
             -ms-grid-row: 1;
@@ -254,19 +263,25 @@
         }
         &__content {
           display: -ms-grid;
+          &--first {
+            -ms-grid-row: 2;
+          }
+          &--second {
+            -ms-grid-row: 4;
+          }
           &--third {
             -ms-grid-columns: 2fr auto;
             -ms-grid-row: 5;
           }
           &--fourth {
-            -ms-grid-row: 6;
+            -ms-grid-row: 7;
           }
           &__a {
             
           }
           &__b {
             -ms-grid-row: 2;
-            -ms-justify-self: end;
+            text-align: right;
           }
         }  
       }
