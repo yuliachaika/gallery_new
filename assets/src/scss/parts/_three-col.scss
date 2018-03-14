@@ -1,6 +1,9 @@
 .three-col {
   @include column();
   &--fix {
+    @include breakpoint(small only) {
+      // margin-bottom: rem-calc(60); //140
+    }
     @include breakpoint(medium up) {
       margin-bottom: rem-calc(100); //140
     }
@@ -100,7 +103,7 @@
         @include breakpoint(medium only) {
         -ms-overflow-y: scroll;
             overflow-y: scroll;
-      }
+        }
       }
       &-item {
         margin-bottom: $img-margin;
