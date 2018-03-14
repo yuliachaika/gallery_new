@@ -1,0 +1,58 @@
+.form {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    width: 100%;
+    height: rem-calc(1);
+    background-color: $light-gray;
+  }
+  &__wrap {
+    width: calc(100% - 60px);
+    @include breakpoint(medium only) {
+      width: calc(100% - 30px);
+    }
+    @include center();
+  }
+  &__label {
+    display: block;
+    @include title(14, $light-gray);
+    line-height: 2.5;
+    transition: all .4s ease-out;
+  }
+  &__submit {
+    display: none;
+  }
+  &__input {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    @include text(14, $light-gray);
+    min-width: rem-calc(150);
+    width: 100%;
+    border: none; 
+    background-color: transparent; 
+    cursor: pointer;
+    &::-webkit-input-placeholder, 
+    &::-moz-placeholder,
+    &:-moz-placeholder, 
+    &:-ms-input-placeholder {
+      color: $light-gray !important;
+      font-weight: 300;
+    }
+    &::placeholder {
+      color: $light-gray;
+      font-weight: 300;
+    }
+    &:focus {
+      cursor: auto;
+      & + .form__label {
+        color: $dark-text;
+        opacity: 0;
+      }
+    }
+  }
+}
+
