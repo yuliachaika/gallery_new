@@ -25,6 +25,7 @@
     }
     &--fix {
       @include breakpoint(small only) {
+        margin-bottom: rem-calc(60);
         padding-bottom: rem-calc(80); //70
       }
     }

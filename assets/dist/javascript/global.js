@@ -10629,6 +10629,15 @@ return jQuery;
 
   function initListeners(){
 
+    //hide label
+    $('.three-col__content').on('blur', '#js-input', function() {
+      if( this.value ) {
+        $('#js-label').css({opacity: '0'});
+      } else {
+        $('#js-label').removeAttr("style");
+      }
+    });
+
     //Toggle nav on mobile
     $('.header').on('click', '#js-menu-toggle', function(e) {
       e.preventDefault();
