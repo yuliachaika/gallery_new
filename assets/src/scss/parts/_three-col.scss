@@ -92,9 +92,11 @@
       position: relative;
       overflow: hidden;
       background-color: $text-bg;
-      @include breakpoint(medium only) {
+      &--tall {
+        @include breakpoint(medium only) {
         -ms-overflow-y: scroll;
             overflow-y: scroll;
+      }
       }
       &-item {
         margin-bottom: $img-margin;
