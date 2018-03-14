@@ -5,7 +5,7 @@
 html {
 	 -webkit-text-size-adjust: 100%;
 	@include breakpoint(small only) {
-		font-size: 70%;
+		// font-size: 70%;
 	}
 	@include breakpoint(medium down) {
 		font-size: 80%;

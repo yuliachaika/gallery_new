@@ -10448,19 +10448,45 @@ return jQuery;
 
 (function($){
 
-    
+  function acceptBuy() {
+
+    const contentConfirm = $("#js-content-confirm").html();
+    const titleConfirm = $("#js-title-confirm").html();
+
+    $('#js-content').on('click', '#js-buy', function(e) {
+      e.preventDefault();
+      $('#js-content').html(contentConfirm);
+      $('#js-title').html(titleConfirm);
+      onresize();
+    });  
+
+  };
+
+  function acceptConfirm() {
+
+    const contentComplit = $("#js-content-complit").html();
+    const contentOrder = $("#js-content-order").html();
+
+    $('#js-content').on('click', '#js-confirm', function(e) {
+      e.preventDefault();
+      $('#js-content').html(contentComplit);
+      $('#js-content-img').html(contentOrder);
+      onresize();
+    });  
+
+  };
+
   function onresize() {
-    // console.log('onresize() called');
+
     // if ($(document).width() > 480) {
-      const baseWidth = $('.three-col').outerWidth();
-      console.log(baseWidth);
-            
+      const baseWidth = $('.three-col').outerWidth();     
       const remBase = parseFloat($('html').css('font-size')) * 0.625;
-       console.log(remBase); 
       const textElem = $('.three-col__text-wrap');
+      const imgElem = $('.three-col__img-box');///
       const textElemTall = $('.three-col__text--tall');
       // textElem.outerHeight( baseWidth - remBase ); 
       textElem.outerHeight( baseWidth );
+      imgElem.outerHeight( baseWidth );
       textElemTall.outerHeight( baseWidth  * 2 );
       resizeFont(textElem, 321.89, 18);
     // } else {
@@ -10500,7 +10526,6 @@ return jQuery;
     const scrollField = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
     const top = $('.header-title').outerHeight();//высота элементов перед меню
     const topNav = $('#js-header-nav').outerHeight();
-    // console.log(topNav);
 
     $(scrollField).scroll(function (){
 
@@ -10530,7 +10555,8 @@ return jQuery;
         $c[0].fullText = $c.html();  
       }
 
-      const charCount = $(document).width() > 480 ? 330 : 50;
+      // const charCount = $(document).width() > 480 ? 330 : 50;
+      const charCount = 330;
 
       $c[0].lessText = $c[0].fullText.substr(0,  charCount ) + "...";
 
@@ -10545,15 +10571,9 @@ return jQuery;
   };
 
 
-  // $(window).on('load', function () {
-  //   // onresize(); // !!! no active tab here 
-  //   scrollbarWidth();
-  // });
-
   $(window).on('resize', function () {
     onresize();
     showMore();
-    // scrollbarWidth();
     fixNav();
     if (  $(document).width() > 480 ) {     
       $('.header-nav').removeAttr('style');
@@ -10577,7 +10597,7 @@ return jQuery;
     }, 800);
     // console.log('smoothScrollTop() - called');
     return false;
-  }
+  };
 
 
   /**
@@ -10648,24 +10668,21 @@ return jQuery;
   */
   $( function() {
 
-    // setActiveTab();
-    
+    acceptBuy();
+
+    acceptConfirm();
+
     onresize();
 
     showMore();
 
     initListeners();
     
-    //hide header title
     hideHeaderTitle();
 
     fixNav();
 
-    //scroll to top
     initStickyScrollTopBtn();
-
-    // initPlugins();
-
   });   
 
 
