@@ -32,9 +32,9 @@
   &-grid {
     padding: 0 rem-calc(22) rem-calc(10);
     display: grid;
-    grid-template-rows: 1fr 2fr 1fr 2fr 3fr auto;
+    grid-template-rows: auto 2fr 1fr 2fr 3fr auto;
     // grid-template-rows: 1fr 2fr 1fr 18% auto 20%;
-    grid-row-gap: rem-calc(5);
+    // grid-row-gap: rem-calc(5);
     &__text {
       @include title(13, $dark-text);
       margin: 0;
@@ -46,6 +46,9 @@
       border-bottom: rem-calc(1) solid $light-text;
       &:last-child {
         border: none;
+      }
+      &--first {
+        padding-bottom: rem-calc(10);//
       }
     }
     &-tall {
@@ -234,8 +237,9 @@
     .three-col {
       &-grid {
         display: -ms-grid;
-        -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr auto auto;
-        &__text {
+        // -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr auto auto;
+        -ms-grid-rows: auto auto auto auto 1fr 1fr 1fr auto auto;
+        &__text {auto
           &--bt {
             border-bottom: rem-calc(1) solid $light-text;
           }
@@ -249,6 +253,7 @@
           &--first {
             -ms-grid-column: 1;
             -ms-grid-row: 1;
+            // padding-bottom: rem-calc(10);//
           }
           &--second {
             -ms-grid-row: 3;
