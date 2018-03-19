@@ -79,7 +79,7 @@
 							<h2 class="three-col__img-title">this item is final sale and not eligible for return</h2>
 						</div>
 					</div>
-										<div id="js-content-order" class="three-col__text-wrap-item three-col__text-wrap-item--hide">
+					<div id="js-content-order" class="three-col__text-wrap-item three-col__text-wrap-item--hide">
 						<div class="three-col__text-wrap-item">
 						<div class="three-col__text-wrap three-col__text-wrap--order three-col__text-wrap--fl">
 							<div class="three-col__text-sm">
@@ -113,6 +113,19 @@
 							<span class="">buy</span>
 						</button>
 					</div>
+
+					<div id="js-content-reserved" class="three-col__text-wrap-item three-col__text-wrap-item--hide">
+						<div class="three-col__text-wrap-item">
+							<div class="three-col__text-wrap three-col__text-wrap--center three-col__text-wrap--order">
+								<div class="three-col__text-sm">
+									<p class="">This item is reserved for 30 minutes.</p>
+								</div>
+							</div>
+							<button id="js-reserve" class="three-col__img-title three-col__img-btn">
+								<span class="">continue</span>
+							</button>
+						</div>
+					</div>
 					<div id="js-content-confirm" class="three-col__text-wrap-item three-col__text-wrap-item--hide">
 						<div class="three-col__text-wrap-item">
 								<div class="three-col__text-wrap three-col__text-wrap--order">
@@ -121,8 +134,10 @@
 								</div>
 								<div class="form__wrap">
 									<form class="three-col__text-wrap-form form">
-										<input class="form__input" type="email" name="email" id="js-input" required>
-										<label class="form__label" for="js-input" id="js-label">your email<br>adress</label>
+										<input class="form__input" type="email" name="email" id="js-input" placeholder="your email" required>
+										<label for="js-input" id="js-label"></label>
+        						<textarea id="js-area" class="form__area" placeholder="ardess"></textarea>
+      							<label for="js-area"></label>
 										<input type="submit" name="submit" class="form__submit">
 									</form>	
 								</div>
@@ -133,7 +148,7 @@
 						</div>
 					</div>
 
-					<div id="js-content-complit" class="three-col__text-wrap-item three-col__text-wrap-item--hide">
+					<div id="js-content-complete" class="three-col__text-wrap-item three-col__text-wrap-item--hide">
 						<div class="three-col__text-wrap-item">
 							<div class="three-col__text-wrap three-col__text-wrap--order three-col__text-wrap--fl">
 								<div class="three-col__text-sm three-col__text-sm--center">
@@ -153,7 +168,7 @@
 								</div>
 							</div>
 							<div class="three-col__text-title">
-								<h3 class="three-col__img-title">complit</h3>
+								<h3 class="three-col__img-title">complete</h3>
 							</div>
 						<!-- <button class="three-col__img-title three-col__img-btn">
 							<span class="">complit</span>

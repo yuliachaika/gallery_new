@@ -51,5 +51,35 @@
   margin: auto; 
 }
 
+@mixin placeholder() {
+  &::-webkit-input-placeholder, 
+  &::-moz-placeholder,
+  &:-moz-placeholder, 
+  &:-ms-input-placeholder {
+    color: $light-gray !important;
+    font-weight: 300;
+    transition: all .3s ease-out;
+  }
+  &::placeholder {
+    color: $light-gray;
+    font-weight: 300;
+    transition: all .3s ease-out;
+  }
+}
 
+@mixin placeholder-hov() {
+  &::-webkit-input-placeholder, 
+  &::-moz-placeholder,
+  &:-moz-placeholder, 
+  &:-ms-input-placeholder {
+    color: $light-gray !important;
+    font-weight: 300;
+    opacity: 0;
+  }
+  &::placeholder {
+    color: $light-gray;
+    font-weight: 300;
+    opacity: 0;
+  }
+}
 

@@ -24,7 +24,7 @@
     @include row();
     justify-content: center;
     @include breakpoint(small only) {
-      padding-top: rem-calc(30); 
+      padding-top: rem-calc(30); //
     }
     &--fix {
       @include breakpoint(small only) {
@@ -111,7 +111,7 @@
           margin-bottom: $img-margin-big;
         }
         &--hide {
-          display: none;
+          display: none; ////////
         }
       }
       &--order {
@@ -123,6 +123,11 @@
       &--fl {
         @include col();
         justify-content: space-between;
+      }
+      &--center {
+        text-align: center;
+        @include col();
+        justify-content: center;
       }
     }
     &-sm {
@@ -188,7 +193,7 @@
         margin-bottom: $img-margin-big;
       }
       &--hide {
-        display: none;
+        display: none; ///
       }
     }
     &-title {

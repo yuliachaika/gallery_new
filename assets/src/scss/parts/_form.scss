@@ -1,14 +1,6 @@
 .form {
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 50%;
-    width: 100%;
-    height: rem-calc(1);
-    background-color: $light-gray;
-  }
+  // position: relative;
+  padding-top: rem-calc(40);
   &__wrap {
     width: calc(100% - 60px);
     @include breakpoint(medium only) {
@@ -16,43 +8,39 @@
     }
     @include center();
   }
-  &__label {
-    display: block;
-    @include title(14, $light-gray);
-    line-height: 2.5;
-    transition: all .4s ease-out;
-  }
   &__submit {
     display: none;
   }
+  &__area {
+    padding: rem-calc(10) 0;
+    resize: none;
+    border: none;
+    background-color: transparent; 
+    cursor: pointer;
+    @include text(14, $light-gray);
+    @include placeholder();
+    &:focus {
+      cursor: auto;
+      @include placeholder-hov();
+    }
+  }
   &__input {
-    position: absolute;
-    top: 10px;
-    left: 0;
+    padding: rem-calc(10) 0;
     @include text(14, $light-gray);
     min-width: rem-calc(150);
     width: 100%;
-    border: none; 
+    border: none;
+    border-bottom: rem-calc(1) solid $light-text; 
     background-color: transparent; 
     cursor: pointer;
-    &::-webkit-input-placeholder, 
-    &::-moz-placeholder,
-    &:-moz-placeholder, 
-    &:-ms-input-placeholder {
-      color: $light-gray !important;
-      font-weight: 300;
-    }
-    &::placeholder {
-      color: $light-gray;
-      font-weight: 300;
-    }
+    @include placeholder();
+    transition: all .4s ease-out;
     &:focus {
       cursor: auto;
-      & + .form__label {
-        color: $dark-text;
-        opacity: 0;
-      }
+      @include placeholder-hov();
     }
   }
 }
 
+
+  

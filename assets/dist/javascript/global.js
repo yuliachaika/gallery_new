@@ -10450,13 +10450,27 @@ return jQuery;
 
   function acceptBuy() {
 
-    const contentConfirm = $("#js-content-confirm").html();
+    const contenReserved = $("#js-content-reserved").html();
     const titleConfirm = $("#js-title-confirm").html();
 
     $('#js-content').on('click', '#js-buy', function(e) {
       e.preventDefault();
-      $('#js-content').html(contentConfirm);
+      $('#js-content').html(contenReserved);
       $('#js-title').html(titleConfirm);
+      onresize();
+    });  
+
+  };
+
+  function acceptContinue() {
+
+    const contentConfirm = $("#js-content-confirm").html();
+    // const titleConfirm = $("#js-title-confirm").html();
+
+    $('#js-content').on('click', '#js-reserve', function(e) {
+      e.preventDefault();
+      $('#js-content').html(contentConfirm);
+      // $('#js-title').html(titleConfirm);
       onresize();
     });  
 
@@ -10464,12 +10478,12 @@ return jQuery;
 
   function acceptConfirm() {
 
-    const contentComplit = $("#js-content-complit").html();
+    const contentComplete = $("#js-content-complete").html();
     const contentOrder = $("#js-content-order").html();
 
     $('#js-content').on('click', '#js-confirm', function(e) {
       e.preventDefault();
-      $('#js-content').html(contentComplit);
+      $('#js-content').html(contentComplete);
       $('#js-content-img').html(contentOrder);
       onresize();
     });  
@@ -10629,14 +10643,14 @@ return jQuery;
 
   function initListeners(){
 
-    //hide label
-    $('.three-col__content').on('blur', '#js-input', function() {
-      if( this.value ) {
-        $('#js-label').css({opacity: '0'});
-      } else {
-        $('#js-label').removeAttr("style");
-      }
-    });
+    // //hide label
+    // $('.three-col__content').on('blur', '#js-input', function() {
+    //   if( this.value ) {
+    //     $('#js-label').css({opacity: '0'});
+    //   } else {
+    //     $('#js-label').removeAttr("style");
+    //   }
+    // });
 
     //Toggle nav on mobile
     $('.header').on('click', '#js-menu-toggle', function(e) {
@@ -10678,7 +10692,7 @@ return jQuery;
   $( function() {
 
     acceptBuy();
-
+    acceptContinue();
     acceptConfirm();
 
     onresize();
