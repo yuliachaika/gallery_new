@@ -124,10 +124,19 @@
         @include col();
         justify-content: space-between;
       }
-      &--center {
+      &--bg {
         text-align: center;
         @include col();
         justify-content: center;
+        padding: 0;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: $text-bg;
+          opacity: .6;
+        }
       }
     }
     &-sm {
@@ -136,6 +145,15 @@
       padding-bottom: rem-calc(5);
       @include breakpoint(small only) {
         font-size: rem-calc(14);
+      }
+      &--bg {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        right: 0;
+        margin: auto;
+        font-size: rem-calc(14);
+        // font-weight: 600;
       }
       &--bt {
         border-bottom: rem-calc(1) solid $light-text;
@@ -162,7 +180,7 @@
       font-size: rem-calc(16);
       font-weight: 600;
       text-align: center;
-      color: $light-gray;
+      color: $elements;
       opacity: .8;
     }
     &--more, 

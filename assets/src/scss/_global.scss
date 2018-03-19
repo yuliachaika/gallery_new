@@ -3,7 +3,9 @@
 }
 
 html {
-	 -webkit-text-size-adjust: 100%;
+
+	 // -webkit-text-size-adjust: 100%;
+	-webkit-text-size-adjust: none;    
 	@include breakpoint(small only) {
 		// font-size: 70%;
 	}

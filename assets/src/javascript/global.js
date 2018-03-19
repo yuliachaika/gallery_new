@@ -12,7 +12,7 @@
       $('#js-content').html(contenReserved);
       $('#js-title').html(titleConfirm);
       onresize();
-      startTimer(30); ///
+      // startTimer(30); ///
     });  
 
   };
