@@ -157,6 +157,14 @@
         }
       }
     }
+    &--time {
+      padding-top: rem-calc(30);
+      font-size: rem-calc(16);
+      font-weight: 600;
+      text-align: center;
+      color: $light-gray;
+      opacity: .8;
+    }
     &--more, 
     &--less {
       @include text(14, $light-gray);
