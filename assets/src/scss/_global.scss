@@ -3,11 +3,8 @@
 }
 
 html {
-
-	 // -webkit-text-size-adjust: 100%;
 	-webkit-text-size-adjust: none;   
 	@include breakpoint(small only) {
-		// font-size: 70%;
 	}
 	@include breakpoint(medium down) {
 		font-size: 80%;
@@ -17,12 +14,6 @@ html {
 body {
 	margin: 0;
 	min-height: 100vh; 
-}
-
-input, button, select, textarea{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius: 0px;
 }
 
 a, button, input, textarea  {
@@ -36,6 +27,14 @@ a, button, input, textarea  {
 		outline: none; 
 	}
 }
+input, button, select, textarea{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	  appearance: none;
+	  -webkit-border-radius:0px;
+    border-radius: 0px;
+}
+
 a {
 	text-decoration: none;
 }
@@ -54,39 +53,5 @@ img {
 	max-width: rem-calc(1140); 
 	padding: 0 rem-calc(15);
 	margin: 0 auto;
-	// @include row();
-	// justify-content: center;
 }
-
-
-// /*Edge*/
-// @supports ( -ms-accelerator:true ) 
-// {
-//     html{
-//         overflow: hidden;
-//         height: 100%;    
-//     }
-//     body{
-//         overflow: auto;
-//         height: 100%;
-//     }
-// }
-// /*Ie 10/11 */
-// @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-// {
-//     html{
-//         overflow: hidden;
-//         height: 100%;    
-//     }
-//     body{
-//         overflow: auto;
-//         height: 100%;
-//     }
-
-// }
-
-// /***** added ******/
-// .hidden{
-// 	display: none !important;
-// }
 
