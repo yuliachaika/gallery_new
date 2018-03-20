@@ -5,7 +5,7 @@
 html {
 
 	 // -webkit-text-size-adjust: 100%;
-	-webkit-text-size-adjust: none;    
+	-webkit-text-size-adjust: none;   
 	@include breakpoint(small only) {
 		// font-size: 70%;
 	}
@@ -19,7 +19,7 @@ body {
 	min-height: 100vh; 
 }
 
-input[type=text], button, select, textarea{
+input, button, select, textarea{
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 0px;
