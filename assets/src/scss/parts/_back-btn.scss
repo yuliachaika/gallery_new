@@ -1,22 +1,14 @@
 .back {
-	position: absolute;
+  position: fixed;
   top: 50%;
-  right: rem-calc(-50);
+  left: rem-calc(5);
+  @include breakpoint(large) {
+    left: rem-calc(20); 
+  }
   margin: auto;
-	z-index: 50;
+	z-index: 5;
 	&__btn {
-		display: inline-block;
-    background-color: $elements-bg;
-    overflow: hidden;
-    width: rem-calc(45);
-    height: rem-calc(45);
-    border: none;
-    color: $white;
-	  font-size: rem-calc(42);
-	  line-height: rem-calc(42);
-	  text-align: center; 
-    &:hover {
-    	background-color: $elements-hov;
-    }
+    @include btn-fixed();
+
 	}
 }

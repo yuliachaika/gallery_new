@@ -3,8 +3,9 @@
 }
 
 html {
-	-webkit-text-size-adjust: none;   
+	 -webkit-text-size-adjust: 100%;
 	@include breakpoint(small only) {
+		// font-size: 70%;
 	}
 	@include breakpoint(medium down) {
 		font-size: 80%;
@@ -16,6 +17,14 @@ body {
 	min-height: 100vh; 
 }
 
+input, button, select, textarea{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-border-radius:0px;
+	border-radius: 0px;
+}
+
 a, button, input, textarea  {
 	cursor: pointer;
 	transition:
@@ -24,17 +33,9 @@ a, button, input, textarea  {
 	text-shadow .4s ease-in,
 	background-color .4s ease-in;
 	&:focus {
-		outline: none; 
+		outline: none;
 	}
 }
-input, button, select, textarea{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-	  appearance: none;
-	  -webkit-border-radius:0px;
-    border-radius: 0px;
-}
-
 a {
 	text-decoration: none;
 }
@@ -49,9 +50,49 @@ img {
 	overflow: hidden; 
 }
 
+ul {
+	margin: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
 .container {
 	max-width: rem-calc(1140); 
 	padding: 0 rem-calc(15);
 	margin: 0 auto;
+	// @include row();
+	// justify-content: center;
 }
+
+
+// /*Edge*/
+// @supports ( -ms-accelerator:true ) 
+// {
+//     html{
+//         overflow: hidden;
+//         height: 100%;    
+//     }
+//     body{
+//         overflow: auto;
+//         height: 100%;
+//     }
+// }
+// /*Ie 10/11 */
+// @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
+// {
+//     html{
+//         overflow: hidden;
+//         height: 100%;    
+//     }
+//     body{
+//         overflow: auto;
+//         height: 100%;
+//     }
+
+// }
+
+// /***** added ******/
+// .hidden{
+// 	display: none !important;
+// }
 

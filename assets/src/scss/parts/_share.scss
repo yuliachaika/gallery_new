@@ -9,39 +9,50 @@
     color: $white;
     font-size: rem-calc(18);
     line-height: 24px;
-    background-color: $background-btn;
-    transition: background-color .4s ease-in-out;
+    // background: transparent;
+    background: $lightgray-text;
+    // border: 1px solid $background-btn;
+    // background-color: $background-btn;
+    // transition: background-color .4s ease-in-out;
+    transition: all 0.37s cubic-bezier(0, 0, 0.58, 1);
+    
     &:last-child {
     	margin-right: 0;
     }
     &--vkontakte {
       &:hover {
-    	   background-color: #48729E;
+    	 // background-color: #48729E;
+       background-color: rgba(72, 114, 158, 0.8);
       }
     }
     &--facebook {
       &:hover {
-    	 background-color: #3B5998;
+    	 // background-color: #3B5998;
+       background-color: rgba(59, 89, 152, 0.8);
       }
     }
     &--twitter {
       &:hover {
-    	 background-color: #00aced;
+    	  // background-color: #00aced;
+        background-color: rgba(0, 172, 237, 0.8);
       }
     }
     &--viber {
       &:hover {
-    	 background-color: #7b519d;
+    	  // background-color: #7b519d;
+        background-color: rgba(123, 81, 157, 0.8);
       }
     }
     &--whatsapp {
       &:hover {
-    	 background-color: #65bc54;
+    	  // background-color: #65bc54;
+        background-color: rgba(101, 188, 84, 0.8);
       }
     }
     &--telegram {
       &:hover {
-    	 background-color: #64a9dc;
+    	  // background-color: #64a9dc;
+        background-color: rgba(100, 169, 220, 0.8);
       }
     }
   }

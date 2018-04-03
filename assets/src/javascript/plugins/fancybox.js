@@ -21,24 +21,24 @@
     }
   });
 
-  // $('.video a').fancybox({
-  //   width: 640,
-  //   height: 400,
-  //   type: 'iframe'
-  // });
+  $('.video a').fancybox({
+    width: 640,
+    height: 400,
+    type: 'iframe'
+  });
 
-  // $(".fancybox-video").fancybox({
-  //   afterShow: function() {
-  //     // After the show-slide-animation has ended - play the vide in the current slide
-  //     var vid = document.getElementById("myVideo"); 
-  //     vid.play(); 
+  $(".fancybox-video").fancybox({
+    afterShow: function() {
+      // After the show-slide-animation has ended - play the vide in the current slide
+      var vid = document.getElementById("myVideo"); 
+      vid.play(); 
 
-  //     // Attach the ended callback to trigger the fancybox.next() once the video has ended.
-  //     this.content.find('video').on('ended', function() {
-  //       $.fancybox.next();
-  //     });
-  //   }
-  // });
+      // Attach the ended callback to trigger the fancybox.next() once the video has ended.
+      this.content.find('video').on('ended', function() {
+        $.fancybox.next();
+      });
+    }
+  });
 
 
 

@@ -10398,24 +10398,24 @@ return jQuery;
     }
   });
 
-  // $('.video a').fancybox({
-  //   width: 640,
-  //   height: 400,
-  //   type: 'iframe'
-  // });
+  $('.video a').fancybox({
+    width: 640,
+    height: 400,
+    type: 'iframe'
+  });
 
-  // $(".fancybox-video").fancybox({
-  //   afterShow: function() {
-  //     // After the show-slide-animation has ended - play the vide in the current slide
-  //     var vid = document.getElementById("myVideo"); 
-  //     vid.play(); 
+  $(".fancybox-video").fancybox({
+    afterShow: function() {
+      // After the show-slide-animation has ended - play the vide in the current slide
+      var vid = document.getElementById("myVideo"); 
+      vid.play(); 
 
-  //     // Attach the ended callback to trigger the fancybox.next() once the video has ended.
-  //     this.content.find('video').on('ended', function() {
-  //       $.fancybox.next();
-  //     });
-  //   }
-  // });
+      // Attach the ended callback to trigger the fancybox.next() once the video has ended.
+      this.content.find('video').on('ended', function() {
+        $.fancybox.next();
+      });
+    }
+  });
 
 
 
@@ -10458,21 +10458,21 @@ return jQuery;
       $('#js-content').html(contenReserved);
       $('#js-title').html(titleConfirm);
       onresize();
-      // startTimer(30); ///
-    });  
+      // startTimer(30); disable
+    });
 
   };
 
   function acceptContinue() {
+      const contentConfirm = $("#js-content-confirm").html();
+      // const titleConfirm = $("#js-title-confirm").html();
 
-    const contentConfirm = $("#js-content-confirm").html();
-    // const titleConfirm = $("#js-title-confirm").html();
+      $('#js-content').on('click', '#js-reserve', function(e) {
+        e.preventDefault();
 
-    $('#js-content').on('click', '#js-reserve', function(e) {
-      e.preventDefault();
-      $('#js-content').html(contentConfirm);
-      // $('#js-title').html(titleConfirm);
-      onresize();
+        $('#js-content').html(contentConfirm);
+        // $('#js-title').html(titleConfirm);
+        onresize();
     });  
 
   };
@@ -10483,20 +10483,54 @@ return jQuery;
     const contentOrder = $("#js-content-order").html();
 
     $('#js-content').on('click', '#js-confirm', function(e) {
-      e.preventDefault();
-      $('#js-content').html(contentComplete);
-      $('#js-content-img').html(contentOrder);
-      onresize();
+        e.preventDefault();
+        const values = validateFormData('.form')
+        if( values === false){return;}
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            url: '/order',
+            data: values,
+            success: function(data){console.log(data);}
+        });
+        $('#js-content').html(contentComplete);
+        $('#js-content-img').html(contentOrder);
+        onresize();
     });  
 
   };
 
-  function onresize() {
+  function validateFormData(formSelector){
+      const $elem = $(formSelector).children();
+      var noErr = true;
+      var values = {};
+      for(var i = 0; i < $elem.length; i++) {
+          const $this = $($elem[i]);
+          if( $this.val().length === 0 || ($this.attr('type') === 'email') && !Utils.isValidEmailAddress($this.val())) {
+              $this.addClass('empty-field');
+              $this.on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
+                  $this.removeClass('empty-field');
+              })
+              noErr = false;
+          }else{
+              values[$this.attr('name')] = $this.val();
+          }
+      };
+      if(!noErr){
+        return noErr;
+      }else{
+        values['id'] = $('#js-id').val();
+        return values;
+      }
+  }
 
+  function onresize() {
     // if ($(document).width() > 480) {
       const baseWidth = $('.three-col').outerWidth();     
       const remBase = parseFloat($('html').css('font-size')) * 0.625;
-      const textElem = $('.three-col__text-wrap');
+      const textElem = $('.three-col__text-wrap');//
       const imgElem = $('.three-col__img-box');///
       const textElemTall = $('.three-col__text--tall');
       // textElem.outerHeight( baseWidth - remBase ); 
@@ -10559,36 +10593,36 @@ return jQuery;
   };
 
 
-  function showMore() {
-
-    $('.three-col__text').each(function(index, value){
-      
-      var $c = $(this);
-      $c.css({overflowY: 'hidden'});
-
-      if( !$c[0].hasOwnProperty('fullText') ){
-        $c[0].fullText = $c.html();  
-      }
-
-      // const charCount = $(document).width() > 480 ? 330 : 50;
-      const charCount = 330;
-
-      $c[0].lessText = $c[0].fullText.substr(0,  charCount ) + "...";
-
-      if ($c[0].fullText.length > charCount) {
-        $c.html($c[0].lessText).append("<a href='' class='three-col__text--more'>show more</a>");   ///class добавить!!!!!
-      } else {
-        $c.html($c[0].fullText);
-      }
-
-    });
-
-  };
+  // function showMore() {
+  //
+  //   $('.three-col__text').each(function(index, value){
+  //
+  //     var $c = $(this);
+  //     $c.parent().css({overflowY: 'hidden'});
+  //
+  //     if( !$c[0].hasOwnProperty('fullText') ){
+  //       $c[0].fullText = $c.html();
+  //     }
+  //
+  //     //const charCount = $(document).width() > 480 ? 330 : 50;
+  //     const charCount = 330;
+  //
+  //     $c[0].lessText = $c[0].fullText.substr(0,  charCount ) + "...";
+  //
+  //     if ($c[0].fullText.length > charCount) {
+  //       $c.html($c[0].lessText).append("<a href='' class='three-col__text--more'>show more</a>");   ///class добавить!!!!!
+  //     } else {
+  //       $c.html($c[0].fullText);
+  //     }
+  //
+  //   });
+  //
+  // };
 
 
   $(window).on('resize', function () {
     onresize();
-    showMore();
+    // showMore();
     fixNav();
     if (  $(document).width() > 480 ) {     
       $('.header-nav').removeAttr('style');
@@ -10660,30 +10694,31 @@ return jQuery;
     });
 
     //text show more /show less approach 
-    $('.three-col__text').on('click', '.three-col__text--more', function(e) {
-        
-      e.preventDefault();
-     
-      $this = $(this).parent();
-      
-      $this.html($this[0].fullText)
-              .append("<a href='' class='three-col__text--less'> show less</a>")
-              .css({overflowY: 'scroll'})
-              .parent()
-              .css({overflowY: 'scroll'});
-
-      }).on('click', '.three-col__text--less', function(e) {
-
-        e.preventDefault();
-
-        $this =  $(this).parent();
-
-        $this.html($this[0].lessText)
-                .append("<a href='' class='three-col__text--more'> show more</a>")
-                .css({overflowY: 'hidden'})
-                .parent()
-                .css({overflowY: 'hidden'});
-      });
+    // $('.three-col__text').on('click', '.three-col__text--more', function(e) {
+    //
+    //   e.preventDefault();
+    //
+    //   var $this = $(this).parent();
+    //
+    //   $this.html($this[0].fullText)
+    //           .append("<a href='' class='three-col__text--less'> show less</a>")
+    //           //.css({overflowY: 'scroll'});
+    //           .parent()
+    //           .css({overflowY: 'scroll'});
+    //
+    //   }).on('click', '.three-col__text--less', function(e) {
+    //
+    //     e.preventDefault();
+    //
+    //     var $this =  $(this).parent();
+    //
+    //     $this.html($this[0].lessText)
+    //             .append("<a href='' class='three-col__text--more'> show more</a>")
+    //             .css({overflowY: ''})
+    //             .parent()
+    //             .css({overflowY: 'hidden'});
+    //   });
+    // //***********************end show less
 
     };
 
@@ -10698,7 +10733,7 @@ return jQuery;
 
     onresize();
 
-    showMore();
+    // showMore();
 
     initListeners();
     

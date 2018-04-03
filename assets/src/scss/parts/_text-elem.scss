@@ -1,0 +1,43 @@
+.text-elem {
+  padding: rem-calc(8) rem-calc(18);
+  @include col();
+  justify-content: space-around;
+  &__text {
+    @extend .three-col__text-sm;
+    padding: 0;
+    &--right {
+      text-align: right;
+    }
+    &--bot {
+      padding-bottom: rem-calc(4);
+      border-bottom: rem-calc(1) solid $light-text;
+      @include breakpoint(medium only) {
+        padding: 0;
+      }
+    }
+    &--top {
+      padding-top: rem-calc(4);
+      border-top: rem-calc(1) solid $light-text;
+    }
+  }
+  &__top {
+    width: 100%;
+    border-top: rem-calc(1) solid $light-text;
+    flex-grow: 1;
+  }
+  &__bottom {
+    width: 100%;
+    @include col();
+    flex-grow: 2;
+    justify-content: flex-end;  
+  }
+  &__list {
+    @include row();
+  }
+  &__link {
+    padding-right: rem-calc(10);
+    &:hover {
+      opacity: .8;
+    }
+  }
+}

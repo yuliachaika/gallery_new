@@ -32,18 +32,26 @@
     @include breakpoint(medium up) {
       padding: rem-calc(30); 
     }
-    &:hover, &:focus, &:active {
-      color: $elements;
+    &:hover:not(&--active),
+    &:focus:not(&--active),
+    &:active:not(&--active) {
+      //color: $elements;
+      color: $nav-hover;
     }
     &--active {
       color: $elements;
+      cursor: default;
+    }
+  }
+  &__span {
+    &--border {
+      border-bottom: 1px solid lightgray;
+      cursor: default;
     }
   }
   &__item {
     @include column();
-    // margin: auto;
     margin-bottom: 0;
-    // margin: auto;
     @include breakpoint(small only) { 
       margin-bottom: rem-calc(5);
       margin: auto;

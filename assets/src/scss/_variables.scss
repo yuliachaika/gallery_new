@@ -6,6 +6,8 @@ $text-bg: #fafafa;
 $light-text: #d6d8da;
 // $gray: #8f8f8f;
 $white: #fff;
+$white-text: rgba(255, 255, 255, 0.8);
+$lightgray-text: rgba(176, 178, 180, 0.4);
 $blue: rgba(30, 165, 213, .8);
 // $blue-link: #19a8bb;
 // $background: #635958;
@@ -14,8 +16,6 @@ $elements: rgba(90, 131, 146, .8);
 $elements-bg: rgba(90, 131, 146, .2);
 $elements-hov: rgba(90, 131, 146, .5);
 // $sold-state: #a38b8b;
-
-
 $column-gutter: rem-calc(18); //15
 $img-margin: rem-calc(60);
 $img-margin-big: rem-calc(70);
@@ -23,6 +23,8 @@ $header-min: rem-calc(110); //130
 $header-max: rem-calc(100); //180
 $pad-min: rem-calc(15);
 $pad-max: rem-calc(30);
+// additional
+$nav-hover: #12b1ba;
 
 
 

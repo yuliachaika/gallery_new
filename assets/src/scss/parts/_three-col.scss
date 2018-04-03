@@ -30,6 +30,7 @@
       @include breakpoint(small only) {
         margin-bottom: rem-calc(60);
         padding-bottom: rem-calc(80); //70
+        // position: relative;//changed
       }
     }
   }
@@ -80,10 +81,16 @@
   }
   &__text {
     width: 100%;
-    padding: 0 rem-calc(5) 0 0; 
+    //padding: 0 rem-calc(5) 0 0; // changed 20180329
+    padding: rem-calc(12); // changed 20180329
     margin-bottom: 1.875rem;
     @include text(18, $dark-text);
     text-align: left;
+    &--link {
+      &:hover {
+        color: $elements;
+      }
+    }
     &-list {
       list-style: none;
       padding: 0;
@@ -98,14 +105,17 @@
     &-wrap {
       position: relative;
       overflow: hidden;
-      background-color: $text-bg;
+      border: 1px solid lightgray; // added 20180328
+      //background-color: $text-bg;
       &--tall {
+        padding: rem-calc(12); // changed 20180329
         @include breakpoint(medium only) {
         -ms-overflow-y: scroll;
             overflow-y: scroll;
         }
       }
       &-item {
+        position: relative;/////
         margin-bottom: $img-margin;
         @include breakpoint(medium) {
           margin-bottom: $img-margin-big;
@@ -124,19 +134,10 @@
         @include col();
         justify-content: space-between;
       }
-      &--bg {
+      &--center {
         text-align: center;
         @include col();
         justify-content: center;
-        padding: 0;
-        &::after {
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background-color: $text-bg;
-          opacity: .6;
-        }
       }
     }
     &-sm {
@@ -145,15 +146,6 @@
       padding-bottom: rem-calc(5);
       @include breakpoint(small only) {
         font-size: rem-calc(14);
-      }
-      &--bg {
-        position: absolute;
-        z-index: 2;
-        left: 0;
-        right: 0;
-        margin: auto;
-        font-size: rem-calc(14);
-        // font-weight: 600;
       }
       &--bt {
         border-bottom: rem-calc(1) solid $light-text;
@@ -180,7 +172,7 @@
       font-size: rem-calc(16);
       font-weight: 600;
       text-align: center;
-      color: $elements;
+      color: $light-gray;
       opacity: .8;
     }
     &--more, 
@@ -192,21 +184,23 @@
     transition: all 0.37s cubic-bezier(0, 0, 0.58, 1);
     &:hover {
       cursor: pointer;
-      transform: scale(1.1, 1.1);
     }
-    // &-share {
-    //   position: absolute;
-    //   top: $column-gutter;
-    //   left: 0;
-    //   right: 0;
-    //   margin: 0 auto;
-    //   text-align: center;
-    //   opacity: 0;
-    //   transition: opacity .4s ease-out; 
-    // }
+    &-share {////////////
+      position: absolute;
+      top: $column-gutter;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      z-index: 1;
+      // transition: opacity .4s ease-out; 
+      transition: opacity 0.37s cubic-bezier(0, 0, 0.58, 1);
+    }
     &-box {
       overflow: hidden;
       // border: 1px solid;
+     
     }
     &-wrap {
       margin-bottom: $img-margin;
@@ -217,6 +211,17 @@
       width: 100%; /*!!!!!!!!!!!!*/
       @include breakpoint(medium) {
         margin-bottom: $img-margin-big;
+      }
+      // cursor: pointer;
+      &:hover {
+        // cursor: pointer;
+        & .three-col__img {
+          transform: scale(1.1, 1.1);
+        }
+        & .three-col__img-share {
+          opacity: 1;
+          // z-index: 1;
+        }
       }
       &--hide {
         display: none; ///
@@ -261,10 +266,34 @@
         outline: none;
       }
     }
+  }
+  &-video {
+    &__btn {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      display: inline-block;
+      width: rem-calc(70);
+      height: rem-calc(70);
+      text-align: center;
+      color: $white-text;
+      font-size: rem-calc(70);
+      line-height: rem-calc(70);
+      transition: transform .4s ease-out;
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
+    }
   } 
+
 }
 
-
+video {
+  max-width: 640px;
+}
 
 /*Ie 10/11 */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
