@@ -7,6 +7,13 @@
   animation-name: fadeInUp;
 }
 
+.empty-field{
+  animation-duration: .4s;
+  animation-name: emptyField;
+  animation-iteration-count: 2;
+
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -16,6 +23,21 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes emptyField {
+  0%{
+    box-shadow: none;
+    border-radius: initial;
+  }
+  50%{
+    box-shadow: 0 0 5px red;
+    border-radius: 5px;
+  }
+  100%{
+    box-shadow: none;
+    border-radius: initial;
   }
 }
 

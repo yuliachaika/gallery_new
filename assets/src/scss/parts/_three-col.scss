@@ -1,154 +1,196 @@
 .three-col {
   @include column();
-   
-  @include breakpoint(medium up) {
-    margin-bottom: rem-calc(300); 
+  &--fix {
+    @include breakpoint(small only) {
+      // margin-bottom: rem-calc(60); //140
+    }
+    @include breakpoint(medium up) {
+      margin-bottom: rem-calc(100); //140
+    }
   }
-  background: linear-gradient(to right, $dark-gray, transparent);
-  z-index: 1;
+  &__content {
+    position: relative;
+  }
+  &__container {
+    &--scroll {
+      padding-top: $header-min; 
+      @include breakpoint(medium up) {
+        padding-top: $header-max; 
+      }
+    }
+  }
   &__row {
     width: 100%; 
     @include row();
     justify-content: center;
-    z-index: 10;
-    &--pd {
-      //margin-top: $img-margin; 
-    } 
-  }
-  &__wrap {
-    width: 100%;
-    height: 100%; 
-    position: relative;
-  }
-  &__container {
-    padding-bottom: 30vh;
-  }
-  // &__title {
-  //   width: 100%; 
-  //   position: sticky;
-  //   top: $header-min;
-  //   @include breakpoint(medium up) {
-  //     top: $header-max;
-  //   } 
-  //   overflow: hidden;
-  //   z-index: 20;
-  //   &::before, 
-  //   &::after {
-  //     content: "";
-  //     display: table; 
-  //   }
-  // }
-  &__link {
-    padding: rem-calc(10);
-    @include breakpoint(medium up) {
-      @include col();
-      padding: rem-calc(30);
-      min-height: rem-calc(132);  
-    } 
-    width: 100%;
-    height: 100%; 
-    @include row();
-    justify-content: center; 
-    align-items: center;
-    @include link(28);
-    text-align: center;
-    transition: all .4s ease-out; 
-    position: relative;
-    &:focus, &:active {
-      color: $white;
+    @include breakpoint(small only) {
+      padding-top: rem-calc(30); //
     }
-    
-    &--bg {
-      @include gradient($dark-gray, $elements);
-      &:hover {
-        &::after {
-          opacity: 1;
-        }
-      } 
+    &--fix {
+      @include breakpoint(small only) {
+        margin-bottom: rem-calc(60);
+        padding-bottom: rem-calc(80); //70
+        // position: relative;//changed
+      }
     }
-    &--active {
-      color: $white;
-      background: linear-gradient(to right, $elements, transparent);
-      &:focus, &:hover {
-        color: $white;
+  }
+  &-grid {
+    padding: 0 rem-calc(22) rem-calc(10);
+    display: grid;
+    grid-template-rows: auto 2fr 1fr 2fr 3fr auto;
+    // grid-template-rows: 1fr 2fr 1fr 18% auto 20%;
+    // grid-row-gap: rem-calc(5);
+    &__text {
+      @include title(13, $dark-text);
+      margin: 0;
+      &--top, &--bt {
+        padding-top: rem-calc(8);
+      }
+    }
+    &__row {
+      border-bottom: rem-calc(1) solid $light-text;
+      &:last-child {
+        border: none;
+      }
+      &--first {
+        padding-bottom: rem-calc(10);//
+      }
+    }
+    &-tall {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      grid-column-gap: rem-calc(15);
+    }
+    &__content {
+      display: grid;
+      &--third {
+        grid-template-columns: 2fr auto;
+        grid-row: 5;
+      }
+      &--fourth {
+        grid-row: 6;
+      }
+      &__a {
+        
+      }
+      &__b {
+        grid-row: 2;
+        justify-self: end;
       }
     }
   }
   &__text {
     width: 100%;
-    padding: 0 rem-calc(5) 0 0; 
+    //padding: 0 rem-calc(5) 0 0; // changed 20180329
+    padding: rem-calc(12); // changed 20180329
     margin-bottom: 1.875rem;
-    @include text(18, $white);
-    text-align: justify;
-    @include breakpoint(small only) {
-      margin-bottom: rem-calc(15);
-      padding-bottom: rem-calc(30);
-      height: rem-calc(45);
-      overflow: hidden;
+    @include text(18, $dark-text);
+    text-align: left;
+    &--link {
+      &:hover {
+        color: $elements;
+      }
+    }
+    &-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      &-item {
+        font-size: 0;
+      }
+    }
+    &-title {
+      @include pos();
     }
     &-wrap {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-    &--link {
-      margin-bottom: rem-calc(5);
-      display: block;
-      padding: 0;
-      color: $white;
-      transition: color,
-      opacity .4s ease-out;
-      @include breakpoint(small only) {
-        margin: 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid lightgray; // added 20180328
+      //background-color: $text-bg;
+      &--tall {
+        padding: rem-calc(12); // changed 20180329
+        @include breakpoint(medium only) {
+        -ms-overflow-y: scroll;
+            overflow-y: scroll;
+        }
       }
-      &:hover {
-        opacity: 0.7;
+      &-item {
+        position: relative;/////
+        margin-bottom: $img-margin;
+        @include breakpoint(medium) {
+          margin-bottom: $img-margin-big;
+        }
+        &--hide {
+          display: none; ////////
+        }
+      }
+      &--order {
+        padding: rem-calc(30);
+        @include breakpoint(medium only) {
+          padding: rem-calc(15);
+        }
+      }
+      &--fl {
+        @include col();
+        justify-content: space-between;
+      }
+      &--center {
+        text-align: center;
+        @include col();
+        justify-content: center;
       }
     }
-    &--pd {
-      padding-bottom: rem-calc(150); 
-      background: linear-gradient(to bottom, $dark-gray, transparent);
+    &-sm {
+      @include title(12, $dark-text);
+      margin: 0;
+      padding-bottom: rem-calc(5);
       @include breakpoint(small only) {
+        font-size: rem-calc(14);
+      }
+      &--bt {
+        border-bottom: rem-calc(1) solid $light-text;
+      }
+      &--pad {
+        margin-bottom: rem-calc(20);
+      }
+      &--center {
+        text-align: center;
+      }
+      &--title {
         padding-bottom: 0;
+        text-transform: uppercase;
+      }
+      &--link {
+        padding: 0;
+        &:hover {
+          color: $elements;
+        }
       }
     }
-    &--bg {
-      background: linear-gradient(to bottom, $dark-gray, transparent);
+    &--time {
+      padding-top: rem-calc(30);
+      font-size: rem-calc(16);
+      font-weight: 600;
+      text-align: center;
+      color: $light-gray;
+      opacity: .8;
     }
-    &--tall {
-      align-items: center;
-    }
-    &--mobile {
-      height: auto;
-      padding-bottom: 0;
-    }
-    &--visible {
-      height: auto;
-      padding-bottom: 0;
+    &--more, 
+    &--less {
+      @include text(14, $light-gray);
     }
   }
   &__img {
-    &-text {
-      padding-left: rem-calc(10);
-      margin-bottom: $img-margin; 
-      position: relative;
-      font-size: 0;
-      overflow: visible;
+    transition: all 0.37s cubic-bezier(0, 0, 0.58, 1);
+    &:hover {
+      cursor: pointer;
     }
-    &-hid {
-      visibility: hidden;
+    &--wall {
+      width: auto;
+      height: 100%;
+      overflow: hidden;
     }
-    &-none {
-      @include breakpoint(small only) {
-        display: none;
-      }
-      @include breakpoint(large) {
-        display: none;
-      }
-    }
-    &-share {
+    &-share {////////////
       position: absolute;
       top: $column-gutter;
       left: 0;
@@ -156,125 +198,77 @@
       margin: 0 auto;
       text-align: center;
       opacity: 0;
-      transition: opacity .4s ease-out; 
+      z-index: 1;
+      // transition: opacity .4s ease-out; 
+      transition: opacity 0.37s cubic-bezier(0, 0, 0.58, 1);
+    }
+    &-box {
+      overflow: hidden;
+      // border: 1px solid;
+     
     }
     &-wrap {
       margin-bottom: $img-margin;
-      padding-left: rem-calc(10);
       transition: all .3s ease-in;
       position: relative;
       font-size: 0;
-      overflow: hidden; 
+      // overflow: hidden; 
       width: 100%; /*!!!!!!!!!!!!*/
+      @include breakpoint(medium) {
+        margin-bottom: $img-margin-big;
+      }
+      // cursor: pointer;
       &:hover {
-        cursor: pointer;
+        // cursor: pointer;
+        & .three-col__img {
+          transform: scale(1.1, 1.1);
+        }
         & .three-col__img-share {
           opacity: 1;
+          // z-index: 1;
         }
-        & .three-col__img-title {
-          color: $black;
-          &::after {
-            transition: opacity .8s ease-out;
-            opacity: 1;
-          } 
-        }
-      } 
+      }
+      &--hide {
+        display: none; ///
+      }
     }
     &-title {
-      padding: 0;
+      padding: rem-calc(10);
       width: 100%; 
-      color: $white;
-      font-family: $primary-font;
-      font-size: rem-calc(20);
-      font-weight: 400;
-      @include gradient($dark-gray, $white); 
+      @include title(13, $dark-text)
       text-align: center;
       transition:
       color .4s ease-out;
-      &::before {
-        content: "";
-        position: absolute;
-        width: rem-calc(30);
-        height: rem-calc(30);
-        background: url(../img/general/logo.svg) center no-repeat;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
+      @include breakpoint(small only) {
+        font-size: rem-calc(15);
       }
       &-wrap {
-        position: absolute;
-        max-width: rem-calc(160);
+        // border: 1px solid red;
+        // position: absolute;
+        // left: 0;
+        // right: 0;
+        // margin: auto;
+        @include pos();
         overflow: hidden;
-        right: 0;
-        left: 0;
-        //left: 25%;
-        bottom: $column-gutter;
-        margin: 0 auto;
-        //margin-left: $column-gutter;
         transition: all .4s ease-out;
       }
     }
-  }
-  &__tab {
-    width: 100%; 
-    display: none;
-    &--active {
-      display: block;
-    }
-  }
-  &__content {
-    width: 100%; 
-    @include row();
-    justify-content: center;
-    &--mod {
-      @include breakpoint(medium up) {
-        justify-content: space-between;
-      } 
-    }
-  }
-  &__col {
-    @include column();
-    display: inline-block;
-    background: linear-gradient(to right, $dark-gray, transparent);
-    @include breakpoint(medium up) {
-      margin-bottom: rem-calc(300); 
-    }
-    &--mod {
-      @include column-mod();
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-  &-nav {
-    width: 100%; 
-    @include row();
-    justify-content: center;
-    position: sticky;
-    top: $header-min;
-    @include breakpoint(medium up) {
-      top: $header-max;
-    } 
-    overflow: hidden;
-    z-index: 20;
-    &__link {
-      transition: none;
-      // background: pink;
-      &:hover {
-        transition: color .4s ease-out;
+    &-btn {
+      @include pos();
+      // position: absolute;
+      // left: 0;
+      // right: 0;
+      // margin: auto;
+      overflow: hidden;
+      background: none;
+      border: none;
+      transition: all .4s ease-out;
+      &:hover, &:focus {
+        color: $elements;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
       }
-    }
-    &__item {
-      @include column();
-      margin-bottom: 0;
-      @include breakpoint(small only) { 
-        margin-bottom: rem-calc(5);
-      }
-      &--active {
-        // order: 3; 
-        // @include breakpoint(medium up) {
-        //   order: inherit;
-        // }
+      &:focus {
+        outline: none;
       }
     }
   }
@@ -287,35 +281,115 @@
       left: 0;
       margin: auto;
       display: inline-block;
-      width: rem-calc(60);
-      height: rem-calc(60);
+      width: rem-calc(70);
+      height: rem-calc(70);
       text-align: center;
-      color: $white;
-      font-size: rem-calc(60);
-      line-height: rem-calc(60);
-      opacity: .6;
-      transition: opacity .4s ease-out;
+      color: $white-text;
+      font-size: rem-calc(70);
+      line-height: rem-calc(70);
+      transition: transform .4s ease-out;
       &:hover {
-        opacity: 1;
+        transform: scale(1.1, 1.1);
       }
     }
-  }
+  } 
+
 }
 
+video {
+  max-width: 640px;
+}
 
 /*Ie 10/11 */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-{
-    .three-col__img-title {
-      max-width: rem-calc(160);
-      margin: auto;
-      &-wrap {
-        width: 100%;
+  {
+    .three-col {
+      &-grid {
+        display: -ms-grid;
+        // -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr auto auto;
+        -ms-grid-rows: auto auto auto auto 1fr 1fr 1fr auto auto;
+        &__text {auto
+          &--bt {
+            border-bottom: rem-calc(1) solid $light-text;
+          }
+          &--top {
+            border-top: rem-calc(1) solid $light-text;
+            padding: 0;
+          }
+        }
+        &__row {
+          border: none;
+          &--first {
+            -ms-grid-column: 1;
+            -ms-grid-row: 1;
+            // padding-bottom: rem-calc(10);//
+          }
+          &--second {
+            -ms-grid-row: 3;
+          }
+          &--third {
+            -ms-grid-row: 5;
+          }
+          &--fourth {
+            -ms-grid-row: 9;
+          }
+        }
+        &-tall {
+          display: -ms-grid;
+          -ms-grid-columns: 2fr 3fr;
+          &--first {
+            -ms-grid-column: 1;
+            -ms-grid-row: 2;
+          }
+          &--second {
+            -ms-grid-column: 1;
+            -ms-grid-row: 4;
+          }
+          &__a {
+            -ms-grid-column: 1;
+            -ms-grid-row: 1;
+          }
+          &__b {
+            -ms-grid-column: 2;
+            -ms-grid-row: 1;
+          }
+          &__c {
+            -ms-grid-column: 1;
+            -ms-grid-row: 2;
+          }
+          &__d {
+            -ms-grid-column: 2;
+            -ms-grid-row: 2;
+          }
+        }
+        &__content {
+          display: -ms-grid;
+          &--first {
+            -ms-grid-row: 2;
+          }
+          &--second {
+            -ms-grid-row: 4;
+          }
+          &--third {
+            -ms-grid-columns: 2fr auto;
+            -ms-grid-row: 5;
+          }
+          &--fourth {
+            -ms-grid-row: 7;
+            border-top-style: solid;
+            border-top-color: $light-text;
+            border-top-width: rem-calc(1);
+          }
+          &__a {
+            
+          }
+          &__b {
+            -ms-grid-row: 2;
+            text-align: right;
+          }
+        }  
       }
     }
-
-}
-
-
+  }
 
 

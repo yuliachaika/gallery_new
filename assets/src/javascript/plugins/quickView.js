@@ -6,6 +6,7 @@ const QObject = {
   itemSize: "&#34;52 x 52&#34;, 140 x 140 cm",
   itemFabric: "polyester",
   itemPrice: 40,
+  itemSold: false,
   itemUrl: "assets/dist/img/999903.jpg",
   itemBigUrl: "assets/dist/img/b/999903.jpg", 
   init: function(target){
@@ -19,10 +20,18 @@ const QObject = {
         this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
         this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
         const info = JSON.parse( target.dataset.info );
+
+        if ( info.hasOwnProperty('sold') ) {
+          this.itemSold = ( info.sold === "1" );
+        } else {
+          this.itemSold = false;
+        };
+
         this.itemSize = '&#34;' + info.size.inch + '&#34;, ' + info.size.sm;
         this.itemFabric = info.product;
         this.itemPrice = info.price;
-        this.itemName = info.name;    
+        this.itemName = info.name;
+  
     }catch(exception){
         console.log(exception);
     }
@@ -46,7 +55,7 @@ const QObject = {
         selectors: {
             quickViewModal: '.quick-view-modal',
             quickViewItem: '.three-col__img-wrap',
-            quickViewOverlay: '.quick-view-overlay',
+            quickViewOverlay: '#back',
             quickViewCanvas: '.quick-view-canvas'
         },
         classNames: {
@@ -73,7 +82,32 @@ const QObject = {
         
         // added
         clearContent: function(){
-           $(".modal-info__content").html( $("#modal-info-show").html() ); 
+           // $(".modal-info__content ").html( $("#modal-info-show").html() ); 
+           $(".modal-info__content ").html(); 
+
+        },
+
+        toggleContent: function(){
+
+          $( ".modal-info__content" ).each(function() {
+
+            if ( !($(this).hasClass("hidden") ) ) {
+              $(this).addClass("hidden");
+            }
+
+          });
+        
+          $("#modal-buy__btn").on('click', function(){
+
+            if(QObject.itemSold === true) {
+              $('[data-state="sold"]').removeClass('hidden');
+              console.log('[data-state="sold"]');
+            } else {
+              $('[data-state="buy-now"]').removeClass('hidden');
+            }
+
+          });
+
         },
 
         //change modal content
@@ -118,6 +152,7 @@ const QObject = {
             // $('.modal-img__wrap').html(QObject.itemUrl);
             $('.modal-img-big').attr('href',QObject.itemBigUrl); //
             $('.modal-img').attr('src',QObject.itemUrl);
+            console.log(QObject.itemSold);
             // $('.modal-img__title').text(QObject.itemId);
             $('.modal-img__title').text(QObject.itemName + ' ' + QObject.itemId);
             return false;
@@ -155,9 +190,10 @@ const QObject = {
         _openModal: function() {
 
             /***********added**************/
-            $('#modal-info__content').addClass('hidden');
+            // $('#modal-info__content').addClass('hidden'); 
 
-            this.addActionListener();
+            this.toggleContent(); 
+            this.addActionListener(); 
 
             this.initData( QObject.init(event.target) );
            
@@ -181,7 +217,7 @@ const QObject = {
 
         },
         _resetModal: function() {
-            this.$canvas.removeAttr("style");
+            this.$canvas.removeAttr("style");  
         },
 
 
@@ -194,3 +230,6 @@ const QObject = {
     }; 
 
 })( jQuery );
+
+
+

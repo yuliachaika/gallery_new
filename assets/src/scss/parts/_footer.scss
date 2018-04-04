@@ -1,0 +1,11 @@
+.footer {
+  width: 100%;
+  background-color: $white;
+  @include breakpoint(small only) {
+    padding-bottom: rem-calc(10); 
+  }
+  &--fix {
+  	position: fixed;
+  	bottom: 0;
+  }
+}

@@ -1,0 +1,14 @@
+.back {
+  position: fixed;
+  top: 50%;
+  left: rem-calc(5);
+  @include breakpoint(large) {
+    left: rem-calc(20); 
+  }
+  margin: auto;
+	z-index: 5;
+	&__btn {
+    @include btn-fixed();
+
+	}
+}

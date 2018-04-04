@@ -1,77 +1,129 @@
- .header {
-	width: 100%;
-  @include breakpoint(small only) {
-    background: rgba(68,68,70,1);
-    background: linear-gradient(to bottom, $dark-gray 0%, rgba(68,68,70,0.7) 65%, transparent 100%);
-  }
-	height: $header-min; //
-	@include breakpoint(medium up) {
-    height: $header-max; //130
-  }
-
+.header {
+  // border: 1px solid green;
+  width: 100%;
+  // min-height: $header-min; 
   position: relative;
-  overflow: hidden;
-  &__fix {
-    width: 100%; 
-    height: rem-calc(110); //???
-    position: fixed;
+  background-color: $white;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // z-index: 10;
+  @include breakpoint(medium up) {
+    // height: $header-max; 
   }
-  &__row {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: $header-min;
-    z-index: 25;
-    background: url(../img/general/bg-01.jpg);
-    background-position-x: center;
-    background-position-y: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    @include breakpoint(small only) {
-      background: rgba(68,68,70, 0.9);
-      // background: linear-gradient(to bottom, rgba(68,68,70, 0.9) 0%, rgba(68,68,70,0.7) 65%, transparent 100%);
-      box-shadow: 0px 6px 14px 0px rgba(68,68,70, 0.9);
-     }
-    @include breakpoint(medium up) {
-      height: $header-max;
-    } 
-  }
-  &__wrap {
-    position: relative;
-  }
-  &-title {
-    // position: absolute;
-    // top: 0; //2.875
-    // left: 0;
-    // right: 0;
-    padding: 0 rem-calc(10);
-    margin: 0 auto;
+  // overflow: hidden;//?
+  transition: all .3s linear;
+  &__container {
+    padding: 0;
     text-align: center;
-    // @include breakpoint(small only) {
-    //   top: $column-gutter;
-    // }
-    &__link {
-      @include link(36);
-      @include breakpoint(small only) {
-        font-size: rem-calc(30);
+    // border: 1px solid pink;
+    &--scroll {
+      padding: 0 rem-calc(15);
+    }
+  }
+  &__toggle {
+    display: none;
+    @include breakpoint(small only) { 
+      display: inline-block;
+      margin: 0 auto;
+      padding-top: rem-calc(10);
+      margin-bottom: rem-calc(10);
+      text-align: center;
+      @include title(18, $dark-text);
+      border-bottom: 1px solid transparent;
+      transition: all .3s ease-out;
+      &:hover {
+        border-color: $dark-text;
       }
     }
   }
+  &__row {
+    width: 100%;
+    background-color: $white;
+    transition: all .3s linear;
+    // @include breakpoint(small only) {
+      // margin-bottom: rem-calc(30); ////////   
+    // }
+  } 
+  &-title {
+    // border: 1px solid;
+    padding: rem-calc(10);
+    padding-top: rem-calc(100); //70
+    margin: 0 auto;
+    text-align: center;
+    transition: all .3s linear;
+    @include breakpoint(small only) {
+      padding: 0 rem-calc(30);
+      // display: none;
+      padding-top: rem-calc(20);
+    }
+    &__link {
+      @include title(36, $dark-text);
+      text-transform: capitalize; 
+      @include breakpoint(small only) {
+        font-size: rem-calc(30);
+      }
+      &:hover {
+        opacity: .8;
+      }
+
+    }
+  }
+  &-nav {
+    // width: 100%; 
+    // @include row();
+    // justify-content: center;
+    // top: 0;
+    // background-color: $white;
+    // @include breakpoint(small only) {
+    //   padding-top: rem-calc(10);
+    //   display: none;
+    // }
+    &__container {
+      background-color: $white;
+      &--scroll {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+  //   &__link {
+  //   // border: 1px solid;
+  //   padding: rem-calc(10); //10
+  //   width: 100%;
+  //   height: 100%;
+  //   position: relative; 
+  //   @include row();
+  //   justify-content: center; 
+  //   align-items: center;
+  //   @include title(30, $dark-text);
+  //   text-align: center;
+  //   transition: all .4s ease-out;
+  //   @include breakpoint(small only) {
+  //     font-size: rem-calc(18);
+  //     padding: 0;
+  //   }
+  //   @include breakpoint(medium up) {
+  //     padding: rem-calc(30); 
+  //   }
+  //   &:hover, &:focus, &:active {
+  //     color: $elements;
+  //   } 
+  // }
+  //   &__item {
+  //     @include column();
+  //     margin-bottom: 0;
+  //     margin: auto;
+  //     @include breakpoint(small only) { 
+  //       margin-bottom: rem-calc(5);
+  //     }
+  //   }
+  }
 }
-
-
-/*Ie 10/11 */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) 
-{
-  .header__row{
-   width: calc(100% - 17px);  
- }
-
-}
-
-
 
 
 

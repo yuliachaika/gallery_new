@@ -10380,6 +10380,269 @@ return jQuery;
 (function( $ ) {
 
   $("[data-fancybox]").fancybox({ 
+
+    afterShow: function() {
+          // var $title = $(".three-col__img-title").html();
+          // var $title = $(this).parent().siblings().find(".three-col__img-title").html();
+          // console.log($title);
+          // $(".fancybox-image-wrap").append('<div class="fancybox__title">' + $title + 
+          //   '</div>');
+    },    
+    clickContent : function( current, event ) {
+      return 'close';
+    },
+    mobile : {
+      dblclickContent : function( current, event ) {
+        return current.type === 'image' ? 'close' : false;
+      }
+    }
+  });
+
+  $('.video a').fancybox({
+    width: 640,
+    height: 400,
+    type: 'iframe'
+  });
+
+  $(".fancybox-video").fancybox({
+    afterShow: function() {
+      // After the show-slide-animation has ended - play the vide in the current slide
+      var vid = document.getElementById("myVideo"); 
+      vid.play(); 
+
+      // Attach the ended callback to trigger the fancybox.next() once the video has ended.
+      this.content.find('video').on('ended', function() {
+        $.fancybox.next();
+      });
+    }
+  });
+
+
+
+})( jQuery );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const QObject = {
+  itemName : "prote", // used in forms 
+  itemId : 981111,
+  itemSize: "&#34;52 x 52&#34;, 140 x 140 cm",
+  itemFabric: "polyester",
+  itemPrice: 40,
+  itemUrl: "assets/dist/img/999903.jpg",
+  itemBigUrl: "assets/dist/img/b/999903.jpg", 
+  init: function(target){
+    return target.tagName.toLowerCase() === 'img' ? this._init(target): this._init( target.parentNode.previousElementSibling );
+  },
+
+  _init: function(target){
+    try{
+        //console.log('init class QObject');
+        this.itemId = target.dataset.productId;
+        this.itemBigUrl = 'assets/dist/img/b/' + target.dataset.fileName;
+        this.itemUrl = 'assets/dist/img/s/' + target.dataset.fileName;
+        const info = JSON.parse( target.dataset.info );
+        this.itemSize = '&#34;' + info.size.inch + '&#34;, ' + info.size.sm;
+        this.itemFabric = info.product;
+        this.itemPrice = info.price;
+        this.itemName = info.name;    
+    }catch(exception){
+        console.log(exception);
+    }
+    return this;
+  }
+};
+
+
+(function( $ ) {
+
+    var QuickView = function( element, options ) {
+        this.$element = $(element);
+        this.element = element;
+        this.options = options;
+        this.$canvas = $(this.options.selectors.quickViewCanvas);
+        this._init();
+        this._stop();
+    }
+
+    QuickView.defaultOptions = {
+        selectors: {
+            quickViewModal: '.quick-view-modal',
+            quickViewItem: '.three-col__img-wrap',
+            quickViewOverlay: '.quick-view-overlay',
+            quickViewCanvas: '.quick-view-canvas'
+        },
+        classNames: {
+            active: ['is-active']
+        }
+    };
+    
+    QuickView.prototype = {
+        _init: function() {
+            this.$element.on('click', '.three-col__img-wrap .three-col__img, .three-col__img-wrap .three-col__img-title', this._triggerHandler.bind(this));
+        },
+        _stop: function () {
+            $(this.options.selectors.quickViewOverlay).on('click', this._overlayHandler.bind(this));
+        },
+        _triggerHandler: function(event) {
+            this._openModal();      
+        },
+        _overlayHandler: function(event) {
+            this._closeModal();      
+        },
+        _closeHandler: function(event) {
+            this._closeModal();      
+        },
+        
+        // added
+        clearContent: function(){
+           $(".modal-info__content").html( $("#modal-info-show").html() ); 
+        },
+
+        //change modal content
+        addActionListener: function(){
+            
+            const that = this;
+
+            const modalOne = $("#modal-info-show").html();
+            const modalTwo = $("#modal-info-hide").html();
+            
+            //show conditions
+            $('.modal-footer__link').on('click', function(e) {
+                e.preventDefault();
+                that.toggleCondition();
+            });
+
+            $('.modal-footer__submit').on('click', function() {
+                
+                //mail message here
+                that.mail();
+                that.toggleCondition(true);
+                $(".modal-info__content").html(modalTwo).addClass('modal-info__content-hide');
+
+                $('.modal-footer__submit-hide').on('click', function() {
+
+                    $(".modal-info__content").html(modalOne).removeClass('modal-info__content-hide');
+                    // update action listeners 
+                    that.addActionListener(); // can be dun via parent listeners, but not in this interpretation
+                    that.initData(QObject);
+                });
+
+            });            
+        },
+        initData: function(QObject){
+            // init current object
+            // $('#modal__num, .modal-img__title').html(QObject.itemId);
+            $('#modal__num, .modal-img__title').html(QObject.itemName + ' ' + QObject.itemId);
+            $('#modal__size').html('size: ' + QObject.itemSize);
+            $('#modal__fabric').html('fabric: ' + QObject.itemFabric);
+            $('#modal__price').html('price: ' + QObject.itemPrice ); //
+            //$('#modal__price').html('price: ' + QObject.itemPrice + '&#8364;'); //
+            // $('.modal-img__wrap').html(QObject.itemUrl);
+            $('.modal-img-big').attr('href',QObject.itemBigUrl); //
+            $('.modal-img').attr('src',QObject.itemUrl);
+            // $('.modal-img__title').text(QObject.itemId);
+            $('.modal-img__title').text(QObject.itemName + ' ' + QObject.itemId);
+            return false;
+        },
+        toggleCondition: function(remove){
+            if(remove !== undefined && true){
+                $('.modal-hide').removeClass('is-active');
+            }else{
+                $('.modal-hide').toggleClass('is-active');
+            }
+        },
+        mail: function(){
+            
+            const mail = $('#modal__email').val();
+            const text = $('.modal-form__area').val();
+            const id = QObject.itemId;
+            const data = {
+                id: id,
+                mail: mail,
+                text: text
+            };
+            
+            try{
+                $.post('m.php', data, function(response, status, text){
+                    console.log(response);
+                    console.log(status);
+                    console.log(text);
+                });    
+            }catch(exception){
+                console.log(exception);
+            }
+            
+            return;
+        },
+        _openModal: function() {
+
+            /***********added**************/
+            $('#modal-info__content').addClass('hidden');
+
+            this.addActionListener();
+
+            this.initData( QObject.init(event.target) );
+           
+            this._resetModal();
+            $(this.options.selectors.quickViewModal)
+                    .toggleClass(this.options.classNames.active
+                    .join(' '));
+
+            $("html").css("overflow-y","hidden");
+
+        },
+        _closeModal: function() {
+            $(this.options.selectors.quickViewModal)
+                .removeClass(this.options.classNames.active
+                .join(' '));
+
+            $("html").css("overflow-y","");
+
+            this.clearContent();
+            this.toggleCondition(true);
+
+        },
+        _resetModal: function() {
+            this.$canvas.removeAttr("style");
+        },
+
+
+    } 
+
+    $.fn.quickView = function( element, options ) {
+        return this.each(function() {
+            new QuickView(this, $.extend({}, QuickView.defaultOptions, options));
+        });
+    }; 
+
+})( jQuery );
+'use strict';
+
+(function( $ ) {
+
+  $("[data-fancybox]").fancybox({ 
     // fitToView: false, //
     // afterLoad: function () {
     //     this.width = 1000;
@@ -10431,6 +10694,68 @@ return jQuery;
 
 
 
+const Utils = new function(){
+
+	/**
+	* Create an objects that can parser windows.location.search. Shame
+	* mechanism as in URLSearchParams that can be not available in 
+	* some old vrowsers for exaple IE and so on.
+	*/
+	this.createUrlSearchParser = function (query) {
+
+		return new function(query){
+
+			this.data = {};
+
+			this.get = function (key) {
+				return this.data.hasOwnProperty(key) ? this.data[key] : null;
+			};
+
+			this.set = function (key, val) {
+				this.data[key] = val;
+			};
+
+			this.toString = function () {
+				var res = '';
+				for( const index in this.data){
+					res += '' + index + '=' + this.data[index] + '&';
+				}
+				if(res.length > 0){
+					res = '?' + res.substr(0, res.length - 1);
+				}
+				return res;
+			};
+
+			this.isValid = function(str) {
+				return typeof(str) === "string" && str.length >= 4 && str.indexOf("?") !== -1;
+			};
+
+			this.init = function (query) {
+				this.data = {};
+				const state = this.isValid(query);
+				if ( !state ){
+					return;
+				} 
+
+				var values = query.split("?")[1].split("&");
+
+				for (var val of values) {
+					if (val.length >= 3) {
+						const index = val.indexOf("=");
+						if (index === -1 || index === 0 || index === (val.length -1)) {
+							continue;
+						}   
+						const map = val.split("=");
+						this.data[map[0]]=map[1];
+					}
+				}
+			};
+
+			//code
+			this.init(query);
+		}(query);
+	};
+}
 'use strict';
 
 (function($){
@@ -10729,3 +11054,311 @@ return jQuery;
 
 
 })(jQuery);
+'use strict';
+
+(function($){
+
+  function acceptBuy() {
+
+    const contenReserved = $("#js-content-reserved").html();
+    const titleConfirm = $("#js-title-confirm").html();
+
+    $('#js-content').on('click', '#js-buy', function(e) {
+      e.preventDefault();
+      $('#js-content').html(contenReserved);
+      $('#js-title').html(titleConfirm);
+      onresize();
+      // startTimer(30); disable
+    });
+
+  };
+
+  function acceptContinue() {
+      const contentConfirm = $("#js-content-confirm").html();
+      // const titleConfirm = $("#js-title-confirm").html();
+
+      $('#js-content').on('click', '#js-reserve', function(e) {
+        e.preventDefault();
+
+        $('#js-content').html(contentConfirm);
+        // $('#js-title').html(titleConfirm);
+        onresize();
+    });  
+
+  };
+
+  function acceptConfirm() {
+
+    const contentComplete = $("#js-content-complete").html();
+    const contentOrder = $("#js-content-order").html();
+
+    $('#js-content').on('click', '#js-confirm', function(e) {
+        e.preventDefault();
+        const values = validateFormData('.form')
+        if( values === false){return;}
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            url: '/order',
+            data: values,
+            success: function(data){console.log(data);}
+        });
+        $('#js-content').html(contentComplete);
+        $('#js-content-img').html(contentOrder);
+        onresize();
+    });  
+
+  };
+
+  function validateFormData(formSelector){
+      const $elem = $(formSelector).children();
+      var noErr = true;
+      var values = {};
+      for(var i = 0; i < $elem.length; i++) {
+          const $this = $($elem[i]);
+          if( $this.val().length === 0 || ($this.attr('type') === 'email') && !Utils.isValidEmailAddress($this.val())) {
+              $this.addClass('empty-field');
+              $this.on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
+                  $this.removeClass('empty-field');
+              })
+              noErr = false;
+          }else{
+              values[$this.attr('name')] = $this.val();
+          }
+      };
+      if(!noErr){
+        return noErr;
+      }else{
+        values['id'] = $('#js-id').val();
+        return values;
+      }
+  }
+
+  function onresize() {
+    // if ($(document).width() > 480) {
+      const baseWidth = $('.three-col').outerWidth();     
+      const remBase = parseFloat($('html').css('font-size')) * 0.625;
+      const textElem = $('.three-col__text-wrap');//
+      const imgElem = $('.three-col__img-box');///
+      const textElemTall = $('.three-col__text--tall');
+      // textElem.outerHeight( baseWidth - remBase ); 
+      textElem.outerHeight( baseWidth );
+      imgElem.outerHeight( baseWidth );
+      textElemTall.outerHeight( baseWidth  * 2 );
+      resizeFont(textElem, 321.89, 18);
+    // } else {
+    //   $('.three-col__text-wrap, .three-col__text--tall').removeAttr("style");  
+    // }
+
+  };
+
+  function resizeFont(elem, width, size) {
+    var textElemWidth = elem.outerWidth();
+    var scale = textElemWidth / width;
+    var fontSize;
+    if (scale < 1) {
+      fontSize = size * scale + 'px';
+      elem.css({ fontSize: fontSize});
+    } else {
+      fontSize = size + 'px';
+      elem.css({ fontSize: fontSize});
+    }
+  };
+
+
+  function hideHeaderTitle(){
+    const scrollBasis = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
+    const topHide = $('.header-title').outerHeight()/2;
+    $(scrollBasis).scroll(function (){
+      if ($(this).scrollTop() > topHide) {
+        $('.header-title').css({opacity: '0'});
+      } else {
+        $('.header-title').css({opacity: '1'});
+      }
+    });
+    return false;
+  };
+
+  function fixNav(){
+    const scrollField = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
+    const top = $('.header-title').outerHeight();//высота элементов перед меню
+    const topNav = $('#js-header-nav').outerHeight();
+
+    $(scrollField).scroll(function (){
+
+      if ($(this).scrollTop() > top) {
+        $('#js-header-nav').addClass('header-nav__container--scroll');
+        $('.header__container').addClass('header__container--scroll');
+        $('.three-col__row').css({paddingTop: topNav});
+      } else {
+        $('#js-header-nav').removeClass('header-nav__container--scroll');
+        $('.header__container').removeClass('header__container--scroll');
+        $('.three-col__row').removeAttr('style');
+      }
+
+    });
+    return false;
+  };
+
+
+  // function showMore() {
+  //
+  //   $('.three-col__text').each(function(index, value){
+  //
+  //     var $c = $(this);
+  //     $c.parent().css({overflowY: 'hidden'});
+  //
+  //     if( !$c[0].hasOwnProperty('fullText') ){
+  //       $c[0].fullText = $c.html();
+  //     }
+  //
+  //     //const charCount = $(document).width() > 480 ? 330 : 50;
+  //     const charCount = 330;
+  //
+  //     $c[0].lessText = $c[0].fullText.substr(0,  charCount ) + "...";
+  //
+  //     if ($c[0].fullText.length > charCount) {
+  //       $c.html($c[0].lessText).append("<a href='' class='three-col__text--more'>show more</a>");   ///class добавить!!!!!
+  //     } else {
+  //       $c.html($c[0].fullText);
+  //     }
+  //
+  //   });
+  //
+  // };
+
+
+  $(window).on('resize', function () {
+    onresize();
+    // showMore();
+    fixNav();
+    if (  $(document).width() > 480 ) {     
+      $('.header-nav').removeAttr('style');
+     }
+  });
+
+  // $(window).on('beforeunload', function(){
+  //   $(window).scrollTop(0);
+  // });
+    
+
+  /**
+  * Smooth scrolling to top position by clicking on left
+  * "scroll top" button by default. Can be called manualy
+  * in any place.
+  */
+  function smoothScrollTop(){
+    //scroll to top 
+    $("body,html").animate({
+        scrollTop:0
+    }, 800);
+    // console.log('smoothScrollTop() - called');
+    return false;
+  };
+
+
+  /**
+  * Init sticky button that smothly scroll top. Appears in bottom right conner.
+  */
+  function initStickyScrollTopBtn(){
+
+    $("#back-top").hide();
+    
+    const scrollBase = navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident.*rv:/) ? 'body' : window;
+      
+    $(scrollBase).scroll(function (){
+      if ($(this).scrollTop() > 100){
+        $("#back-top").fadeIn();
+
+      } else{
+        $("#back-top").fadeOut();
+
+      }
+    });
+
+    $("#back-top a").click(function (){
+      smoothScrollTop();
+    });
+
+    return false;
+  };
+
+
+  function initListeners(){
+
+    // //hide label
+    // $('.three-col__content').on('blur', '#js-input', function() {
+    //   if( this.value ) {
+    //     $('#js-label').css({opacity: '0'});
+    //   } else {
+    //     $('#js-label').removeAttr("style");
+    //   }
+    // });
+
+    //Toggle nav on mobile
+    $('.header').on('click', '#js-menu-toggle', function(e) {
+      e.preventDefault();
+      $('.header-nav').slideToggle();
+    });
+
+    //text show more /show less approach 
+    // $('.three-col__text').on('click', '.three-col__text--more', function(e) {
+    //
+    //   e.preventDefault();
+    //
+    //   var $this = $(this).parent();
+    //
+    //   $this.html($this[0].fullText)
+    //           .append("<a href='' class='three-col__text--less'> show less</a>")
+    //           //.css({overflowY: 'scroll'});
+    //           .parent()
+    //           .css({overflowY: 'scroll'});
+    //
+    //   }).on('click', '.three-col__text--less', function(e) {
+    //
+    //     e.preventDefault();
+    //
+    //     var $this =  $(this).parent();
+    //
+    //     $this.html($this[0].lessText)
+    //             .append("<a href='' class='three-col__text--more'> show more</a>")
+    //             .css({overflowY: ''})
+    //             .parent()
+    //             .css({overflowY: 'hidden'});
+    //   });
+    // //***********************end show less
+
+    };
+
+  /**
+  * Document ready state
+  */
+  $( function() {
+
+    acceptBuy();
+    acceptContinue();
+    acceptConfirm();
+
+    onresize();
+
+    // showMore();
+
+    initListeners();
+    
+    hideHeaderTitle();
+
+    fixNav();
+
+    initStickyScrollTopBtn();
+  });   
+
+
+})(jQuery);
+
+
+
+
+
+
