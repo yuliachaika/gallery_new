@@ -185,6 +185,11 @@
     &:hover {
       cursor: pointer;
     }
+    &--wall {
+      width: auto;
+      height: 100%;
+      overflow: hidden;
+    }
     &-share {////////////
       position: absolute;
       top: $column-gutter;
